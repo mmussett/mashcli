@@ -154,7 +154,7 @@ func main() {
 			Subcommands: []cli.Command{
 				{
 					Name:  "showall",
-					Aliases: []string{"s"},
+					Aliases: []string{"sa"},
 					Usage: "Show all package keys for an application",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
