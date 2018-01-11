@@ -10,8 +10,8 @@ const (
 	name      = "mashcli"
 	usage     = "TIBCO Mashery - Command Line Interface"
 	version   = "0.1.0"
-	copyright = "2017 TIBCO Software Inc."
-	author    = "Mark Mussett (mmussett@tibco.com)"
+	copyright = "2017 Mark Mussett."
+	author    = "Mark Mussett (mmussett@me.com)"
 )
 
 var log = logging.MustGetLogger("mashcli")
