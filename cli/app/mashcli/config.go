@@ -54,20 +54,23 @@ func (c *Config) Save() error {
 
 func Load(name string) (*Config, error) {
 
-	var filename=""
+	var filename, filePathname="",""
+
+	configPath := filepath.Join(UserHomeDir(), "/.mashcli")
+	if _, err := os.Stat(configPath); os.IsNotExist(err) {
+		fmt.Println("warning: unable to local config directory. Please run 'mashcli config add'")
+		return nil, nil
+	}
 
 	if len(name) > 0 {
 		filename = name + ".config"
 	} else {
+		// Default configuration
 		filename = "mashcli.config"
 	}
 
-	configPath := filepath.Join(UserHomeDir(), "/.mashcli")
-	if _, err := os.Stat(configPath); os.IsNotExist(err) {
-		return nil, fmt.Errorf("config: unable to locate configuration directory:  %s ", configPath)
-	}
+	filePathname = filepath.Join(configPath,filename)
 
-	filePathname := filepath.Join(configPath,filename)
 	bytes, err := ioutil.ReadFile(filePathname)
 	c := new(Config)
 
@@ -102,10 +105,11 @@ func Add() *Config {
 	ui := &input.UI{}
 
 	name, err := ui.Ask("Configuration Name?", &input.Options{
-		Default:  "",
+		Default:  "mashcli",
 		Required: true,
 	})
 	if err != nil {
+		return nil
 	}
 
 	area, err := ui.Ask("Area ID?", &input.Options{
@@ -113,6 +117,7 @@ func Add() *Config {
 		Required: true,
 	})
 	if err != nil {
+		return nil
 	}
 
 	tm, err := ui.Ask("Traffic Manager?", &input.Options{
@@ -120,6 +125,7 @@ func Add() *Config {
 		Required: true,
 	})
 	if err != nil {
+		return nil
 	}
 
 	ccurl, err := ui.Ask("Control Centre URL?", &input.Options{
@@ -127,6 +133,7 @@ func Add() *Config {
 		Required: true,
 	})
 	if err != nil {
+		return nil
 	}
 
 	apikey, err := ui.Ask("API Key?", &input.Options{
@@ -134,6 +141,7 @@ func Add() *Config {
 		Required: true,
 	})
 	if err != nil {
+		return nil
 	}
 
 	apikeysecret, err := ui.Ask("API Key Secret?", &input.Options{
@@ -141,6 +149,7 @@ func Add() *Config {
 		Required: true,
 	})
 	if err != nil {
+		return nil
 	}
 
 	userid, err := ui.Ask("User ID?", &input.Options{
@@ -148,6 +157,7 @@ func Add() *Config {
 		Required: true,
 	})
 	if err != nil {
+		return nil
 	}
 
 	password, err := ui.Ask("User Password?", &input.Options{
@@ -155,11 +165,12 @@ func Add() *Config {
 		Required: true,
 	})
 	if err != nil {
+		return nil
 	}
 
 	c := New(userid, password, apikey, apikeysecret, name, area, tm, ccurl)
 	c.Save()
-	c.PrettyPrint()
+
 	return c
 
 }

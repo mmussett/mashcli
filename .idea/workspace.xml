@@ -4,192 +4,10 @@
     <option name="GROUP_BY_SEVERITY" value="true" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5c0bde6-ef59-4287-9ec2-c2ef392dc98f" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.config" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/go.imports.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/README.md" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/applicationpackagekeys/api.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/applicationpackagekeys/applicationpackagekeys.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/applicationpackagekeys/applicationpackagekeys_test.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/applicationpackagekeys/constants.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/applicationpackagekeys/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/applications/api.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/applications/applications.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/applications/applications_test.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/applications/constants.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/applications/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/areas/areas.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/areas/constants.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/areas/old/areas.old" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/areas/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/cors/api.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/cors/constants.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/cors/cors.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/cors/cors_test.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/cors/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/domains/api.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/domains/constants.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/domains/domains.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/domains/domains_test.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/domains/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/endpointcache/api.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/endpointcache/constants.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/endpointcache/endpointcache.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/endpointcache/endpointcache_test.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/endpointcache/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/endpoints/api.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/endpoints/constants.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/endpoints/endpoints.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/endpoints/endpoints_test.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/endpoints/old/endpoints.old" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/endpoints/old/types.old" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/endpoints/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/errormessages/api.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/errormessages/constants.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/errormessages/errormessages.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/errormessages/errormessages_test.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/errormessages/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/errorsets/api.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/errorsets/constants.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/errorsets/errorsets.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/errorsets/errorsets_test.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/errorsets/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/iodocs/api.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/iodocs/constants.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/iodocs/iodocs.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/iodocs/iodocs_test.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/iodocs/old/iodocs.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/iodocs/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/mashcli/access_token.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/mashcli/constants.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/mashcli/mashery.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/mashcli/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/memberapplications/api.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/memberapplications/constants.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/memberapplications/memberapplications.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/memberapplications/memberapplications_test.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/memberapplications/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/members/api.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/members/constants.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/members/members.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/members/members.old" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/members/members_test.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/members/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/methods/api.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/methods/constants.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/methods/methods.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/methods/methods_test.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/methods/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/oauth/oauth.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/oauth/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/packagekeys/api.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/packagekeys/constants.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/packagekeys/packagekeys.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/packagekeys/packagekeys_test.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/packagekeys/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/packages/api.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/packages/constants.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/packages/packages.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/packages/packages_test.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/packages/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/plandesigner/api.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/plandesigner/plandesigner.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/plandesigner/plandesigner_test.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/plandesigner/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/plans/api.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/plans/constants.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/plans/plans.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/plans/plans_test.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/plans/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/planservices/api.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/planservices/constants.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/planservices/planservices.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/planservices/planservices_test.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/planservices/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/publicdomains/api.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/publicdomains/constants.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/publicdomains/publicdomains.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/publicdomains/publicdomains_test.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/publicdomains/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/publichostnames/api.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/publichostnames/constants.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/publichostnames/publichostnames.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/publichostnames/publichostnames_test.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/publichostnames/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/responsefilters/api.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/responsefilters/constants.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/responsefilters/responsefilters.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/responsefilters/responsefilters_test.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/responsefilters/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/roles/api.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/roles/constants.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/roles/roles.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/roles/roles_test.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/roles/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/scheduledmaintenanceevent/api.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/scheduledmaintenanceevent/constants.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/scheduledmaintenanceevent/scheduledmaintenanceevent.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/scheduledmaintenanceevent/scheduledmaintenanceevent_test.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/scheduledmaintenanceevent/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/securityprofiles/api.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/securityprofiles/constants.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/securityprofiles/securityprofile.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/securityprofiles/securityprofiles_test.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/securityprofiles/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/servicecache/api.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/servicecache/constants.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/servicecache/servicecache.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/servicecache/servicecache_test.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/servicecache/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/serviceroles/api.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/serviceroles/constants.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/serviceroles/serviceroles.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/serviceroles/serviceroles_test.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/serviceroles/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/services/api.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/services/constants.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/services/old/api.old" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/services/old/constants.old" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/services/old/services.old" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/services/old/types.old" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/services/services.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/services/services_test.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/services/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/systemdomainauthentication/api.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/systemdomainauthentication/constants.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/systemdomainauthentication/systemdomainauthentication.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/systemdomainauthentication/systemdomainauthentication_test.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/systemdomainauthentication/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/systemdomains/api.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/systemdomains/constants.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/systemdomains/systemdomains.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/systemdomains/systemdomains_test.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/systemdomains/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/systemhostnames/api.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/systemhostnames/constants.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/systemhostnames/systemhostnames.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/systemhostnames/systemhostnames_test.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/systemhostnames/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/transform/transform.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/transform/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/types.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/app/utils.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cli/test/testutils.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cmd/mashcli/api.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cmd/mashcli/applicationpackagekeys.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cmd/mashcli/applications.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cmd/mashcli/area.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cmd/mashcli/config.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cmd/mashcli/endpoints.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cmd/mashcli/memberapplications.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cmd/mashcli/members.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cmd/mashcli/packagekeys.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cmd/mashcli/packages.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cmd/mashcli/plandesigner.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cmd/mashcli/plans.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cmd/mashcli/planservices.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/cmd/mashcli/services.go" />
+    <list default="true" id="c5c0bde6-ef59-4287-9ec2-c2ef392dc98f" name="Default" comment="Return message if unable to local config">
+      <change beforePath="$PROJECT_DIR$/.config" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/cli/app/mashcli/config.go" afterPath="$PROJECT_DIR$/cli/app/mashcli/config.go" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -210,22 +28,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="applications.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cmd/mashcli/applications.go">
+      <file leaf-file-name="config.go" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cli/app/mashcli/config.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="532">
-              <caret line="188" column="3" lean-forward="false" selection-start-line="188" selection-start-column="3" selection-end-line="188" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cmd/mashcli/config.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="198">
+              <caret line="60" column="61" lean-forward="false" selection-start-line="60" selection-start-column="61" selection-end-line="60" selection-end-column="61" />
+              <folding>
+                <element signature="e#17#165#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -233,21 +43,29 @@
       <file leaf-file-name="api.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cmd/mashcli/api.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="37" column="3" lean-forward="false" selection-start-line="37" selection-start-column="3" selection-end-line="37" selection-end-column="3" />
+            <state relative-caret-position="360">
+              <caret line="25" column="24" lean-forward="false" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="services.go" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/cli/app/services/services.go">
+      <file leaf-file-name="access_token.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cli/app/mashcli/access_token.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="797">
-              <caret line="126" column="5" lean-forward="false" selection-start-line="126" selection-start-column="5" selection-end-line="126" selection-end-column="5" />
-              <folding>
-                <element signature="e#18#167#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="domains.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cli/app/domains/domains.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="18">
+              <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -366,7 +184,6 @@
         <option value="$PROJECT_DIR$/cli/app/applicationpackagekeys/applicationpackagekeys.go" />
         <option value="$PROJECT_DIR$/cli/app/domains/domains.go" />
         <option value="$PROJECT_DIR$/cli/app/applications/applications.go" />
-        <option value="$PROJECT_DIR$/cli/app/mashcli/config.go" />
         <option value="$PROJECT_DIR$/cmd/mashcli/applicationpackagekeys.go" />
         <option value="$PROJECT_DIR$/cmd/mashcli/area.go" />
         <option value="$PROJECT_DIR$/cmd/mashcli/endpoints.go" />
@@ -381,6 +198,7 @@
         <option value="$PROJECT_DIR$/cmd/mashcli/applications.go" />
         <option value="$PROJECT_DIR$/cmd/mashcli/config.go" />
         <option value="$PROJECT_DIR$/cmd/mashcli/api.go" />
+        <option value="$PROJECT_DIR$/cli/app/mashcli/config.go" />
       </list>
     </option>
   </component>
@@ -391,10 +209,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="345" />
-    <option name="y" value="-1370" />
+    <option name="x" value="-360" />
+    <option name="y" value="-1310" />
     <option name="width" value="2269" />
-    <option name="height" value="1177" />
+    <option name="height" value="1172" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -430,7 +248,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -486,6 +303,7 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -499,6 +317,7 @@
     <property name="configurable.Module.GOPATH.is.expanded" value="false" />
     <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="GO_FMT" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -648,20 +467,19 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="345" y="-1370" width="2269" height="1177" extended-state="0" />
+    <frame x="-360" y="-1310" width="2269" height="1172" extended-state="0" />
     <layout>
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17055972" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.057301294" sideWeight="0.5828469" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3122172" sideWeight="0.34111944" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3309091" sideWeight="0.5015425" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3271719" sideWeight="0.49618322" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24121997" sideWeight="0.6519531" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3309091" sideWeight="0.49845746" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3122172" sideWeight="0.6588806" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -670,6 +488,7 @@
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2513011" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3271719" sideWeight="0.49618322" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -678,6 +497,9 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -777,13 +599,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/cli/app/plandesigner/types.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cli/app/plandesigner/plandesigner.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="918">
@@ -844,13 +659,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmd/mashcli/banner.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/cmd/mashcli/banner.go" />
     <entry file="file://$PROJECT_DIR$/../../urfave/cli/cli.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -906,7 +715,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -914,7 +722,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21420">
           <caret line="1194" column="85" lean-forward="false" selection-start-line="1194" selection-start-column="85" selection-end-line="1194" selection-end-column="85" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -922,7 +729,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -930,7 +736,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="4" column="7" lean-forward="false" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -938,7 +743,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -946,7 +750,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
           <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -954,7 +757,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="106">
           <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -962,7 +764,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -970,7 +771,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -994,7 +794,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1002,15 +801,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cli/app/domains/domains.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1973">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1018,7 +808,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-99">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1026,7 +815,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1170">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1038,19 +826,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cli/app/mashcli/config.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="17" lean-forward="false" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cmd/mashcli/applicationpackagekeys.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="522">
           <caret line="34" column="3" lean-forward="false" selection-start-line="34" selection-start-column="3" selection-end-line="34" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1058,7 +837,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-130">
           <caret line="33" column="3" lean-forward="false" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1066,7 +844,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="293" column="3" lean-forward="false" selection-start-line="293" selection-start-column="3" selection-end-line="293" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1074,7 +851,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="266" column="3" lean-forward="false" selection-start-line="266" selection-start-column="3" selection-end-line="266" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1082,7 +858,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1098,7 +873,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1713">
           <caret line="219" column="3" lean-forward="false" selection-start-line="219" selection-start-column="3" selection-end-line="219" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1106,7 +880,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2395">
           <caret line="221" column="3" lean-forward="false" selection-start-line="221" selection-start-column="3" selection-end-line="221" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1114,7 +887,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-525">
           <caret line="35" column="3" lean-forward="false" selection-start-line="35" selection-start-column="3" selection-end-line="35" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1122,7 +894,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="362">
           <caret line="85" column="3" lean-forward="false" selection-start-line="85" selection-start-column="3" selection-end-line="85" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1130,13 +901,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
           <caret line="33" column="3" lean-forward="false" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cmd/mashcli/applications.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
+        <state relative-caret-position="3294">
           <caret line="188" column="3" lean-forward="false" selection-start-line="188" selection-start-column="3" selection-end-line="188" selection-end-column="3" />
           <folding />
         </state>
@@ -1144,26 +914,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cmd/mashcli/config.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
+        <state relative-caret-position="522">
           <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmd/mashcli/api.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="37" column="3" lean-forward="false" selection-start-line="37" selection-start-column="3" selection-end-line="37" selection-end-column="3" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cli/app/services/services.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="797">
+        <state relative-caret-position="-2707">
           <caret line="126" column="5" lean-forward="false" selection-start-line="126" selection-start-column="5" selection-end-line="126" selection-end-column="5" />
           <folding>
             <element signature="e#18#167#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cli/app/mashcli/access_token.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cli/app/domains/domains.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmd/mashcli/api.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="25" column="24" lean-forward="false" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cli/app/mashcli/config.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="60" column="61" lean-forward="false" selection-start-line="60" selection-start-column="61" selection-end-line="60" selection-end-column="61" />
+          <folding>
+            <element signature="e#17#165#0" expanded="true" />
           </folding>
         </state>
       </provider>
