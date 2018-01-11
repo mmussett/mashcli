@@ -9,7 +9,7 @@ import (
 
 
 func doBeforeApplicationPackageKeysShowAll(c *cli.Context) {
-	if len(c.Args()) < 1 {
+	if len(c.Args()) == 0 {
 		fmt.Println("mashcli: argument mismatch")
 		fmt.Println("Run 'mashcli applicationpackagekeys showall --help' for usage")
 		cli.OsExiter(-1)
