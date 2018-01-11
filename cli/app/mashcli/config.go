@@ -58,7 +58,7 @@ func Load(name string) (*Config, error) {
 
 	configPath := filepath.Join(UserHomeDir(), "/.mashcli")
 	if _, err := os.Stat(configPath); os.IsNotExist(err) {
-		fmt.Println("warning: unable to local config directory. Please run 'mashcli config add'")
+		fmt.Println("warning: unable to local config directory. Please run 'mashcli config add' to add first configuration.")
 		return nil, nil
 	}
 
