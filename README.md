@@ -148,17 +148,48 @@ Options:
 
 #### applications
 
+* delete
+* export
+* import
+* show
+* showall
+
 #### applicationpackagekeys
+
+* showall
 
 #### area
 
+* backup
+* restore
+
+
 #### members
+
+* add
+* delete
+* export
+* import
+* setstatus
+* show
+* showall
 
 #### memberapplications
 
-#### services
+* export
+* showall
 
-#### Show All Services
+#### *services*
+
+* add
+* clone
+* delete
+* export
+* import
+* show
+* show all
+
+##### _show all services_
 Show a list of all know services
 Usage:
 ```json
@@ -193,7 +224,7 @@ $ mashcli services showall -output json
     }
 ]
 ```
-##### show - Show Service
+##### _show service_
 Show service
 Usage:
 ```json
@@ -230,16 +261,58 @@ $ mashcli services show 9dyupurdkktfwstmrw3z45vg -output json
 
 #### endpoints
 
+* add
+* clone
+* delete
+* export
+* import
+* show
+* showall
+
 #### packages
+
+* add
+* clone
+* delete
+* export
+* import
+* show
+* showall
 
 #### packagekeys
 
+* delete
+* export
+* import
+* setrates
+* setstatus
+* show
+* showall
+
 #### plans
+
+* add
+* clone
+* delete
+* export
+* import
+* setkeyprops
+* setratelimits
+* setstatus
+* show
+* showall
 
 #### planservices
 
+* show
+* showall
+
 #### plandesigner
+
+* add
+* delete
 
 #### config
 
-#### help
+* show
+* add
