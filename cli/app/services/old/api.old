@@ -1,0 +1,337 @@
+package services
+
+import (
+	"encoding/json"
+	"fmt"
+	"github.com/dghubble/sling"
+	"github.com/mmussett/mashcli/cli/app/mashcli"
+	"github.com/pkg/errors"
+	"io"
+	"strconv"
+	"strings"
+)
+
+const (
+	resourcePath = "v3/rest/services/%s"
+	resourceCollectionPath = "v3/rest/services"
+)
+
+func Get(accessToken string, mp *MethodParams, params *mashcli.Params) (*Services, error) {
+
+	path := fmt.Sprintf(resourcePath, mp.ServiceId)
+	e := new(mashcli.MasheryError)
+	s := new(Services)
+
+	resp, err := sling.New().Base(mashcli.BaseURL).Path(path).Set("Authorization", "Bearer "+accessToken).Set("Content-Type", "application/json").QueryStruct(params).Receive(s, e)
+
+	if err != nil || resp.StatusCode == 404 {
+		return nil, errors.Errorf("service: unable to get service id=%s: GET %s -> (%s %s)", mp.ServiceId, path, strconv.Itoa(e.ErrorCode), e.ErrorMessage)
+
+	}
+
+	return s, nil
+}
+
+func GetCollection(accessToken string, params *mashcli.Params) (*[]Services, error) {
+
+	path := resourceCollectionPath
+	e := new(mashcli.MasheryError)
+	p := new([]Services)
+
+	resp, err := sling.New().Base(mashcli.BaseURL).Path(path).Set("Authorization", "Bearer "+accessToken).Set("Content-Type", "application/json").QueryStruct(params).Receive(p, e)
+
+	if err != nil {
+		return nil, err
+	}
+
+	if e.ErrorCode != 0 || resp.StatusCode != 200 {
+		return nil, fmt.Errorf("service: unable to get service collection: GET %s -> (%s %s)", path, strconv.Itoa(e.ErrorCode), e.ErrorMessage)
+	}
+
+	return p, nil
+}
+
+func (s *Services) Create(accessToken string) (*Services, error) {
+
+	path := fmt.Sprintf(resourcePath, "")
+	e := new(mashcli.MasheryError)
+
+	resp, err := sling.New().Base(mashcli.BaseURL).Set("Authorization", "Bearer "+accessToken).BodyJSON(s).Set("Content-Type", "application/json").Set("Accept", "application/json").Post(path).Receive(s, e)
+	fmt.Printf("%v\n", resp.Status)
+
+	if err != nil || resp.StatusCode == 400 {
+		return nil, errors.Errorf("services: unable to create service: POST %s -> (%s %s)", path, strconv.Itoa(e.ErrorCode), e.ErrorMessage)
+	}
+
+	return s, nil
+
+}
+
+/*
+func (s *Service) CreateDepricated(accessToken string) (*Service, error) {
+
+	e := new(mashcli.MasheryError)
+
+	createServiceRequest := new(CreateServiceRequest)
+
+	createServiceRequest.Name = s.Name
+	createServiceRequest.Version = s.Version
+	createServiceRequest.CrossDomainPolicy = s.CrossdomainPolicy
+	createServiceRequest.RFC3986Encode = s.Rfc3986Encode
+	createServiceRequest.Description = s.Description
+	createServiceRequest.RobotsPolicy = s.RobotsPolicy
+	createServiceRequest.QpsLimitOverall = s.QpsLimitOverall
+	createServiceRequest.Id = s.Id
+	createServiceRequest.Created = s.Created
+	createServiceRequest.Updated = s.Updated
+	createServiceRequest.EditorHandle = s.EditorHandle
+	createServiceRequest.RevisionNumber = s.RevisionNumber
+
+	//createServiceResponse := new(mashcli.MasheryCreateResponse)
+
+	bytes, err := json.Marshal(createServiceRequest)
+
+	if err != nil {
+		return nil, errors.Errorf("service: unable to marshall contents")
+	}
+
+	body := strings.NewReader(string(bytes))
+
+	_, err = sling.New().Base(mashcli.BaseURL).Set("Authorization", "Bearer "+accessToken).Body(body).Set("Content-Type", "application/json").Post("v3/rest/services").Receive(s, e)
+
+	if err != nil {
+		return nil, errors.Errorf("service: unable to create service: POST %s%s -> (%s %s)", mashcli.BaseURL, resourcePath, strconv.Itoa(e.ErrorCode), e.ErrorMessage)
+	}
+
+	return s, nil
+
+	/*
+		if s.SecurityProfile.Oauth.GrantTypes != nil {
+
+			// Create oath security profile
+			createOauthRequest := new(CreateOauthRequest)
+			createOauthRequest.ForwardedHeaders = s.SecurityProfile.Oauth.ForwardedHeaders
+			createOauthRequest.AccessTokenTTL = s.SecurityProfile.Oauth.AccessTokenTtl
+			createOauthRequest.AccessTokenTTLEnabled = s.SecurityProfile.Oauth.AccessTokenTtlEnabled
+			createOauthRequest.AccessTokenType = s.SecurityProfile.Oauth.AccessTokenType
+			createOauthRequest.AllowMultipleToken = s.SecurityProfile.Oauth.AllowMultipleToken
+			createOauthRequest.AuthorizationCodeTTL = s.SecurityProfile.Oauth.AuthorizationCodeTtl
+			createOauthRequest.EnableRefreshTokenTTL = s.SecurityProfile.Oauth.EnableRefreshTokenTtl
+			createOauthRequest.ForceOauthRedirectURL = s.SecurityProfile.Oauth.ForceOauthRedirectURL
+			createOauthRequest.ForceSslRedirectURLEnabled = s.SecurityProfile.Oauth.ForceSslRedirectURLEnabled
+			createOauthRequest.ForwardedHeaders = s.SecurityProfile.Oauth.ForwardedHeaders
+			createOauthRequest.GrantTypes = s.SecurityProfile.Oauth.GrantTypes
+			createOauthRequest.MacAlgorithm = s.SecurityProfile.Oauth.MacAlgorithm
+			createOauthRequest.MasheryTokenAPIEnabled = s.SecurityProfile.Oauth.MasheryTokenApiEnabled
+			createOauthRequest.QPSLimitCeiling = s.SecurityProfile.Oauth.QpsLimitCeiling
+			createOauthRequest.RateLimitCeiling = s.SecurityProfile.Oauth.RateLimitCeiling
+			createOauthRequest.RefreshTokenEnabled = s.SecurityProfile.Oauth.RefreshTokenEnabled
+			createOauthRequest.RefreshTokenTTL = s.SecurityProfile.Oauth.RefreshTokenTtl
+			createOauthRequest.SecureTokensEnabled = s.SecurityProfile.Oauth.SecureTokensEnabled
+			createOauthRequest.TokenBasedRateLimitsEnabled = s.SecurityProfile.Oauth.TokenBasedRateLimitsEnabled
+
+			createOauthResponse := new(CreateOauthResponse)
+
+			createOauthRequestAsBytes, err := json.MarshalIndent(createOauthRequest,"","  ")
+
+			if err == nil {
+				body := strings.NewReader(string(createOauthRequestAsBytes))
+
+				_, err := sling.New().Base(mashcli.BaseURL).Set("Authorization", "Bearer "+accessToken).Body(body).Set("Content-Type", "application/json").Post("v3/rest/services/" + s.Id + "/securityProfile/oauth").Receive(createOauthResponse, e)
+
+				if err != nil {
+					return nil, err
+				}
+
+				if e.ErrorCode == 400 {
+					return nil, errors.New(e.ErrorMessage)
+				}
+
+			} else {
+				return nil, err
+			}
+
+		}
+
+		// Create endpoints
+
+		createEndpointRequest := new(CreateEndpointRequest)
+		for _,serviceEndpoint := range s.Endpoints {
+
+			createEndpointRequest.TrafficManagerDomain                       = serviceEndpoint.TrafficManagerDomain
+			createEndpointRequest.RequestProtocol                            = serviceEndpoint.RequestProtocol
+			createEndpointRequest.SupportedHTTPMethods                       = serviceEndpoint.SupportedHttpMethods
+			createEndpointRequest.NumberOfHTTPRedirectsToFollow              = serviceEndpoint.NumberOfHttpRedirectsToFollow
+			createEndpointRequest.UseSystemDomainCredentials                 = serviceEndpoint.UseSystemDomainCredentials
+			createEndpointRequest.RequestPathAlias                           = serviceEndpoint.RequestPathAlias
+			createEndpointRequest.RequestAuthenticationType                  = serviceEndpoint.RequestAuthenticationType
+			createEndpointRequest.APIMethodDetectionLocations                = serviceEndpoint.ApiMethodDetectionLocations
+			createEndpointRequest.OutboundRequestTargetPath                  = serviceEndpoint.OutboundRequestTargetPath
+			createEndpointRequest.APIMethodDetectionKey                      = serviceEndpoint.ApiMethodDetectionKey
+			createEndpointRequest.CookiesDuringHTTPRedirectsEnabled          = serviceEndpoint.CookiesDuringHttpRedirectsEnabled
+			createEndpointRequest.ForwardedHeaders                           = serviceEndpoint.ForwardedHeaders
+			createEndpointRequest.Updated                                    = ""
+			createEndpointRequest.Created                                    = ""
+			createEndpointRequest.GzipPassthroughSupportEnabled              = serviceEndpoint.GzipPassthroughSupportEnabled
+			createEndpointRequest.InboundSslRequired                         = serviceEndpoint.InboundSslRequired
+			createEndpointRequest.Name                                       = serviceEndpoint.Name
+			createEndpointRequest.APIKeyValueLocations                       = serviceEndpoint.ApiKeyValueLocations
+			createEndpointRequest.CustomRequestAuthenticationAdapter         = serviceEndpoint.CustomRequestAuthenticationAdapter
+			createEndpointRequest.SystemDomainCredentialSecret               = ""
+			createEndpointRequest.OauthGrantTypes                            = serviceEndpoint.OauthGrantTypes
+			createEndpointRequest.AllowMissingAPIKey                         = serviceEndpoint.AllowMissingApiKey
+			createEndpointRequest.DropAPIKeyFromIncomingCall                 = serviceEndpoint.DropApiKeyFromIncomingCall
+			createEndpointRequest.SystemDomainCredentialKey                  = ""
+			createEndpointRequest.OutboundRequestTargetQueryParameters       = serviceEndpoint.OutboundRequestTargetQueryParameters
+			createEndpointRequest.HighSecurity                               = serviceEndpoint.HighSecurity
+			createEndpointRequest.ForceGzipOfBackendCall                     = serviceEndpoint.ForceGzipOfBackendCall
+			createEndpointRequest.ConnectionTimeoutForSystemDomainResponse   = serviceEndpoint.ConnectionTimeoutForSystemDomainResponse
+			createEndpointRequest.APIKeyValueLocationKey                     = serviceEndpoint.ApiKeyValueLocationKey
+			createEndpointRequest.ConnectionTimeoutForSystemDomainRequest    = serviceEndpoint.ConnectionTimeoutForSystemDomainRequest
+			createEndpointRequest.JsonpCallbackParameter                     = serviceEndpoint.JsonpCallbackParameter
+			createEndpointRequest.JsonpCallbackParameterValue                = serviceEndpoint.JsonpCallbackParameterValue
+			createEndpointRequest.ReturnedHeaders                            = serviceEndpoint.ReturnedHeaders
+			createEndpointRequest.HostPassthroughIncludedInBackendCallHeader = serviceEndpoint.HostPassthroughIncludedInBackendCallHeader
+			createEndpointRequest.OutboundTransportProtocol                  = serviceEndpoint.OutboundTransportProtocol
+			createEndpointRequest.SystemDomains                              = serviceEndpoint.SystemDomains
+
+
+			// Add the endpoint
+
+			createEndpointResponse := new(CreateEndpointResponse)
+
+			endpointRequestAsBytes, err := json.MarshalIndent(createEndpointRequest,"","  ")
+
+
+			if err == nil {
+				body := strings.NewReader(string(endpointRequestAsBytes))
+				_, err := sling.New().Base(mashcli.BaseURL).Set("Authorization", "Bearer "+accessToken).Body(body).Set("Content-Type", "application/json").Set("Accept","application/json").Post("v3/rest/services/"+s.Id+"/endpoints/").Receive(createEndpointResponse,e)
+
+				if err != nil {
+					return nil, err
+				}
+
+				if e.ErrorCode == 400 {
+					go DeleteService(accessToken,s.Id)
+					return nil, errors.New(e.ErrorMessage)
+				}
+			} else {
+				return nil, err
+			}
+
+
+			// Add CORS to endpoint
+
+			if !(serviceEndpoint.Cors.DomainsAllowed == nil && serviceEndpoint.Cors.AllDomainsEnabled==false) {
+
+				createCorsRequest := new(CreateCorsRequest)
+
+				createCorsRequest.CookiesAllowed = serviceEndpoint.Cors.CookiesAllowed
+				createCorsRequest.DomainsAllowed = serviceEndpoint.Cors.DomainsAllowed
+				createCorsRequest.HeadersAllowed = serviceEndpoint.Cors.HeadersAllowed
+				createCorsRequest.HeadersExposed = serviceEndpoint.Cors.HeadersExposed
+				createCorsRequest.MaxAge         = serviceEndpoint.Cors.MaxAge
+				createCorsRequest.SubDomainMatchingAllowed = serviceEndpoint.Cors.SubDomainMatchingAllowed
+				createCorsRequest.AllDomainsEnabled = serviceEndpoint.Cors.AllDomainsEnabled
+
+				createCorsResponse := new(CreateCorsResponse)
+				corsRequestAsBytes, err := json.Marshal(createCorsRequest)
+
+
+				if err == nil {
+					body := strings.NewReader(string(corsRequestAsBytes))
+
+					_, err := sling.New().Base(mashcli.BaseURL).Set("Authorization", "Bearer "+accessToken).Body(body).Set("Content-Type", "application/json").Set("Accept","application/json").Post("v3/rest/services/"+s.Id+"/endpoints/"+createEndpointResponse.Id+"/cors").Receive(createCorsResponse,e)
+
+					if err != nil {
+						return nil, err
+					}
+
+					if e.ErrorCode == 400 {
+						DeleteService(accessToken,s.Id)
+						return nil, errors.New(e.ErrorMessage)
+					}
+
+				} else {
+					return nil, err
+				}
+			}
+
+			// Add Methods to endpoint
+			createMethodRequest := new(CreateMethodRequest)
+			for _,method := range serviceEndpoint.Methods {
+				createMethodRequest.ID = method.ID
+				createMethodRequest.Name = method.Name
+				createMethodRequest.SampleXMLResponse = method.SampleXmlResponse
+				createMethodRequest.SampleJSONResponse = method.SampleJsonResponse
+				createMethodRequest.Created = method.Created
+				createMethodRequest.Updated = method.Updated
+
+				createMethodResponse := new(CreateMethodResponse)
+				methodRequestAsBytes, err := json.Marshal(createMethodRequest)
+
+				if err == nil {
+					body := strings.NewReader(string(methodRequestAsBytes))
+					_, err := sling.New().Base(mashcli.BaseURL).Set("Authorization", "Bearer "+accessToken).Body(body).Set("Content-Type", "application/json").Set("Accept","application/json").Post("v3/rest/services/"+s.Id+"/endpoints/"+createEndpointResponse.Id+"/methods").Receive(createMethodResponse,e)
+
+					if err != nil {
+						return nil, err
+					}
+
+					if e.ErrorCode == 400 {
+						DeleteService(accessToken,s.Id)
+						return nil, errors.New(e.ErrorMessage)
+					}
+				} else {
+					return nil, err
+				}
+			}
+		}  // end-for
+
+
+		//spin.Stop()
+
+		return s, nil
+	*/
+
+}
+*/
+
+func (m *Services) Update(accessToken string, mp *MethodParams) (*Services, error) {
+
+	path := fmt.Sprintf(resourcePath, mp.memberId)
+	e := new(mashcli.MasheryError)
+
+	//dump, _ := m.Marshall()
+	//fmt.Printf("%v\n",dump)
+
+	resp, err := sling.New().Base(mashcli.BaseURL).Set("Authorization", "Bearer "+accessToken).BodyJSON(m).Set("Content-Type", "application/json; charset=utf-8").Put(path).Receive(m, e)
+
+	fmt.Printf("%v\n", resp.Status)
+
+	if err != nil || resp.StatusCode == 404 {
+		return nil, errors.Errorf("members: unable to update members id=%s: PUT %s -> (%s %s)", mp.memberId, path, strconv.Itoa(e.ErrorCode), e.ErrorMessage)
+	}
+
+	return m, nil
+
+}
+
+func Delete(accessToken string, mp *MethodParams) error {
+
+	path := fmt.Sprintf(resourcePath, mp.memberId)
+	r := new(DeleteMemberResponse)
+
+	resp, err := sling.New().Base(mashcli.BaseURL).Set("Authorization", "Bearer "+accessToken).Delete(path).ReceiveSuccess(r)
+
+	if resp.StatusCode == 200 || resp.StatusCode == 404 {
+		return nil
+	}
+
+	if err != io.EOF && (resp.StatusCode != 200 || resp.StatusCode != 404) {
+		return errors.Errorf("members: unable to delete member id=%s: DELETE %s", mp.memberId, path)
+	}
+
+	return nil
+
+}

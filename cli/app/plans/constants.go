@@ -1,0 +1,5 @@
+package plans
+
+const PLAN_ALL_FIELDS = `id,name,created,updated,description,eav,selfServiceKeyProvisioningEnabled,adminKeyProvisioningEnabled,
+notes,maxNumKeysAllowed,numKeysBeforeReview,qpsLimitCeiling,qpsLimitExempt,qpsLimitKeyOverrideAllowed,rateLimitCeiling,
+rateLimitExempt,rateLimitKeyOverrideAllowed,rateLimitPeriod,responseFilterOverrideAllowed,status,emailTemplateSetId,services`

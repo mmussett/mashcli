@@ -1,0 +1,35 @@
+	var s *[]ServiceResponse = new([]ServiceResponse)
+	masheryError := new(mashcli.MasheryError)
+
+	_, err := sling.New().Base(mashcli.BaseURL).Path("/v3/rest/services").Set("Authorization", "Bearer "+accessToken).Set("Content-Type", "application/json").QueryStruct(params).Receive(s, masheryError)
+
+	if err == nil {
+		if masheryError.ErrorCode != 0 {
+			mashcli.Log.Error("GET " + mashcli.BaseURL + "v3/rest/services -> (" + strconv.Itoa(masheryError.ErrorCode) + " " + masheryError.ErrorMessage + ")")
+			return errors.New("Service not found")
+		} else {
+
+			backupTimestamp := time.Now().Format(time.RFC3339)
+			os.MkdirAll(backupName+"/"+backupTimestamp+"/services", 0700)
+			os.MkdirAll(backupName+"/"+backupTimestamp+"/iodocs", 0700)
+			os.Remove(backupName + ".zip")
+
+			for _, s := range *s {
+				service, _ := services.FetchService(accessToken, s.Id, services.SERVICE_ALL_FIELDS)
+				serviceAsString, _ := json.MarshalIndent(service, "", "  ")
+				ioutil.WriteFile(backupName+"/"+backupTimestamp+"/services/"+s.Id+"-"+strings.Replace(s.Name, " ", "_", -1)+".json", serviceAsString, 0644)
+
+				iodocAsString, err := iodocs.FetchIODoc(accessToken, s.Id)
+				if err == nil {
+					ioutil.WriteFile(backupName+"/"+backupTimestamp+"/iodocs/"+s.Id+"-"+strings.Replace(s.Name, " ", "_", -1)+".json", []byte(iodocAsString), 0644)
+				}
+			}
+
+			app.ZipDirectory(backupName, backupName+".zip")
+
+			return nil
+		}
+	} else {
+		mashcli.Log.Error(err)
+		return nil
+	}

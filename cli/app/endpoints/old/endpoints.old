@@ -1,0 +1,333 @@
+package endpoints
+
+import (
+	"github.com/olekukonko/tablewriter"
+	"os"
+)
+
+import (
+	"github.com/mmussett/mashcli/cli/app/mashcli"
+
+	"fmt"
+)
+
+func ShowAllEndpoints(accessToken, ServiceId string) error {
+
+	ec, err := GetCollection(accessToken, ServiceId, &mashcli.Params{Fields: ENDPOINTS_ALL_FIELDS})
+
+	if err != nil {
+		return err
+	}
+
+	table := tablewriter.NewWriter(os.Stdout)
+	table.SetHeader([]string{"Endpoint ID", "Name", "Public Domains", "Created", "Updated"})
+	table.SetCaption(true, "Service ID : "+ServiceId)
+
+	for _, e := range *ec {
+		var publicDomain string
+		if e.InboundSslRequired {
+			publicDomain = fmt.Sprintf("https://%s/%s", e.PublicDomains[0].Address, e.RequestPathAlias)
+		} else {
+			publicDomain = fmt.Sprintf("http://%s/%s", e.PublicDomains[0].Address, e.RequestPathAlias)
+		}
+		data := []string{e.Id, e.Name, publicDomain, e.Created[:19], e.Updated[:19]}
+		table.Append(data)
+
+	}
+	table.Render()
+
+	return nil
+
+}
+
+func (e *Endpoints) PrettyPrint() {
+
+	table := tablewriter.NewWriter(os.Stdout)
+	table.SetHeader([]string{"Endpoint ID", "Name", "Public Domains", "Created", "Updated"})
+	var publicDomain string
+	if e.InboundSslRequired {
+		publicDomain = fmt.Sprintf("https://%s/%s", e.PublicDomains[0].Address, e.RequestPathAlias)
+	} else {
+		publicDomain = fmt.Sprintf("http://%s/%s", e.PublicDomains[0].Address, e.RequestPathAlias)
+	}
+	data := []string{e.Id, e.Name, publicDomain, e.Created[:19], e.Updated[:19]}
+	table.Append(data)
+
+	return
+
+}
+
+/*
+
+func CreateEndpoint(accessToken, ServiceId, name, protocol, publicUrl, systemUrl string) (string, error){
+
+	endpoint := new(Endpoints)
+
+	p, err := url.Parse(publicUrl)
+	if err != nil {
+		return "",err
+	}
+
+	s, err := url.Parse(systemUrl)
+	if err != nil {
+		return "",err
+	}
+
+	pd := make(PublicDomains,1)
+	pd[0].Address = p.Host
+
+	sd := make(SystemDomains,1)
+	sd[0].Address = s.Host
+
+	endpoint.PublicDomains = pd
+	endpoint.SystemDomains = sd
+	endpoint.Name = name
+	endpoint.TrafficManagerDomain = p.Host
+	endpoint.RequestPathAlias = p.Path
+	endpoint.RequestProtocol = protocol
+	endpoint.AllowMissingApiKey = false
+	apiKeyValueLocations := make([]string,1)
+	apiKeyValueLocations[0] = "request-parameters"
+
+	endpoint.ApiKeyValueLocations = apiKeyValueLocations
+	endpoint.ApiKeyValueLocationKey = "api_key"
+
+	apiMethodDetectionLocations := make([]string,1)
+	apiMethodDetectionLocations[0] = "request-path"
+
+	endpoint.ApiKeyValueLocations = apiMethodDetectionLocations
+
+	endpoint.Cache.ClientSurrogateControlEnabled = false
+
+	contentCacheKeyHeaders := make([]string,1)
+	contentCacheKeyHeaders[0] = ""
+	endpoint.Cache.ContentCacheKeyHeaders = contentCacheKeyHeaders
+
+	endpoint.ConnectionTimeoutForSystemDomainRequest = 2
+	endpoint.ConnectionTimeoutForSystemDomainResponse = 2
+	endpoint.Cors.AllDomainsEnabled = false
+	endpoint.Cors.CookiesAllowed = false
+	endpoint.Cors.MaxAge = 0
+	endpoint.Cors.SubDomainMatchingAllowed = false
+
+	endpoint.CustomRequestAuthenticationAdapter = ""
+	endpoint.DropApiKeyFromIncomingCall = false
+	endpoint.ForceGzipOfBackendCall = false
+	forwardedHeaders := make([]string,1)
+	forwardedHeaders[0] = ""
+	//endpoint.ForwardedHeaders = forwardedHeaders
+	endpoint.GzipPassthroughSupportEnabled = false
+	endpoint.HeadersToExcludeFromIncomingCall = ""
+	endpoint.HighSecurity = false
+	endpoint.HostPassthroughIncludedInBackendCallHeader = false
+	endpoint.InboundSslRequired = false
+	endpoint.JsonpCallbackParameter = ""
+	endpoint.JsonpCallbackParameterValue = ""
+	endpoint.NumberOfHttpRedirectsToFollow = 0
+
+	oauthGrantTypes := make([]string,1)
+	oauthGrantTypes[0] = ""
+	endpoint.OauthGrantTypes = oauthGrantTypes
+
+	endpoint.OutboundRequestTargetPath = ""
+	endpoint.OutboundRequestTargetQueryParameters = ""
+	endpoint.OutboundTransportProtocol = "use-inbound"
+	endpoint.Processor.Adapter = ""
+	endpoint.Processor.PostProcessEnabled = false
+	endpoint.Processor.PreProcessEnabled = false
+	endpoint.RequestAuthenticationType = "apiKey"
+	endpoint.RequestPathAlias = p.Path
+	endpoint.RequestProtocol = protocol
+
+	returnedHeaders := make([]string,1)
+	returnedHeaders[0] = ""
+	endpoint.ReturnedHeaders = returnedHeaders
+
+	endpoint.ScheduledMaintenanceEvent = ""
+
+	supportedHttpMethods := make([]string,4)
+	supportedHttpMethods[0] = "get"
+	supportedHttpMethods[1] = "put"
+	supportedHttpMethods[2] = "post"
+	supportedHttpMethods[3] = "delete"
+
+	endpoint.SystemDomainAuthentication.Username = ""
+	endpoint.SystemDomainAuthentication.Password = ""
+	endpoint.SystemDomainAuthentication.Type = ""
+
+	endpoint.TrafficManagerDomain = p.Host
+	endpoint.UseSystemDomainCredentials = false
+
+	methods := make(Methods,0)
+	endpoint.Methods = methods
+
+	id, err := endpoint.Create(accessToken, ServiceId)
+
+	if err != nil {
+		return "",err
+	}
+
+	return id,nil
+
+}
+/*
+func (e *Endpoints) Create(accessToken string, ServiceId string) (string, error) {
+
+	masheryError := new(mashcli.MasheryError)
+
+	response := new(CreateEndpointResponse)
+
+	endpointRequestAsBytes, err := json.MarshalIndent(e, "", "  ")
+
+	file, err := os.Create("./endpoint.txt")
+	if err != nil {
+		mashcli.Log.Fatal("Cannot create file", err)
+	}
+	defer file.Close()
+
+	fmt.Fprintf(file, string(endpointRequestAsBytes))
+
+
+	if err == nil {
+		body := strings.NewReader(string(endpointRequestAsBytes))
+		_, err := sling.New().Base(mashcli.BaseURL).Set("Authorization", "Bearer "+accessToken).Body(body).Set("Content-Type", "application/json").Set("Accept", "application/json").Post("v3/rest/services/" + ServiceId + "/endpoints/").Receive(response, masheryError)
+
+		if err != nil {
+			return "",err
+		}
+	}
+
+	return response.Id,nil
+}
+
+func FetchAllEndpoints(accessToken string, sid string) (*Endpoints, error) {
+
+	type Params struct {
+		Fields string `url:"fields,omitempty"`
+	}
+
+	type ErrorResponse struct {
+		ErrorCode    int    `json:"errorCode"`
+		ErrorMessage string `json:"errorMessage"`
+	}
+
+	params := &Params{
+		Fields: "systemDomains, supportedHttpMethods, requestPathAlias, id,name, created,updated, allowMissingApiKey, apiKeyValueLocationKey, apiKeyValueLocations, apiMethodDetectionKey, apiMethodDetectionLocations, connectionTimeoutForSystemDomainRequest, connectionTimeoutForSystemDomainResponse, cookiesDuringHttpRedirectsEnabled, cors, customRequestAuthenticationAdapter, dropApiKeyFromIncomingCall, forceGzipOfBackendCallid, forceGzipOfBackendCall, gzipPassthroughSupportEnabled, headersToExcludeFromIncomingCall, highSecurity, hostPassthroughIncludedInBackendCallHeader, inboundSslRequired, jsonpCallbackParameter, jsonpCallbackParameterValue, scheduledMaintenanceEvent, forwardedHeaders, returnedHeaders, methods, numberOfHttpRedirectsToFollow, outboundRequestTargetPath, outboundRequestTargetQueryParameters, outboundTransportProtocol, processor, publicDomains, requestAuthenticationType, requestProtocol, stringsToTrimFromApiKey, systemDomainAuthentication, trafficManagerDomain, useSystemDomainCredentials, endpoints.publicDomains",
+	}
+
+	endpoints := new(Endpoints)
+	masheryError := new(mashcli.MasheryError)
+
+	_, err := sling.New().Base(mashcli.BaseURL).Path("/v3/rest/services/"+sid+"/endpoints").Set("Authorization", "Bearer "+accessToken).Set("Content-Type", "application/json").QueryStruct(params).Receive(endpoints, masheryError)
+
+	data, _ := json.MarshalIndent(endpoints, "", "  ")
+	mashcli.Log.Debug(strings.NewReader(string(data)))
+
+	if err == nil {
+		if masheryError.ErrorCode != 0 {
+			mashcli.Log.Error("GET " + mashcli.BaseURL + "v3/rest/services/" + sid + "/endpoints -> (" + strconv.Itoa(masheryError.ErrorCode) + " " + masheryError.ErrorMessage + ")")
+			return nil, errors.New("Service not found")
+		} else {
+
+			return endpoints, nil
+		}
+	} else {
+		mashcli.Log.Error(err)
+		return nil, err
+	}
+}
+
+func (endpoints *Endpoints) PrettyPrint() {
+	fmt.Println("  Endpoints")
+	fmt.Println("  ---------")
+
+	var cnt = 0
+	for i, endpoint := range *endpoints {
+		fmt.Printf("  %3d.  %-35s  :  %s\n\n", i+1, "Name", endpoint.Name)
+		fmt.Printf("        %-35s  :  %s\n", "ID", endpoint.ID)
+		fmt.Printf("        %-35s  :  %s\n", "Created", endpoint.Created)
+		fmt.Printf("        %-35s  :  %s\n\n", "Updated", endpoint.Updated)
+
+		var publicEndpointAddress string
+		if endpoint.InboundSslRequired == true {
+			publicEndpointAddress = "https://" + endpoint.TrafficManagerDomain + endpoint.RequestPathAlias
+		} else {
+			publicEndpointAddress = "http://" + endpoint.TrafficManagerDomain + endpoint.RequestPathAlias
+		}
+
+		var yourEndpointAddress string
+		if endpoint.OutboundRequestTargetQueryParameters == "" {
+			yourEndpointAddress = endpoint.OutboundTransportProtocol + "://" + endpoint.SystemDomains[0].SystemAddress + endpoint.OutboundRequestTargetPath
+		} else {
+			yourEndpointAddress = endpoint.OutboundTransportProtocol + "://" + endpoint.SystemDomains[0].SystemAddress + endpoint.OutboundRequestTargetPath + "?" + endpoint.OutboundRequestTargetQueryParameters
+
+		}
+
+		fmt.Printf("        %-35s\n", "Domains & Traffic Routing")
+		fmt.Printf("        %-35s\n", "-------------------------")
+		fmt.Printf("        %-35s  :  %v\n", "Public Endpoint Address", publicEndpointAddress)
+		fmt.Printf("        %-35s  :  %v\n\n", "Your Endpoint Address", yourEndpointAddress)
+
+		fmt.Printf("        %-35s\n", "Key & Method Detection")
+		fmt.Printf("        %-35s\n", "----------------------")
+		fmt.Printf("        %-35s  :  %v\n", "Endpoint Type", endpoint.RequestProtocol)
+		fmt.Printf("        %-35s  :  %v\n", "Supported Http Methods", app.FlattenStringArray(endpoint.SupportedHttpMethods))
+		fmt.Printf("        %-35s  :  %v\n", "Method Location", app.FlattenStringArray(endpoint.ApiMethodDetectionLocations))
+		fmt.Printf("        %-35s  :  %v\n", "Method Location Identifier", endpoint.ApiMethodDetectionKey)
+		fmt.Printf("        %-35s  :  %v\n", "Request Authentication Type", endpoint.RequestAuthenticationType)
+		fmt.Printf("        %-35s  :  %v\n", "Developer's API Key Location", app.FlattenStringArray(endpoint.ApiKeyValueLocations))
+		fmt.Printf("        %-35s  :  %v\n\n", "Api Key Value Location Key", endpoint.ApiKeyValueLocationKey)
+
+		fmt.Printf("        %-35s\n", "Security Settings")
+		fmt.Printf("        %-35s\n", "-----------------")
+		fmt.Printf("        %-35s  :  %v\n", "System Domain Authentication Type", endpoint.SystemDomainAuthentication.Type)
+		fmt.Printf("        %-35s  :  %v\n", "Username", endpoint.SystemDomainAuthentication.Username)
+		fmt.Printf("        %-35s  :  %v\n\n", "Password", endpoint.SystemDomainAuthentication.Password)
+
+		fmt.Printf("        %-35s\n", "Cross-Origin Resource Sharing")
+		fmt.Printf("        %-35s\n", "-----------------------------")
+		fmt.Printf("        %-35s  :  %v\n", "Allow CORS Requests from any domain", endpoint.Cors.AllDomainsEnabled)
+		fmt.Printf("        %-35s  :  %v\n", "List of domains allowed", app.FlattenStringArray(endpoint.Cors.DomainsAllowed))
+		fmt.Printf("        %-35s  :  %v\n", "Sub-domain matching allowed", endpoint.Cors.SubDomainMatchingAllowed)
+		fmt.Printf("        %-35s  :  %v\n", "List of headers allowed", app.FlattenStringArray(endpoint.Cors.HeadersAllowed))
+		fmt.Printf("        %-35s  :  %v\n", "List of headers to expose", app.FlattenStringArray(endpoint.Cors.HeadersExposed))
+		fmt.Printf("        %-35s  :  %v\n", "Are cookies allowed", endpoint.Cors.CookiesAllowed)
+		fmt.Printf("        %-35s  :  %v minutes\n\n", "Max age for CORS Pre Flight", endpoint.Cors.MaxAge)
+
+		fmt.Printf("        %-35s\n", "Call Transformations")
+		fmt.Printf("        %-35s\n", "--------------------")
+		fmt.Printf("        %-35s  :  %v\n", "Processing Adapter", endpoint.Processor.Adapter)
+		fmt.Printf("        %-35s  :  %v\n", "Perform Pre-processing", endpoint.Processor.PreProcessEnabled)
+		fmt.Printf("        %-35s  :  %v\n", "Pre-processing data", endpoint.Processor.PreInputs)
+		fmt.Printf("        %-35s  :  %v\n", "Perform Post-processing", endpoint.Processor.PostProcessEnabled)
+		fmt.Printf("        %-35s  :  %v\n\n", "Post-processing data", endpoint.Processor.PostInputs)
+
+		fmt.Printf("        %-35s\n", "More Settings")
+		fmt.Printf("        %-35s\n", "-------------")
+		fmt.Printf("        %-35s  :  %v seconds\n", "Timeout for response from endpoint", endpoint.ConnectionTimeoutForSystemDomainResponse)
+		fmt.Printf("        %-35s  :  %v seconds\n", "Connection Timeout to endpoint", endpoint.ConnectionTimeoutForSystemDomainRequest)
+		fmt.Printf("        %-35s  :  %v\n", "Number of HTTP redirects to follow", endpoint.NumberOfHttpRedirectsToFollow)
+		fmt.Printf("        %-35s  :  %v\n", "Enable Cookies during redirects", endpoint.CookiesDuringHttpRedirectsEnabled)
+		fmt.Printf("        %-35s  :  %v\n", "GZIP Passthrough", endpoint.GzipPassthroughSupportEnabled)
+		fmt.Printf("        %-35s  :  %v\n", "Force GZIP on backend call", endpoint.ForceGzipOfBackendCall)
+		fmt.Printf("        %-35s  :  %v\n", "Drop API Key from call", endpoint.DropApiKeyFromIncomingCall)
+		fmt.Printf("        %-35s  :  %v\n", "Allow calls having no API Key", endpoint.AllowMissingApiKey)
+		fmt.Printf("        %-35s  :  %v\n", "Swap Incoming API credentials", endpoint.UseSystemDomainCredentials)
+		fmt.Printf("        %-35s  :  %v\n", "Forwarded Headers", app.FlattenStringArray(endpoint.ForwardedHeaders))
+		fmt.Printf("        %-35s  :  %v\n", "Returned Headers", app.FlattenStringArray(endpoint.ReturnedHeaders))
+		fmt.Printf("        %-35s  :  %v\n", "Passthrough Host Headers", endpoint.HostPassthroughIncludedInBackendCallHeader)
+		if endpoint.HeadersToExcludeFromIncomingCall != nil {
+			fmt.Printf("        %-35s  :  %v\n", "HTTP Headers to drop", endpoint.HeadersToExcludeFromIncomingCall)
+		} else {
+			fmt.Printf("        %-35s  :  %v\n", "HTTP Headers to drop", "")
+		}
+		fmt.Printf("        %-35s  :  %v\n", "JSONP Callback Func. Param.", endpoint.JsonpCallbackParameter)
+		fmt.Printf("        %-35s  :  %v\n", "JSONP Callback Func. Param. Value", endpoint.JsonpCallbackParameterValue)
+		fmt.Printf("        %-35s  :  %v\n", "Include rate limit info in response", "")
+
+		fmt.Print("\n  ====  =============\n")
+		cnt++
+	}
+	fmt.Printf("        %-35s  :  %v Endpoints(s)\n", "Total", cnt)
+}
+*/

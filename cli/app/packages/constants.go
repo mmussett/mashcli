@@ -1,0 +1,5 @@
+package packages
+
+const PACKAGE_ALL_FIELDS = `id,name,created,updated,organization,description,notifyDeveloperPeriod,notifyDeveloperNearQuota,
+notifyDeveloperOverQuota,notifyDeveloperOverThrottle,notifyAdminPeriod,notifyAdminNearQuota,notifyAdminOverQuota,
+notifyAdminOverThrottle,notifyAdminEmails,nearQuotaThreshold,eav,keyAdapter,keyLength,sharedSecretLength,plans`
