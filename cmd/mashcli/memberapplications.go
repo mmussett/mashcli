@@ -37,7 +37,13 @@ func doActionMemberApplicationsShow(c *cli.Context) {
 	if c.IsSet("output") {
 		format = c.String("output")
 	}
-	err = memberapplications.ShowMemberApplications(accessToken, memberId,format)
+
+	var filter = ""
+	if c.IsSet("filter") {
+		filter = c.String("filter")
+	}
+
+	err = memberapplications.ShowMemberApplications(accessToken, memberId, format, filter)
 	if err != nil {
 		fmt.Printf("can't show member application: %v", err)
 		cli.OsExiter(-1)

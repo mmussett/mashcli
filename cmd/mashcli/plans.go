@@ -269,7 +269,14 @@ func doActionPlanShowAll(c *cli.Context) {
 	if c.IsSet("output") {
 		format = c.String("output")
 	}
-	err = plans.ShowAllPlans(accessToken, packageId, format)
+
+	var filter = ""
+	if c.IsSet("filter") {
+		filter = c.String("filter")
+	}
+
+
+	err = plans.ShowAllPlans(accessToken, packageId, format, filter)
 	if err != nil {
 		fmt.Printf("can't show all package plans: %v", err)
 		cli.OsExiter(-1)

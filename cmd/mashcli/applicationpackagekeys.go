@@ -38,7 +38,13 @@ func doActionApplicationPackageKeysShowAll(c *cli.Context) {
 	if c.IsSet("output") {
 		format = c.String("output")
 	}
-	err = applicationpackagekeys.ShowAllApplicationPackageKeys(accessToken,applicationId,format)
+
+	var filter = ""
+	if c.IsSet("filter") {
+		filter = c.String("filter")
+	}
+
+	err = applicationpackagekeys.ShowAllApplicationPackageKeys(accessToken,applicationId,format, filter)
 	if err != nil {
 		fmt.Printf("can't show all application package keys: %v", err)
 		cli.OsExiter(-1)

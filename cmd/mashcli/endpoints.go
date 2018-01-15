@@ -84,7 +84,12 @@ func doActionEndpointsShowAll(c *cli.Context) {
 		format = c.String("output")
 	}
 
-	err = endpoints.ShowAllEndpoints(accessToken,serviceId,format)
+	var filter = ""
+	if c.IsSet("filter") {
+		filter = c.String("filter")
+	}
+
+	err = endpoints.ShowAllEndpoints(accessToken,serviceId,format,filter)
 	if err != nil {
 		fmt.Printf("can't show all endpoints: %v", err)
 		cli.OsExiter(-1)

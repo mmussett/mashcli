@@ -150,6 +150,7 @@ func main() {
 					Usage: "Show all applications",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
+						cli.StringFlag{Name: "filter, f", Usage: "Filter expression as colon-separated name/value pair i.e -filter 'name:Basic'"},
 						cli.StringFlag{Name: "output, o", Usage: "Output format table or json)"},
 					},
 					Before: func(c *cli.Context) error {
@@ -174,6 +175,7 @@ func main() {
 					Usage: "Show all package keys for an application",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
+						cli.StringFlag{Name: "filter, f", Usage: "Filter expression as colon-separated name/value pair i.e -filter 'name:Basic'"},
 						cli.StringFlag{Name: "output, o", Usage: "Output format table or json)"},
 					},
 					ArgsUsage: "ApplicationID",
@@ -362,6 +364,7 @@ func main() {
 					Usage: "Show all members",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
+						cli.StringFlag{Name: "filter, f", Usage: "Filter expression as colon-separated name/value pair i.e -filter username:mmussett"},
 						cli.StringFlag{Name: "output, o", Usage: "Output format table or json)"},
 					},
 					Before: func(c *cli.Context) error {
@@ -404,6 +407,7 @@ func main() {
 					Usage: "Show member applications",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
+						cli.StringFlag{Name: "filter, f", Usage: "Filter expression as colon-separated name/value pair i.e -filter 'name:Basic'"},
 						cli.StringFlag{Name: "output, o", Usage: "Output format table or json)"},
 					},
 					ArgsUsage: "MemberID",
@@ -552,6 +556,7 @@ func main() {
 					Usage: "Show all services",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
+						cli.StringFlag{Name: "filter, f", Usage: "Filter expression as colon-separated name/value pair i.e -filter version:1.0"},
 						cli.StringFlag{Name: "output, o", Usage: "Output format table or json)"},
 					},
 					Before: func(c *cli.Context) error {
@@ -682,6 +687,7 @@ func main() {
 					ArgsUsage: "ServiceID",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
+						cli.StringFlag{Name: "filter, f", Usage: "Filter expression as colon-separated name/value pair i.e -filter 'name:Basic'"},
 						cli.StringFlag{Name: "output, o", Usage: "Output format table or json)"},
 					},
 					Before: func(c *cli.Context) error {
@@ -827,6 +833,7 @@ func main() {
 					Usage: "Show all packages",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
+						cli.StringFlag{Name: "filter, f", Usage: "Filter expression as colon-separated name/value pair i.e -filter 'name:My Package'"},
 						cli.StringFlag{Name: "output, o", Usage: "Output format table or json)"},
 					},
 					Before: func(c *cli.Context) error {
@@ -974,6 +981,7 @@ func main() {
 					Usage: "Show all packages keys",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
+						cli.StringFlag{Name: "filter, f", Usage: "Filter expression as colon-separated name/value pair i.e -filter 'name:Basic'"},
 						cli.StringFlag{Name: "output, o", Usage: "Output format table or json)"},
 					},
 					Before: func(c *cli.Context) error {
@@ -1180,6 +1188,7 @@ func main() {
 					Usage: "Show all package plans",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
+						cli.StringFlag{Name: "filter, f", Usage: "Filter expression as colon-separated name/value pair i.e -filter 'name:Basic'"},
 						cli.StringFlag{Name: "output, o", Usage: "Output format table or json)"},
 					},
 					ArgsUsage: "PackageID",
@@ -1223,6 +1232,7 @@ func main() {
 					Usage: "Show all services on plan",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
+						cli.StringFlag{Name: "filter, f", Usage: "Filter expression as colon-separated name/value pair i.e -filter 'name:Basic'"},
 						cli.StringFlag{Name: "output, o", Usage: "Output format table or json)"},
 					},
 					ArgsUsage: "PackageID PlanID",

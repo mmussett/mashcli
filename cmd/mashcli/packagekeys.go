@@ -261,7 +261,12 @@ func doActionPackageKeysShowAll(c *cli.Context) {
 		format = c.String("output")
 	}
 
-	err = packagekeys.ShowAllPackageKeys(accessToken,format)
+	var filter = ""
+	if c.IsSet("filter") {
+		filter = c.String("filter")
+	}
+
+	err = packagekeys.ShowAllPackageKeys(accessToken,format,filter)
 	if err != nil {
 		fmt.Printf("can't show all package keys: %v", err)
 		cli.OsExiter(-1)

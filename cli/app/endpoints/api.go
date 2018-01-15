@@ -34,13 +34,13 @@ func Get(accessToken string, mp *MethodParams, params *mashcli.Params) (*Endpoin
 
 }
 
-func GetCollection(accessToken string, mp *MethodParams, params *mashcli.Params) (*[]Endpoints, error) {
+func GetCollection(accessToken string, mp *MethodParams, params *mashcli.Params, filter *mashcli.Filter) (*[]Endpoints, error) {
 
 	path := fmt.Sprintf(collectionResourcePath, mp.ServiceId)
 	e := new(mashcli.MasheryError)
 	p := new([]Endpoints)
 
-	resp, err := sling.New().Base(mashcli.BaseURL).Path(path).Set("Authorization", "Bearer "+accessToken).Set("Content-Type", "application/json").QueryStruct(params).Receive(p, e)
+	resp, err := sling.New().Base(mashcli.BaseURL).Path(path).Set("Authorization", "Bearer "+accessToken).Set("Content-Type", "application/json").QueryStruct(params).QueryStruct(filter).Receive(p, e)
 
 	if err != nil {
 		return nil, err

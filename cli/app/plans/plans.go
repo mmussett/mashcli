@@ -18,7 +18,7 @@ func Nuke(accessToken, packageId string) error {
 
 	pc := new([]Plan)
 
-	pc, err := GetCollection(accessToken, &MethodParams{PackageId:packageId}, &mashcli.Params{Fields: PLAN_ALL_FIELDS})
+	pc, err := GetCollection(accessToken, &MethodParams{PackageId:packageId}, &mashcli.Params{Fields: PLAN_ALL_FIELDS}, &mashcli.Filter{Filter:""})
 	if err != nil {
 		return err
 	}
@@ -251,9 +251,9 @@ func ShowPlan(accessToken, packageId, planId, format string) error {
 	return nil
 }
 
-func ShowAllPlans(accessToken, packageId, format  string) error {
+func ShowAllPlans(accessToken, packageId, format, filter  string) error {
 
-	pc, err := GetCollection(accessToken, &MethodParams{PackageId:packageId}, &mashcli.Params{Fields: PLAN_ALL_FIELDS})
+	pc, err := GetCollection(accessToken, &MethodParams{PackageId:packageId}, &mashcli.Params{Fields: PLAN_ALL_FIELDS}, &mashcli.Filter{Filter:filter})
 	if err != nil {
 		return err
 	}
@@ -362,7 +362,7 @@ func Import(accessToken, packageId, filename string)  (*Plan, error) {
 
 func ExportAll(accessToken, path string, mp *MethodParams) error {
 
-	m, err := GetCollection(accessToken, mp, &mashcli.Params{Fields: PLAN_ALL_FIELDS})
+	m, err := GetCollection(accessToken, mp, &mashcli.Params{Fields: PLAN_ALL_FIELDS},&mashcli.Filter{Filter:""})
 
 	if err != nil {
 		return err

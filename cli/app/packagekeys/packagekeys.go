@@ -17,7 +17,7 @@ func Nuke(accessToken string) error {
 
 	pkc := new([]PackageKeys)
 
-	pkc, err := GetCollection(accessToken, &mashcli.Params{Fields: PACKAGEKEYS_ALL_FIELDS})
+	pkc, err := GetCollection(accessToken, &mashcli.Params{Fields: PACKAGEKEYS_ALL_FIELDS}, &mashcli.Filter{Filter:""})
 	if err != nil {
 		return err
 	}
@@ -215,11 +215,11 @@ func ShowPackageKeys(accessToken, packageKeyId, format  string) error {
 	return nil
 }
 
-func ShowAllPackageKeys(accessToken, format string) error {
+func ShowAllPackageKeys(accessToken, format, filter string) error {
 
 	a := new([]PackageKeys)
 
-	a, err := GetCollection(accessToken, &mashcli.Params{Fields: PACKAGEKEYS_ALL_FIELDS})
+	a, err := GetCollection(accessToken, &mashcli.Params{Fields: PACKAGEKEYS_ALL_FIELDS}, &mashcli.Filter{Filter:filter})
 
 	if err != nil {
 		return err
@@ -265,7 +265,7 @@ func (a *PackageKeys) PrettyPrint() {
 
 func ExportAll(accessToken, path string) error {
 
-	m, err := GetCollection(accessToken, &mashcli.Params{Fields: PACKAGEKEYS_ALL_FIELDS})
+	m, err := GetCollection(accessToken, &mashcli.Params{Fields: PACKAGEKEYS_ALL_FIELDS},&mashcli.Filter{Filter:""})
 
 	if err != nil {
 		return err

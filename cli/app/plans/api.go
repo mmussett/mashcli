@@ -29,13 +29,13 @@ func Get(accessToken string, mp *MethodParams, params *mashcli.Params) (*Plan, e
 	return p, nil
 }
 
-func GetCollection(accessToken string, mp *MethodParams, params *mashcli.Params) (*[]Plan, error) {
+func GetCollection(accessToken string, mp *MethodParams, params *mashcli.Params, filter *mashcli.Filter) (*[]Plan, error) {
 
 	path := fmt.Sprintf(collectionResourcePath, mp.PackageId)
 	e := new(mashcli.MasheryError)
 	p := new([]Plan)
 
-	resp, err := sling.New().Base(mashcli.BaseURL).Path(path).Set("Authorization", "Bearer "+accessToken).Set("Content-Type", "application/json").QueryStruct(params).Receive(p, e)
+	resp, err := sling.New().Base(mashcli.BaseURL).Path(path).Set("Authorization", "Bearer "+accessToken).Set("Content-Type", "application/json").QueryStruct(params).QueryStruct(filter).Receive(p, e)
 
 	if err != nil || e.ErrorCode != 0 || resp.StatusCode != 200 {
 		return nil, fmt.Errorf("plans: unable to get plan collection: GET %s -> (%s %s)", path, strconv.Itoa(e.ErrorCode), e.ErrorMessage)

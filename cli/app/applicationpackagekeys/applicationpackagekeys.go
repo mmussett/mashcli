@@ -15,11 +15,11 @@ import (
 )
 
 
-func ShowAllApplicationPackageKeys(accessToken, applicationId, format string) error {
+func ShowAllApplicationPackageKeys(accessToken, applicationId, format, filter string) error {
 
 	apkc := new([]ApplicationPackageKeys)
 
-	apkc, err := GetCollection(accessToken, &MethodParams{ApplicationId:applicationId}, &mashcli.Params{Fields: APPLICATIONPACKAGEKEYS_ALL_FIELDS})
+	apkc, err := GetCollection(accessToken, &MethodParams{ApplicationId:applicationId}, &mashcli.Params{Fields: APPLICATIONPACKAGEKEYS_ALL_FIELDS}, &mashcli.Filter{Filter:filter})
 
 	if err != nil {
 		return err
@@ -99,7 +99,7 @@ func Export(accessToken, path string, mp *MethodParams) error {
 		return errors.New("Directory " + path + " does not exist")
 	}
 
-	m, err := GetCollection(accessToken, mp, &mashcli.Params{Fields: APPLICATIONPACKAGEKEYS_ALL_FIELDS})
+	m, err := GetCollection(accessToken, mp, &mashcli.Params{Fields: APPLICATIONPACKAGEKEYS_ALL_FIELDS}, &mashcli.Filter{Filter:""})
 	if err != nil {
 		return err
 	}

@@ -79,7 +79,12 @@ func doActionServiceShowAll(c *cli.Context) {
 		format = c.String("output")
 	}
 
-	err = services.ShowAllServices(accessToken, format)
+	var filter = ""
+	if c.IsSet("filter") {
+		filter = c.String("filter")
+	}
+
+	err = services.ShowAllServices(accessToken, format, filter)
 	if err != nil {
 		fmt.Printf("can't show all services: %v", err)
 		cli.OsExiter(-1)

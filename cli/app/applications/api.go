@@ -34,14 +34,14 @@ func Get(accessToken string, mp *MethodParams, params *mashcli.Params) (*Applica
 	return a, nil
 }
 
-func GetCollection(accessToken string, params *mashcli.Params) (*[]Applications, error) {
+func GetCollection(accessToken string, params *mashcli.Params, filter *mashcli.Filter) (*[]Applications, error) {
 
 	path := collectionResourcePath
 
 	e := new(mashcli.MasheryError)
 	a := new([]Applications)
 
-	_, err := sling.New().Base(mashcli.BaseURL).Path(path).Set("Authorization", "Bearer "+accessToken).Set("Content-Type", "application/json").QueryStruct(params).Receive(a, e)
+	_, err := sling.New().Base(mashcli.BaseURL).Path(path).Set("Authorization", "Bearer "+accessToken).Set("Content-Type", "application/json").QueryStruct(params).QueryStruct(filter).Receive(a, e)
 
 	if err != nil {
 		return nil, err

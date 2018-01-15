@@ -147,9 +147,9 @@ func ShowEndpoints(accessToken, serviceId, endpointId, format string) error {
 
 }
 
-func ShowAllEndpoints(accessToken, serviceId, format string) error {
+func ShowAllEndpoints(accessToken, serviceId, format, filter string) error {
 
-	ec, err := GetCollection(accessToken, &MethodParams{ServiceId:serviceId}, &mashcli.Params{Fields: ENDPOINTS_ALL_FIELDS})
+	ec, err := GetCollection(accessToken, &MethodParams{ServiceId:serviceId}, &mashcli.Params{Fields: ENDPOINTS_ALL_FIELDS}, &mashcli.Filter{Filter:filter})
 	if err != nil {
 		return err
 	}
@@ -270,7 +270,7 @@ func Import(accessToken, filename string, mp *MethodParams)  (*Endpoints, error)
 
 func ExportAll(accessToken, path string, mp *MethodParams) error {
 
-	m, err := GetCollection(accessToken, mp, &mashcli.Params{Fields: ENDPOINTS_ALL_FIELDS})
+	m, err := GetCollection(accessToken, mp, &mashcli.Params{Fields: ENDPOINTS_ALL_FIELDS}, &mashcli.Filter{Filter:""})
 
 	if err != nil {
 		return err

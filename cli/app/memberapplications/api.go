@@ -14,13 +14,13 @@ const (
 	collectionResourcePath = "v3/rest/members/%s/applications"
 )
 
-func GetCollection(accessToken string, mp *MethodParams, params *mashcli.Params) (*[]MemberApplications, error) {
+func GetCollection(accessToken string, mp *MethodParams, params *mashcli.Params, filter *mashcli.Filter) (*[]MemberApplications, error) {
 
 	path := fmt.Sprintf(collectionResourcePath, mp.MemberId)
 	e := new(mashcli.MasheryError)
 	a := new([]MemberApplications)
 
-	resp, err := sling.New().Base(mashcli.BaseURL).Path(path).Set("Authorization", "Bearer "+accessToken).Set("Content-Type", "application/json").QueryStruct(params).Receive(a, e)
+	resp, err := sling.New().Base(mashcli.BaseURL).Path(path).Set("Authorization", "Bearer "+accessToken).Set("Content-Type", "application/json").QueryStruct(params).QueryStruct(filter).Receive(a, e)
 
 	if err != nil {
 		return nil, err

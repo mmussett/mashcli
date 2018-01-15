@@ -76,7 +76,12 @@ func doActionPackagesShowAll(c *cli.Context) {
 		format = c.String("output")
 	}
 
-	err = packages.ShowAllPackages(accessToken,format)
+	var filter = ""
+	if c.IsSet("filter") {
+		filter = c.String("filter")
+	}
+
+	err = packages.ShowAllPackages(accessToken,format,filter)
 	if err != nil {
 		fmt.Printf("can't show all packages: %v", err)
 		cli.OsExiter(-1)

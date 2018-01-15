@@ -17,7 +17,7 @@ func Nuke(accessToken string) error {
 
 	pc := new([]Package)
 
-	pc, err := GetCollection(accessToken, &mashcli.Params{Fields: PACKAGE_ALL_FIELDS})
+	pc, err := GetCollection(accessToken, &mashcli.Params{Fields: PACKAGE_ALL_FIELDS}, &mashcli.Filter{Filter:""})
 	if err != nil {
 		return err
 	}
@@ -114,9 +114,9 @@ func ShowPackage(accessToken, packageId, format string) error {
 	return nil
 }
 
-func ShowAllPackages(accessToken, format string) error {
+func ShowAllPackages(accessToken, format, filter string) error {
 
-	pc, err := GetCollection(accessToken, &mashcli.Params{Fields: PACKAGE_ALL_FIELDS})
+	pc, err := GetCollection(accessToken, &mashcli.Params{Fields: PACKAGE_ALL_FIELDS},&mashcli.Filter{Filter:filter})
 	if err != nil {
 		return err
 	}
@@ -234,7 +234,7 @@ func Import(accessToken, filename string)  (*Package, error) {
 
 func ExportAll(accessToken, path string) error {
 
-	m, err := GetCollection(accessToken, &mashcli.Params{Fields: PACKAGE_ALL_FIELDS})
+	m, err := GetCollection(accessToken, &mashcli.Params{Fields: PACKAGE_ALL_FIELDS}, &mashcli.Filter{Filter:""})
 
 	if err != nil {
 		return err

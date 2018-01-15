@@ -16,7 +16,7 @@ func Nuke(accessToken string) error {
 
 	mc := new([]Members)
 
-	mc, err := GetCollection(accessToken, &mashcli.Params{Fields: MEMBERS_ALL_FIELDS})
+	mc, err := GetCollection(accessToken, &mashcli.Params{Fields: MEMBERS_ALL_FIELDS}, &mashcli.Filter{Filter:""})
 	if err != nil {
 		return err
 	}
@@ -107,9 +107,9 @@ func ShowMember(accessToken, memberId, format string) error {
 
 }
 
-func ShowAllMembers(accessToken, format string) error {
+func ShowAllMembers(accessToken, format, filter string) error {
 
-	ac, err := GetCollection(accessToken, &mashcli.Params{Fields: MEMBERS_ALL_FIELDS})
+	ac, err := GetCollection(accessToken, &mashcli.Params{Fields: MEMBERS_ALL_FIELDS},&mashcli.Filter{Filter:filter})
 	if err != nil {
 		return err
 	}
@@ -150,7 +150,7 @@ func (m *Members) PrettyPrint() {
 
 func ExportAll(accessToken string, filename string) error {
 
-	m, err := GetCollection(accessToken, &mashcli.Params{Fields: MEMBERS_ALL_FIELDS})
+	m, err := GetCollection(accessToken, &mashcli.Params{Fields: MEMBERS_ALL_FIELDS},&mashcli.Filter{Filter:""})
 
 	if err != nil {
 		return err

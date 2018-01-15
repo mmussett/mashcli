@@ -34,7 +34,7 @@ func AddServiceToPackagePlan(accessToken, serviceId, packageId, planId string) e
 	}
 
 	var currentPlanServices *[]planservices.PlanServices
-	currentPlanServices, err = planservices.GetCollection(accessToken, &planservices.MethodParams{PackageId: packageId, PlanId: planId}, &mashcli.Params{Fields: planservices.PLANSERVICES_ALL_FIELDS})
+	currentPlanServices, err = planservices.GetCollection(accessToken, &planservices.MethodParams{PackageId: packageId, PlanId: planId}, &mashcli.Params{Fields: planservices.PLANSERVICES_ALL_FIELDS}, &mashcli.Filter{Filter:""})
 	if err != nil {
 		return err
 	}
@@ -77,7 +77,7 @@ func AddServiceToPackagePlan(accessToken, serviceId, packageId, planId string) e
 
 
 	// First we're going to have to get Endpoint Collection of the Service we're adding
-	sourceEndpoints, err := endpoints.GetCollection(accessToken, &endpoints.MethodParams{ServiceId: serviceId}, &mashcli.Params{Fields: endpoints.ENDPOINTS_ALL_FIELDS})
+	sourceEndpoints, err := endpoints.GetCollection(accessToken, &endpoints.MethodParams{ServiceId: serviceId}, &mashcli.Params{Fields: endpoints.ENDPOINTS_ALL_FIELDS}, &mashcli.Filter{Filter:""})
 	if err != nil {
 		return err
 	}
@@ -135,7 +135,7 @@ func DeleteServiceFromPackagePlan(accessToken, serviceId, packageId, planId stri
 	}
 
 	var currentPlanServices *[]planservices.PlanServices
-	currentPlanServices, err = planservices.GetCollection(accessToken, &planservices.MethodParams{PackageId: packageId, PlanId: planId}, &mashcli.Params{Fields: planservices.PLANSERVICES_ALL_FIELDS})
+	currentPlanServices, err = planservices.GetCollection(accessToken, &planservices.MethodParams{PackageId: packageId, PlanId: planId}, &mashcli.Params{Fields: planservices.PLANSERVICES_ALL_FIELDS},&mashcli.Filter{Filter:""})
 	if err != nil {
 		return err
 	}

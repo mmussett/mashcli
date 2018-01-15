@@ -30,9 +30,9 @@ func ShowPlanService(accessToken, packageId, planId, serviceId, format  string) 
 	return nil
 }
 
-func ShowAllPlanServices(accessToken, packageId, planId, format string) error {
+func ShowAllPlanServices(accessToken, packageId, planId, format, filter string) error {
 
-	pc, err := GetCollection(accessToken,  &MethodParams{PackageId:packageId,PlanId:planId}, &mashcli.Params{Fields: PLANSERVICES_ALL_FIELDS})
+	pc, err := GetCollection(accessToken,  &MethodParams{PackageId:packageId,PlanId:planId}, &mashcli.Params{Fields: PLANSERVICES_ALL_FIELDS}, &mashcli.Filter{Filter:filter})
 
 	if err != nil {
 		return err
@@ -115,7 +115,7 @@ func Import(accessToken, filename string, mp *MethodParams) (*PlanServices, erro
 
 func ExportAll(accessToken, path string, mp *MethodParams) error {
 
-	m, err := GetCollection(accessToken, mp, &mashcli.Params{Fields: PLANSERVICES_ALL_FIELDS})
+	m, err := GetCollection(accessToken, mp, &mashcli.Params{Fields: PLANSERVICES_ALL_FIELDS},&mashcli.Filter{Filter:""})
 
 	if err != nil {
 		return err

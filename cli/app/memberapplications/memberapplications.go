@@ -11,11 +11,11 @@ import (
 	"os"
 )
 
-func ShowMemberApplications(accessToken, memberId, format string) error {
+func ShowMemberApplications(accessToken, memberId, format, filter string) error {
 
 	mac := new([]MemberApplications)
 
-	mac, err := GetCollection(accessToken, &MethodParams{MemberId:memberId}, &mashcli.Params{Fields: MEMBERAPPLICATIONS_ALL_FIELDS})
+	mac, err := GetCollection(accessToken, &MethodParams{MemberId:memberId}, &mashcli.Params{Fields: MEMBERAPPLICATIONS_ALL_FIELDS}, &mashcli.Filter{Filter:filter})
 	if err != nil {
 		return err
 	}
@@ -59,7 +59,7 @@ func (m *MemberApplications) PrettyPrint() {
 
 func Export(accessToken, memberId, filename string) error {
 
-	mac, err := GetCollection(accessToken, &MethodParams{MemberId: memberId}, &mashcli.Params{Fields: MEMBERAPPLICATIONS_ALL_FIELDS})
+	mac, err := GetCollection(accessToken, &MethodParams{MemberId: memberId}, &mashcli.Params{Fields: MEMBERAPPLICATIONS_ALL_FIELDS}, &mashcli.Filter{Filter:""})
 	if err != nil {
 		return err
 	}

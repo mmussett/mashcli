@@ -17,7 +17,7 @@ func Nuke(accessToken string) error {
 
 	ac := new([]Applications)
 
-	ac, err := GetCollection(accessToken, &mashcli.Params{Fields: APPLICATIONS_ALL_FIELDS})
+	ac, err := GetCollection(accessToken, &mashcli.Params{Fields: APPLICATIONS_ALL_FIELDS},&mashcli.Filter{Filter:""})
 	if err != nil {
 		return err
 	}
@@ -62,11 +62,11 @@ func ShowApplication(accessToken, applicationId, format string) error {
 	return nil
 }
 
-func ShowAllApplications(accessToken, format string) error {
+func ShowAllApplications(accessToken, format, filter string) error {
 
 	ac := new([]Applications)
 
-	ac, err := GetCollection(accessToken, &mashcli.Params{Fields: APPLICATIONS_ALL_FIELDS})
+	ac, err := GetCollection(accessToken, &mashcli.Params{Fields: APPLICATIONS_ALL_FIELDS}, &mashcli.Filter{Filter:filter})
 	if err != nil {
 		return err
 	}
@@ -118,7 +118,7 @@ func ExportAll(accessToken, path string) error {
 		return errors.New("Directory " + path + " does not exist")
 	}
 
-	m, err := GetCollection(accessToken, &mashcli.Params{Fields: APPLICATIONS_ALL_FIELDS})
+	m, err := GetCollection(accessToken, &mashcli.Params{Fields: APPLICATIONS_ALL_FIELDS},&mashcli.Filter{Filter:""})
 	if err != nil {
 		return err
 	}

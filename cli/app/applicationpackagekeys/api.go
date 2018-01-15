@@ -15,14 +15,14 @@ const (
 )
 
 
-func GetCollection(accessToken string, mp *MethodParams, params *mashcli.Params) (*[]ApplicationPackageKeys, error) {
+func GetCollection(accessToken string, mp *MethodParams, params *mashcli.Params, filter *mashcli.Filter) (*[]ApplicationPackageKeys, error) {
 
 	path := fmt.Sprintf(collectionResourcePath, mp.ApplicationId)
 
 	e := new(mashcli.MasheryError)
 	apk := new([]ApplicationPackageKeys)
 
-	resp, err := sling.New().Base(mashcli.BaseURL).Path(path).Set("Authorization", "Bearer "+accessToken).Set("Content-Type", "application/json").QueryStruct(params).Receive(apk, e)
+	resp, err := sling.New().Base(mashcli.BaseURL).Path(path).Set("Authorization", "Bearer "+accessToken).Set("Content-Type", "application/json").QueryStruct(params).QueryStruct(filter).Receive(apk, e)
 
 	if err != nil || resp.StatusCode != 200 {
 		return nil, fmt.Errorf("applicationpackagekey: unable to get application package key collection: GET %s%s -> (%s %s)", mashcli.BaseURL, path, strconv.Itoa(e.ErrorCode), e.ErrorMessage)

@@ -17,7 +17,7 @@ func Nuke(accessToken string) error {
 
 	sc := new([]Services)
 
-	sc, err := GetCollection(accessToken, &mashcli.Params{Fields: SERVICES_ALL_FIELDS})
+	sc, err := GetCollection(accessToken, &mashcli.Params{Fields: SERVICES_ALL_FIELDS}, &mashcli.Filter{Filter:""})
 	if err != nil {
 		return err
 	}
@@ -117,9 +117,9 @@ func ShowService(accessToken,serviceId, format string) error {
 
 }
 
-func ShowAllServices(accessToken, format string) error {
+func ShowAllServices(accessToken, format, filter string) error {
 
-	sc, err := GetCollection(accessToken, &mashcli.Params{Fields: SERVICES_ALL_FIELDS})
+	sc, err := GetCollection(accessToken, &mashcli.Params{Fields: SERVICES_ALL_FIELDS}, &mashcli.Filter{Filter:filter})
 
 	if err != nil {
 		return err
@@ -277,7 +277,7 @@ func Export(accessToken, serviceId, filename string) error {
 
 func ExportAll(accessToken string, dirPath string) error {
 
-	servicesCollection, err := GetCollection(accessToken, &mashcli.Params{Fields: SERVICES_ALL_FIELDS})
+	servicesCollection, err := GetCollection(accessToken, &mashcli.Params{Fields: SERVICES_ALL_FIELDS},&mashcli.Filter{Filter:""})
 	if err != nil {
 		return err
 	}

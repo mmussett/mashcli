@@ -84,8 +84,12 @@ func doActionPlanServiceShowAll(c *cli.Context) {
 		format = c.String("output")
 	}
 
+	var filter = ""
+	if c.IsSet("filter") {
+		filter = c.String("filter")
+	}
 
-	err = planservices.ShowAllPlanServices(accessToken, packageId, planId, format)
+	err = planservices.ShowAllPlanServices(accessToken, packageId, planId, format, filter)
 	if err != nil {
 		fmt.Printf("can't show all services for plans: %v", err)
 		cli.OsExiter(-1)

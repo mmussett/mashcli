@@ -76,7 +76,13 @@ func doActionApplicationsShowAll(c *cli.Context) {
 		format = c.String("output")
 	}
 
-	err = applications.ShowAllApplications(accessToken,format)
+	var filter = ""
+	if c.IsSet("filter") {
+		filter = c.String("filter")
+	}
+
+
+	err = applications.ShowAllApplications(accessToken,format,filter)
 	if err != nil {
 		fmt.Printf("can't show all applications: %v", err)
 		cli.OsExiter(-1)
