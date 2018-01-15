@@ -13,6 +13,27 @@ import (
 	"strconv"
 )
 
+func Nuke(accessToken string) error {
+
+	pkc := new([]PackageKeys)
+
+	pkc, err := GetCollection(accessToken, &mashcli.Params{Fields: PACKAGEKEYS_ALL_FIELDS})
+	if err != nil {
+		return err
+	}
+
+
+		for _, pk := range *pkc {
+			err := DeletePackageKey(accessToken, pk.Id)
+			if err != nil {
+				return err
+			}
+		}
+
+	return nil
+
+}
+
 func SetStatus(accessToken, packageKeyId, status string ) error {
 
 	_, err := Get(accessToken, &MethodParams{PackageKeyId:packageKeyId},&mashcli.Params{Fields:PACKAGEKEYS_ALL_FIELDS})
@@ -23,7 +44,6 @@ func SetStatus(accessToken, packageKeyId, status string ) error {
 	p := new(PackageKeys)
 	p.Status = status
 
-	fmt.Println(p.Marshall())
 	p, err = p.Update(accessToken,&MethodParams{PackageKeyId:packageKeyId})
 	if err != nil {
 		return err

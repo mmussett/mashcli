@@ -14,6 +14,27 @@ import (
 	"strconv"
 )
 
+func Nuke(accessToken, packageId string) error {
+
+	pc := new([]Plan)
+
+	pc, err := GetCollection(accessToken, &MethodParams{PackageId:packageId}, &mashcli.Params{Fields: PLAN_ALL_FIELDS})
+	if err != nil {
+		return err
+	}
+
+
+	for _, p := range *pc {
+		err := DeletePlan(accessToken, packageId, p.Id)
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
+
+}
+
 func SetStatus(accessToken, packageId, planId string, status string ) error {
 
 	c, err := Get(accessToken, &MethodParams{PackageId:packageId,PlanId:planId},&mashcli.Params{Fields:PLAN_ALL_FIELDS})

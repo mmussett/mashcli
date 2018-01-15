@@ -2,6 +2,8 @@ package members
 
 import (
 	"encoding/json"
+	"strings"
+
 	"github.com/mmussett/mashcli/cli/app/mashcli"
 	"github.com/olekukonko/tablewriter"
 
@@ -10,6 +12,29 @@ import (
 	"os"
 )
 
+func Nuke(accessToken string) error {
+
+	mc := new([]Members)
+
+	mc, err := GetCollection(accessToken, &mashcli.Params{Fields: MEMBERS_ALL_FIELDS})
+	if err != nil {
+		return err
+	}
+
+
+	for _, m := range *mc {
+		if !(m.Username == "MasheryInternalOAuth2") && !(strings.Contains(strings.ToLower(m.LastName),"admin")) && !(strings.Contains(strings.ToLower(m.Email),"admin")){
+			fmt.Println(m.Username)
+			err := DeleteMember(accessToken, m.Id)
+			if err != nil {
+				return err
+			}
+		}
+	}
+
+	return nil
+
+}
 func SetStatus(accessToken, memberId, status string ) error {
 
 	_, err := Get(accessToken, &MethodParams{MemberId:memberId},&mashcli.Params{Fields:MEMBERS_ALL_FIELDS})

@@ -7,11 +7,32 @@ import (
 	"github.com/mmussett/mashcli/cli/app/mashcli"
 	"github.com/olekukonko/tablewriter"
 
+
 	"fmt"
 	"io/ioutil"
 	"os"
 )
 
+func Nuke(accessToken string) error {
+
+	ac := new([]Applications)
+
+	ac, err := GetCollection(accessToken, &mashcli.Params{Fields: APPLICATIONS_ALL_FIELDS})
+	if err != nil {
+		return err
+	}
+
+
+	for _, a := range *ac {
+		err := DeleteApplication(accessToken, a.Id)
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
+
+}
 
 func DeleteApplication(accessToken, applicationId string) error {
 

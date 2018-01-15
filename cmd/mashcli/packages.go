@@ -2,9 +2,11 @@ package main
 
 import (
 	"fmt"
+	"github.com/Songmu/prompter"
 	"github.com/mmussett/mashcli/cli/app/mashcli"
 	"github.com/mmussett/mashcli/cli/app/packages"
 	"github.com/urfave/cli"
+	"github.com/fatih/color"
 )
 
 func doBeforePackagesShow(c *cli.Context) {
@@ -274,5 +276,51 @@ func doActionPackageClone(c *cli.Context) {
 	}
 
 	return
+
+}
+
+func doBeforePackageNuke(c *cli.Context) {
+
+	if !c.BoolT("force") {
+
+		red := color.New(color.FgRed)
+		boldRed := red.Add(color.Bold)
+
+		confirm := prompter.YN(boldRed.Sprint("WARNING: Do you really want to nuke all packages?"), false)
+		if !confirm {
+			cli.OsExiter(-1)
+			return
+		}
+
+		confirm = prompter.YN(boldRed.Sprint("WARNING: Terrible things will happen. Do you really-really want to nuke all packages?"), false)
+		if !confirm {
+			cli.OsExiter(-1)
+			return
+		}
+	}
+
+}
+func doActionPackageNuke(c *cli.Context) {
+
+	m, err := mashcli.Load(c.String("area"))
+	if err != nil {
+		fmt.Printf("unable to load area config: %v", err)
+		cli.OsExiter(-1)
+		return
+	}
+
+	accessToken, err := m.FetchOAuthToken()
+	if err != nil {
+		fmt.Printf("unable to fetch oauth token: %v", err)
+		cli.OsExiter(-1)
+		return
+	}
+
+	err = packages.Nuke(accessToken)
+	if err != nil {
+		fmt.Printf("can't nuke packages: %v", err)
+		cli.OsExiter(-1)
+		return
+	}
 
 }

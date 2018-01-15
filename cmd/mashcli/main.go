@@ -111,6 +111,22 @@ func main() {
 					},
 				},
 				{
+					Name:      "nuke",
+					Usage:     "nuke all applications",
+					Flags: []cli.Flag{
+						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
+						cli.BoolFlag{Name: "force, f", Usage: "Ignore warnings and prompts"},
+					},
+					Before: func(c *cli.Context) error {
+						doBeforeApplicationsNuke(c)
+						return nil
+					},
+					Action: func(c *cli.Context) error {
+						doActionApplicationsNuke(c)
+						return nil
+					},
+				},
+				{
 					Name:  "show",
 					Aliases: []string{"s"},
 					Usage: "Show application",
@@ -286,6 +302,22 @@ func main() {
 					},
 					Action: func(c *cli.Context) error {
 						doActionMembersImport(c)
+						return nil
+					},
+				},
+				{
+					Name:      "nuke",
+					Usage:     "nuke all members",
+					Flags: []cli.Flag{
+						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
+						cli.BoolFlag{Name: "force, f", Usage: "Ignore warnings and prompts"},
+					},
+					Before: func(c *cli.Context) error {
+						doBeforeMembersNuke(c)
+						return nil
+					},
+					Action: func(c *cli.Context) error {
+						doActionMembersNuke(c)
 						return nil
 					},
 				},
@@ -477,6 +509,22 @@ func main() {
 					},
 					Action: func(c *cli.Context) error {
 						doActionServiceImport(c)
+						return nil
+					},
+				},
+				{
+					Name:      "nuke",
+					Usage:     "nuke all services ",
+					Flags: []cli.Flag{
+						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
+						cli.BoolFlag{Name: "force, f", Usage: "Ignore warnings and prompts"},
+					},
+					Before: func(c *cli.Context) error {
+						doBeforeServiceNuke(c)
+						return nil
+					},
+					Action: func(c *cli.Context) error {
+						doActionServiceNuke(c)
 						return nil
 					},
 				},
@@ -740,6 +788,22 @@ func main() {
 					},
 				},
 				{
+					Name:      "nuke",
+					Usage:     "nuke all packages",
+					Flags: []cli.Flag{
+						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
+						cli.BoolFlag{Name: "force, f", Usage: "Ignore warnings and prompts"},
+					},
+					Before: func(c *cli.Context) error {
+						doBeforePackageNuke(c)
+						return nil
+					},
+					Action: func(c *cli.Context) error {
+						doActionPackageNuke(c)
+						return nil
+					},
+				},
+				{
 					Name:  "show",
 					Aliases: []string{"s"},
 					Usage: "Show specific package",
@@ -831,6 +895,22 @@ func main() {
 					},
 					Action: func(c *cli.Context) error {
 						doActionPackageKeysImport(c)
+						return nil
+					},
+				},
+				{
+					Name:      "nuke",
+					Usage:     "nuke all package key",
+					Flags: []cli.Flag{
+						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
+						cli.BoolFlag{Name: "force, f", Usage: "Ignore warnings and prompts"},
+					},
+					Before: func(c *cli.Context) error {
+						doBeforePackageKeysNuke(c)
+						return nil
+					},
+					Action: func(c *cli.Context) error {
+						doActionPackageKeysNuke(c)
 						return nil
 					},
 				},
@@ -991,11 +1071,28 @@ func main() {
 						cli.StringFlag{Name: "filename", Usage: "The import Filename for the Package Definition"},
 					},
 					Before: func(c *cli.Context) error {
-						doBeforePackageImport(c)
+						doBeforePlanImport(c)
 						return nil
 					},
 					Action: func(c *cli.Context) error {
-						doActionPackageImport(c)
+						doActionPlanImport(c)
+						return nil
+					},
+				},
+				{
+					Name:      "nuke",
+					Usage:     "nuke all plans",
+					ArgsUsage: "PackageID",
+					Flags: []cli.Flag{
+						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
+						cli.BoolFlag{Name: "force, f", Usage: "Ignore warnings and prompts"},
+					},
+					Before: func(c *cli.Context) error {
+						doBeforePlanNuke(c)
+						return nil
+					},
+					Action: func(c *cli.Context) error {
+						doActionPlanNuke(c)
 						return nil
 					},
 				},

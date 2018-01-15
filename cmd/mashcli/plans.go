@@ -2,11 +2,13 @@ package main
 
 import (
 	"fmt"
+	"github.com/Songmu/prompter"
 	"github.com/mmussett/mashcli/cli/app/mashcli"
 	"github.com/mmussett/mashcli/cli/app/packages"
 	"github.com/mmussett/mashcli/cli/app/plans"
 	"github.com/urfave/cli"
 	"strings"
+	"github.com/fatih/color"
 )
 
 func doBeforePlanSetStatus(c *cli.Context) {
@@ -471,5 +473,59 @@ func doActionPlanClone(c *cli.Context) {
 	}
 
 	return
+
+}
+
+
+func doBeforePlanNuke(c *cli.Context) {
+
+	if len(c.Args()) != 1 {
+		fmt.Println("mashcli: argument mismatch")
+		fmt.Println("Run 'mashcli plan nuke --help' for usage")
+		cli.OsExiter(-1)
+	}
+
+	if !c.BoolT("force") {
+		red := color.New(color.FgRed)
+		boldRed := red.Add(color.Bold)
+
+		confirm := prompter.YN(boldRed.Sprint("WARNING: Do you really want to nuke all plans?"), false)
+		if !confirm {
+			cli.OsExiter(-1)
+			return
+		}
+
+		confirm = prompter.YN(boldRed.Sprint("WARNING: Terrible things will happen. Do you really-really want to nuke all plans?"), false)
+		if !confirm {
+			cli.OsExiter(-1)
+			return
+		}
+	}
+
+}
+func doActionPlanNuke(c *cli.Context) {
+
+	var packageId = c.Args().Get(0)
+
+	m, err := mashcli.Load(c.String("area"))
+	if err != nil {
+		fmt.Printf("unable to load area config: %v", err)
+		cli.OsExiter(-1)
+		return
+	}
+
+	accessToken, err := m.FetchOAuthToken()
+	if err != nil {
+		fmt.Printf("unable to fetch oauth token: %v", err)
+		cli.OsExiter(-1)
+		return
+	}
+
+	err = plans.Nuke(accessToken,packageId)
+	if err != nil {
+		fmt.Printf("can't nuke plans: %v", err)
+		cli.OsExiter(-1)
+		return
+	}
 
 }

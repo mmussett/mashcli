@@ -4,12 +4,35 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/mmussett/mashcli/cli/app/mashcli"
+
 	"github.com/olekukonko/tablewriter"
 
 	"io/ioutil"
 	"os"
 	"strconv"
 )
+
+
+func Nuke(accessToken string) error {
+
+	sc := new([]Services)
+
+	sc, err := GetCollection(accessToken, &mashcli.Params{Fields: SERVICES_ALL_FIELDS})
+	if err != nil {
+		return err
+	}
+
+
+	for _, s := range *sc {
+		err := DeleteService(accessToken, s.Id)
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
+
+}
 
 func DeleteService(accessToken, serviceId string) error {
 
@@ -102,19 +125,20 @@ func ShowAllServices(accessToken, format string) error {
 		return err
 	}
 
+
 	if format=="table" {
 		table := tablewriter.NewWriter(os.Stdout)
 		table.SetHeader([]string{"Service ID", "Name", "Description", "Agg. QPS", "Version", "Created", "Updated"})
 
 		// Work out maximum width for description
 		const maxWidthDescription= 32
-		const minWidthDescription= 10
+		const minWidthDescription= 16
 		const maxWidthName= 48
-		const minWidthName= 48
+		const minWidthName= 16
 		const maxWidthVersion= 16
 		const minWidthVersion= 16
 
-		var widthDescription= 0
+		var widthDescription= minWidthDescription
 		for _, s := range *sc {
 			l := len(s.Description)
 			if l >= maxWidthDescription {
@@ -129,7 +153,7 @@ func ShowAllServices(accessToken, format string) error {
 		table.SetColMinWidth(2, widthDescription)
 
 		// Work out maximum width for name
-		var widthName= 0
+		var widthName= minWidthName
 		for _, s := range *sc {
 			l := len(s.Name)
 			if l >= maxWidthName {
@@ -144,7 +168,7 @@ func ShowAllServices(accessToken, format string) error {
 		table.SetColMinWidth(1, widthName)
 
 		// Work out maximum width for version
-		var widthVersion= 0
+		var widthVersion= minWidthVersion
 		for _, s := range *sc {
 			l := len(s.Version)
 			if l >= maxWidthVersion {

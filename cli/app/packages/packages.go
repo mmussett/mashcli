@@ -12,6 +12,28 @@ import (
 	"strconv"
 )
 
+
+func Nuke(accessToken string) error {
+
+	pc := new([]Package)
+
+	pc, err := GetCollection(accessToken, &mashcli.Params{Fields: PACKAGE_ALL_FIELDS})
+	if err != nil {
+		return err
+	}
+
+
+	for _, p := range *pc {
+		err := DeletePackage(accessToken, p.Id)
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
+
+}
+
 func AddPackage(accessToken, name, description string) error {
 
 	var p = new(Package)
@@ -101,17 +123,17 @@ func ShowAllPackages(accessToken, format string) error {
 
 	if format=="table" {
 		// Work out maximum width for description
-		var ll= 0
+		var widthDescription = 16
 		for _, p := range *pc {
 			l := len(p.Description)
-			if l > ll {
-				ll = l
+			if l > widthDescription {
+				widthDescription = l
 			}
 		}
 
 		table := tablewriter.NewWriter(os.Stdout)
 		table.SetHeader([]string{"ID", "Name", "Description", "Created", "Updated"})
-		table.SetColMinWidth(2, ll)
+		table.SetColMinWidth(2, widthDescription)
 
 		for _, p := range *pc {
 			data := []string{p.Id, p.Name, p.Description, p.Created[:19], p.Updated[:19]}
