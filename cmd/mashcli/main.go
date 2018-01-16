@@ -116,6 +116,7 @@ func main() {
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.BoolFlag{Name: "force, f", Usage: "Ignore warnings and prompts"},
+						cli.BoolFlag{Name: "preview, p", Usage: "Preview deletions only"},
 					},
 					Before: func(c *cli.Context) error {
 						doBeforeApplicationsNuke(c)
@@ -213,6 +214,23 @@ func main() {
 					},
 				},
 				{
+					Name:      "nuke",
+					Usage:     "nuke area",
+					Flags: []cli.Flag{
+						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
+						cli.BoolFlag{Name: "force, f", Usage: "Ignore warnings and prompts"},
+						cli.BoolFlag{Name: "preview, p", Usage: "Preview deletions only"},
+					},
+					Before: func(c *cli.Context) error {
+						doBeforeAreaNuke(c)
+						return nil
+					},
+					Action: func(c *cli.Context) error {
+						doActionAreaNuke(c)
+						return nil
+					},
+				},
+				{
 					Name:  "restore",
 					Aliases: []string{"r"},
 					Usage: "Restore area configuration",
@@ -261,6 +279,7 @@ func main() {
 					ArgsUsage: "MemberID",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
+						cli.BoolFlag{Name: "username, u", Usage: "-username *mash*"},
 					},
 					Before: func(c *cli.Context) error {
 						doBeforeMembersDelete(c)
@@ -313,6 +332,7 @@ func main() {
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.BoolFlag{Name: "force, f", Usage: "Ignore warnings and prompts"},
+						cli.BoolFlag{Name: "preview, p", Usage: "Preview deletions only"},
 					},
 					Before: func(c *cli.Context) error {
 						doBeforeMembersNuke(c)
@@ -366,6 +386,8 @@ func main() {
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.StringFlag{Name: "filter, f", Usage: "Filter expression as colon-separated name/value pair i.e -filter username:mmussett"},
 						cli.StringFlag{Name: "output, o", Usage: "Output format table or json)"},
+						cli.StringFlag{Name: "username, u", Usage: "Filter on username matching pattern -i.e. -username *mash*"},
+						cli.StringFlag{Name: "email, e", Usage: "Filter on email matching pattern -i.e. -email *@tibco.com"},
 					},
 					Before: func(c *cli.Context) error {
 						doBeforeMembersShowAll(c)
@@ -417,6 +439,139 @@ func main() {
 					},
 					Action: func(c *cli.Context) error {
 						doActionMemberApplicationsShow(c)
+						return nil
+					},
+				},
+			},
+		},
+		{
+			Name:  "roles",
+			Aliases: []string{"s"},
+			Usage: "Manage roles-related operations for the current user. For additional help, use 'mashcli roles --help'",
+			Subcommands: []cli.Command{
+				{
+					Name:      "add",
+					Aliases: []string{"a"},
+					Usage:     "Add a role",
+					ArgsUsage: "Name",
+					Flags: []cli.Flag{
+						cli.StringFlag{Name: "description, d", Usage: "Describe your service"},
+						cli.StringFlag{Name: "version, v", Usage: "Version identifier"},
+						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
+						cli.IntFlag{Name: "qps, q", Usage: "Aggregate QPS"},
+					},
+					Before: func(c *cli.Context) error {
+						doBeforeRolesAdd(c)
+						return nil
+					},
+					Action: func(c *cli.Context) error {
+						doActionRolesAdd(c)
+						return nil
+					},
+				},
+				{
+					Name:      "delete",
+					Aliases: []string{"d"},
+					Usage:     "Delete a role",
+					ArgsUsage: "RoleID",
+					Flags: []cli.Flag{
+						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
+					},
+					Before: func(c *cli.Context) error {
+						doBeforeRolesDelete(c)
+						return nil
+					},
+					Action: func(c *cli.Context) error {
+						doActionRolesDelete(c)
+						return nil
+					},
+				},
+				{
+					Name:      "export",
+					Aliases: []string{"e"},
+					Usage:     "Export a role",
+					ArgsUsage: "RoleID",
+					Flags: []cli.Flag{
+						cli.StringFlag{Name: "filename", Usage: "The export Filename for the Service Definition"},
+						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
+					},
+					Before: func(c *cli.Context) error {
+						doBeforeRolesExport(c)
+						return nil
+					},
+					Action: func(c *cli.Context) error {
+						doActionRolesExport(c)
+						return nil
+					},
+				},
+				{
+					Name:  "import",
+					Aliases: []string{"i"},
+					Usage: "Import a role",
+					Flags: []cli.Flag{
+						cli.StringFlag{Name: "filename", Usage: "The filename containing the Service Definition"},
+						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
+					},
+					Before: func(c *cli.Context) error {
+						doBeforeRolesImport(c)
+						return nil
+					},
+					Action: func(c *cli.Context) error {
+						doActionRolesImport(c)
+						return nil
+					},
+				},
+				{
+					Name:      "nuke",
+					Usage:     "nuke all roles ",
+					Flags: []cli.Flag{
+						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
+						cli.BoolFlag{Name: "force, f", Usage: "Ignore warnings and prompts"},
+						cli.BoolFlag{Name: "preview, p", Usage: "Preview deletions only"},
+					},
+					Before: func(c *cli.Context) error {
+						doBeforeRolesNuke(c)
+						return nil
+					},
+					Action: func(c *cli.Context) error {
+						doActionRolesNuke(c)
+						return nil
+					},
+				},
+				{
+					Name:      "show",
+					Aliases: []string{"s"},
+					Usage:     "Show specific role",
+					ArgsUsage: "RoleID",
+					Flags: []cli.Flag{
+						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
+						cli.StringFlag{Name: "output, o", Usage: "Output format table or json)"},
+					},
+					Before: func(c *cli.Context) error {
+						doBeforeRolesShow(c)
+						return nil
+					},
+					Action: func(c *cli.Context) error {
+						doActionRolesShow(c)
+						return nil
+					},
+				},
+				{
+					Name:  "showall",
+					Aliases: []string{"sa"},
+					Usage: "Show all roles",
+					Flags: []cli.Flag{
+						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
+						cli.StringFlag{Name: "filter, f", Usage: "Filter expression as colon-separated name/value pair i.e -filter version:1.0"},
+						cli.StringFlag{Name: "name, n", Usage: "Filter on name matching pattern i.e. -name *test*"},
+						cli.StringFlag{Name: "output, o", Usage: "Output format table or json)"},
+					},
+					Before: func(c *cli.Context) error {
+						doBeforeRolesShowAll(c)
+						return nil
+					},
+					Action: func(c *cli.Context) error {
+						doActionRolesShowAll(c)
 						return nil
 					},
 				},
@@ -522,6 +677,7 @@ func main() {
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.BoolFlag{Name: "force, f", Usage: "Ignore warnings and prompts"},
+						cli.BoolFlag{Name: "preview, p", Usage: "Preview deletions only"},
 					},
 					Before: func(c *cli.Context) error {
 						doBeforeServiceNuke(c)
@@ -557,6 +713,7 @@ func main() {
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.StringFlag{Name: "filter, f", Usage: "Filter expression as colon-separated name/value pair i.e -filter version:1.0"},
+						cli.StringFlag{Name: "name, n", Usage: "Filter on name matching pattern i.e. -name *test*"},
 						cli.StringFlag{Name: "output, o", Usage: "Output format table or json)"},
 					},
 					Before: func(c *cli.Context) error {
@@ -799,6 +956,7 @@ func main() {
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.BoolFlag{Name: "force, f", Usage: "Ignore warnings and prompts"},
+						cli.BoolFlag{Name: "preview, p", Usage: "Preview deletions only"},
 					},
 					Before: func(c *cli.Context) error {
 						doBeforePackageNuke(c)
@@ -834,6 +992,7 @@ func main() {
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.StringFlag{Name: "filter, f", Usage: "Filter expression as colon-separated name/value pair i.e -filter 'name:My Package'"},
+						cli.StringFlag{Name: "name, n", Usage: "Filter on name matching pattern i.e. -name *test*"},
 						cli.StringFlag{Name: "output, o", Usage: "Output format table or json)"},
 					},
 					Before: func(c *cli.Context) error {
@@ -911,6 +1070,7 @@ func main() {
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.BoolFlag{Name: "force, f", Usage: "Ignore warnings and prompts"},
+						cli.BoolFlag{Name: "preview, p", Usage: "Preview deletions only"},
 					},
 					Before: func(c *cli.Context) error {
 						doBeforePackageKeysNuke(c)
@@ -1094,6 +1254,7 @@ func main() {
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.BoolFlag{Name: "force, f", Usage: "Ignore warnings and prompts"},
+						cli.BoolFlag{Name: "preview, p", Usage: "Preview deletions only"},
 					},
 					Before: func(c *cli.Context) error {
 						doBeforePlanNuke(c)

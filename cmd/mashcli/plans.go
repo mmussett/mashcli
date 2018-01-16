@@ -514,6 +514,11 @@ func doActionPlanNuke(c *cli.Context) {
 
 	var packageId = c.Args().Get(0)
 
+	var preview = false
+	if c.IsSet("preview") {
+		preview = c.Bool("preview")
+	}
+
 	m, err := mashcli.Load(c.String("area"))
 	if err != nil {
 		fmt.Printf("unable to load area config: %v", err)
@@ -528,7 +533,7 @@ func doActionPlanNuke(c *cli.Context) {
 		return
 	}
 
-	err = plans.Nuke(accessToken,packageId)
+	err = plans.Nuke(accessToken,packageId, preview)
 	if err != nil {
 		fmt.Printf("can't nuke plans: %v", err)
 		cli.OsExiter(-1)

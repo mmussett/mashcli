@@ -2,6 +2,7 @@ package packages
 
 import (
 	"encoding/json"
+	"github.com/gobwas/glob"
 	"github.com/mmussett/mashcli/cli/app"
 	"github.com/mmussett/mashcli/cli/app/mashcli"
 	"github.com/olekukonko/tablewriter"
@@ -13,7 +14,7 @@ import (
 )
 
 
-func Nuke(accessToken string) error {
+func Nuke(accessToken string, preview bool) error {
 
 	pc := new([]Package)
 
@@ -24,9 +25,13 @@ func Nuke(accessToken string) error {
 
 
 	for _, p := range *pc {
-		err := DeletePackage(accessToken, p.Id)
-		if err != nil {
-			return err
+		if !preview {
+			err := DeletePackage(accessToken, p.Id)
+			if err != nil {
+				return err
+			}
+		} else {
+			fmt.Println("Preview Deleting Package "+p.Name)
 		}
 	}
 
@@ -114,11 +119,19 @@ func ShowPackage(accessToken, packageId, format string) error {
 	return nil
 }
 
-func ShowAllPackages(accessToken, format, filter string) error {
+func ShowAllPackages(accessToken, format, filter, nameglob string) error {
 
 	pc, err := GetCollection(accessToken, &mashcli.Params{Fields: PACKAGE_ALL_FIELDS},&mashcli.Filter{Filter:filter})
 	if err != nil {
 		return err
+	}
+
+
+	var g glob.Glob
+	if nameglob=="" {
+		g = glob.MustCompile("*")
+	} else {
+		g = glob.MustCompile(nameglob)
 	}
 
 	if format=="table" {
@@ -136,8 +149,11 @@ func ShowAllPackages(accessToken, format, filter string) error {
 		table.SetColMinWidth(2, widthDescription)
 
 		for _, p := range *pc {
-			data := []string{p.Id, p.Name, p.Description, p.Created[:19], p.Updated[:19]}
-			table.Append(data)
+
+			if g.Match(p.Name) {
+				data := []string{p.Id, p.Name, p.Description, p.Created[:19], p.Updated[:19]}
+				table.Append(data)
+			}
 
 		}
 		table.Render()

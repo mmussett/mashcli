@@ -13,7 +13,7 @@ import (
 	"os"
 )
 
-func Nuke(accessToken string) error {
+func Nuke(accessToken string, preview bool) error {
 
 	ac := new([]Applications)
 
@@ -24,9 +24,13 @@ func Nuke(accessToken string) error {
 
 
 	for _, a := range *ac {
-		err := DeleteApplication(accessToken, a.Id)
-		if err != nil {
-			return err
+		if !preview {
+			err := DeleteApplication(accessToken, a.Id)
+			if err != nil {
+				return err
+			}
+		} else {
+			fmt.Println("Preview Deleting Application "+a.Name)
 		}
 	}
 

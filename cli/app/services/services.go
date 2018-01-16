@@ -3,6 +3,7 @@ package services
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/gobwas/glob"
 	"github.com/mmussett/mashcli/cli/app/mashcli"
 
 	"github.com/olekukonko/tablewriter"
@@ -13,7 +14,7 @@ import (
 )
 
 
-func Nuke(accessToken string) error {
+func Nuke(accessToken string, preview bool) error {
 
 	sc := new([]Services)
 
@@ -24,9 +25,13 @@ func Nuke(accessToken string) error {
 
 
 	for _, s := range *sc {
-		err := DeleteService(accessToken, s.Id)
-		if err != nil {
-			return err
+		if !preview {
+			err := DeleteService(accessToken, s.Id)
+			if err != nil {
+				return err
+			}
+		} else {
+			fmt.Println("Preview Deleting Service "+s.Name)
 		}
 	}
 
@@ -117,7 +122,7 @@ func ShowService(accessToken,serviceId, format string) error {
 
 }
 
-func ShowAllServices(accessToken, format, filter string) error {
+func ShowAllServices(accessToken, format, filter, nameglob string) error {
 
 	sc, err := GetCollection(accessToken, &mashcli.Params{Fields: SERVICES_ALL_FIELDS}, &mashcli.Filter{Filter:filter})
 
@@ -125,6 +130,12 @@ func ShowAllServices(accessToken, format, filter string) error {
 		return err
 	}
 
+	var g glob.Glob
+  if nameglob=="" {
+  	g = glob.MustCompile("*")
+  } else {
+  	g = glob.MustCompile(nameglob)
+  }
 
 	if format=="table" {
 		table := tablewriter.NewWriter(os.Stdout)
@@ -183,14 +194,18 @@ func ShowAllServices(accessToken, format, filter string) error {
 		table.SetColMinWidth(4, widthVersion)
 
 		for _, s := range *sc {
-			var desc= ""
-			if len(s.Description) >= maxWidthDescription {
-				desc = s.Description[:maxWidthDescription-2]
-			} else {
-				desc = s.Description
+
+			if g.Match(s.Name) {
+
+				var desc = ""
+				if len(s.Description) >= maxWidthDescription {
+					desc = s.Description[:maxWidthDescription-2]
+				} else {
+					desc = s.Description
+				}
+				data := []string{s.Id, s.Name, desc, strconv.FormatInt(s.QpsLimitOverall, 10), s.Version, s.Created[:19], s.Updated[:19]}
+				table.Append(data)
 			}
-			data := []string{s.Id, s.Name, desc, strconv.FormatInt(s.QpsLimitOverall, 10), s.Version, s.Created[:19], s.Updated[:19]}
-			table.Append(data)
 		}
 		table.Render()
 	} else {

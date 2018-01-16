@@ -13,7 +13,7 @@ import (
 	"strconv"
 )
 
-func Nuke(accessToken string) error {
+func Nuke(accessToken string, preview bool) error {
 
 	pkc := new([]PackageKeys)
 
@@ -24,9 +24,13 @@ func Nuke(accessToken string) error {
 
 
 		for _, pk := range *pkc {
-			err := DeletePackageKey(accessToken, pk.Id)
-			if err != nil {
-				return err
+			if !preview {
+				err := DeletePackageKey(accessToken, pk.Id)
+				if err != nil {
+					return err
+				}
+			} else {
+				fmt.Println("Preview Deleting Package Key "+pk.Apikey)
 			}
 		}
 

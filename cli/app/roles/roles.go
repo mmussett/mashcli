@@ -2,44 +2,93 @@ package roles
 
 import (
 	"encoding/json"
-	"errors"
-	"github.com/mmussett/mashcli/cli/app"
-	"github.com/mmussett/mashcli/cli/app/mashcli"
-	"github.com/olekukonko/tablewriter"
+	"fmt"
 	"io/ioutil"
 	"os"
+
+	"github.com/gobwas/glob"
+	"github.com/mmussett/mashcli/cli/app/mashcli"
+	"github.com/olekukonko/tablewriter"
 )
 
-func ShowRoles(accessToken string, mp *MethodParams) error {
+func Nuke(accessToken string, preview bool) error {
 
-	m, err := Get(accessToken, mp, &mashcli.Params{Fields: ROLES_ALL_FIELDS})
+	rc := new([]Roles)
 
+	rc, err := GetCollection(accessToken, &mashcli.Params{Fields: ROLES_ALL_FIELDS}, &mashcli.Filter{Filter: ""})
 	if err != nil {
 		return err
 	}
 
-	m.PrettyPrint()
+	for _, r := range *rc {
+		if !((r.Name == "Administrator") || (r.Name == "API Manager") || (r.Name == "Call Inspector Administrator") || (r.Name == "Call Inspector User") || (r.Name == "Community Manager") || (r.Name == "Content Manager") || (r.Name == "Everyone") || (r.Name == "Member") || (r.Name == "Portal Manager") || (r.Name == "Program Manager") || (r.Name == "Reports User") || (r.Name == "Support User"))  {
+			if !preview {
+				err := DeleteRole(accessToken, r.Id)
+				if err != nil {
+					return err
+				}
+			} else {
+				fmt.Println("Preview Delete Role "+r.Name)
+			}
+
+		}
+	}
 
 	return nil
 
 }
 
-func ShowAllRoles(accessToken string) error {
+func ShowRole(accessToken, roleId, format string) error {
 
-	a, err := GetCollection(accessToken, &mashcli.Params{Fields: ROLES_ALL_FIELDS})
+	r, err := Get(accessToken, &MethodParams{RoleId: roleId}, &mashcli.Params{Fields: ROLES_ALL_FIELDS})
+	if err != nil {
+		return err
+	}
+
+	if format == "table" {
+		r.PrettyPrint()
+	} else {
+		fmt.Println(r.Marshall())
+	}
+	return nil
+
+}
+
+func ShowAllRoles(accessToken, format, filter, nameglob string) error {
+
+	rc, err := GetCollection(accessToken, &mashcli.Params{Fields: ROLES_ALL_FIELDS}, &mashcli.Filter{Filter: filter})
 
 	if err != nil {
 		return err
 	}
 
-	table := tablewriter.NewWriter(os.Stdout)
-	table.SetHeader([]string{"Role ID", "Name", "Created", "Updated"})
-
-	for _, m := range *a {
-		data := []string{m.Id, m.Name, m.Created[:19], m.Updated[:19]}
-		table.Append(data)
+	var g glob.Glob
+	if nameglob == "" {
+		g = glob.MustCompile("*")
+	} else {
+		g = glob.MustCompile(nameglob)
 	}
-	table.Render()
+
+	if format == "table" {
+		table := tablewriter.NewWriter(os.Stdout)
+		table.SetHeader([]string{"Role ID", "Name", "Created", "Updated"})
+
+		for _, r := range *rc {
+
+			if g.Match(r.Name) {
+				data := []string{r.Id, r.Name, r.Created[:19], r.Updated[:19]}
+				table.Append(data)
+			}
+		}
+		table.Render()
+	} else {
+		b, err := json.MarshalIndent(rc, "", "    ")
+		if err != nil {
+			return err
+		}
+
+		fmt.Println(string(b))
+	}
 
 	return nil
 
@@ -57,48 +106,102 @@ func (m *Roles) PrettyPrint() {
 
 }
 
+func DeleteRole(accessToken, roleId string) error {
 
-func Import(accessToken, filename string, mp *MethodParams) (*Roles, error) {
-
-
-	data, err := ioutil.ReadFile(filename)
+	err := Delete(accessToken, &MethodParams{RoleId: roleId})
 	if err != nil {
-		return nil, err
+		return err
 	}
 
-	a := new(Roles)
-	err = json.Unmarshal(data, &a)
-	if err != nil {
-		return nil, err
-	}
-
-	a.Id = ""
-
-	m, err := a.Update(accessToken, mp)
-	if err != nil {
-		return nil, err
-	}
-
-	return m, nil
+	return nil
 }
 
-func ExportAll(accessToken, path string) error {
+func AddRole(accessToken, name string) error {
 
-	m, err := GetCollection(accessToken, &mashcli.Params{Fields: ROLES_ALL_FIELDS})
+	var r = new(Roles)
 
+	r.Name = name
+
+	r, err := r.Create(accessToken)
 	if err != nil {
 		return err
 	}
 
-	data, err := json.MarshalIndent(m, "", "  ")
+	roleAsString, err := r.Marshall()
 	if err != nil {
 		return err
 	}
-	filename := path + "/roles.json"
 
-	err = ioutil.WriteFile(filename, data, 0644)
+	fmt.Println(roleAsString)
+
+	return nil
+
+}
+
+func Import(accessToken, filename string) (*Roles, error) {
+
+	if len(filename) != 0 {
+		r, err := ReadFile(filename)
+		if err != nil {
+			return nil, err
+		}
+		r.Id = ""
+
+		r, err = r.Create(accessToken)
+		if err != nil {
+			return nil, err
+		}
+
+		r.WriteStdOut()
+		return r, nil
+
+	} else {
+		r, err := ReadStdIn()
+		if err != nil {
+			return nil, err
+		}
+		r.Id = ""
+
+		r, err = r.Create(accessToken)
+		if err != nil {
+			return nil, err
+		}
+
+		r.WriteStdOut()
+		return r, nil
+	}
+
+}
+
+func Export(accessToken, roleId, filename string) error {
+
+	r, err := Get(accessToken, &MethodParams{RoleId: roleId}, &mashcli.Params{Fields: ROLES_ALL_FIELDS})
 	if err != nil {
 		return err
+	}
+
+	if len(filename) != 0 {
+		r.WriteFile(filename)
+	} else {
+		r.WriteStdOut()
+	}
+
+	return nil
+}
+
+func ExportAll(accessToken string, dirPath string) error {
+
+	rc, err := GetCollection(accessToken, &mashcli.Params{Fields: ROLES_ALL_FIELDS}, &mashcli.Filter{Filter: ""})
+	if err != nil {
+		return err
+	}
+
+	for _, r := range *rc {
+		filename := fmt.Sprintf("%s/roles-%s-%s.json", dirPath, r.Id, r.Name)
+		err := r.WriteFile(filename)
+		if err != nil {
+			return err
+		}
 	}
 
 	return nil
@@ -118,7 +221,7 @@ func ImportAll(accessToken, filename string) error {
 		return err
 	}
 
-	for _,p := range *a {
+	for _, p := range *a {
 		p.Id = ""
 		_, err := p.Create(accessToken)
 		if err != nil {
@@ -130,25 +233,24 @@ func ImportAll(accessToken, filename string) error {
 	return nil
 }
 
-func Export(accessToken, path string, mp *MethodParams) error {
+func (r *Roles) WriteStdOut() error {
 
-	valid, err := app.DirExists(path)
-	if err != nil {
+	file := os.Stdout
+
+	b, err := json.MarshalIndent(r, "", " ")
+	if err == nil {
+		s := string(b)
+		file.WriteString(s)
+		file.Sync()
+		return nil
+	} else {
 		return err
 	}
+}
 
-	if !valid {
-		return errors.New("Directory " + path + " does not exist")
-	}
+func (r *Roles) WriteFile(filename string) error {
 
-	m, err := Get(accessToken, mp, &mashcli.Params{Fields: ROLES_ALL_FIELDS})
-	if err != nil {
-		return err
-	}
-
-	filename := path + "/roles-" + m.Id + ".json"
-
-	data, err := json.MarshalIndent(m, "", "  ")
+	data, err := json.MarshalIndent(r, "", "  ")
 	if err != nil {
 		return err
 	}
@@ -156,13 +258,44 @@ func Export(accessToken, path string, mp *MethodParams) error {
 	if err != nil {
 		return err
 	}
-
 	return nil
+
 }
 
-func (a *Roles) Marshall() (string, error) {
+func ReadStdIn() (*Roles, error) {
 
-	b, err := json.MarshalIndent(a, "", "    ")
+	var data []byte
+
+	data, err := ioutil.ReadAll(os.Stdin)
+	if err != nil {
+		return nil, err
+	}
+	s := new(Roles)
+	json.Unmarshal(data, &s)
+	return s, nil
+
+}
+
+func ReadFile(filename string) (*Roles, error) {
+
+	data, err := ioutil.ReadFile(filename)
+	if err != nil {
+		return nil, err
+	}
+
+	a := new(Roles)
+	err = json.Unmarshal(data, &a)
+	if err != nil {
+		return nil, err
+	}
+
+	return a, nil
+
+}
+
+func (r *Roles) Marshall() (string, error) {
+
+	b, err := json.MarshalIndent(r, "", "    ")
 	if err != nil {
 		return "", err
 	}

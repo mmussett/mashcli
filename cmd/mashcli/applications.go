@@ -229,6 +229,11 @@ func doBeforeApplicationsNuke(c *cli.Context) {
 }
 func doActionApplicationsNuke(c *cli.Context) {
 
+	var preview = false
+	if c.IsSet("preview") {
+		preview = c.Bool("preview")
+	}
+
 	m, err := mashcli.Load(c.String("area"))
 	if err != nil {
 		fmt.Printf("unable to load area config: %v", err)
@@ -243,7 +248,7 @@ func doActionApplicationsNuke(c *cli.Context) {
 		return
 	}
 
-	err = applications.Nuke(accessToken)
+	err = applications.Nuke(accessToken, preview)
 	if err != nil {
 		fmt.Printf("can't nuke applications: %v", err)
 		cli.OsExiter(-1)

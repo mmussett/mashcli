@@ -5,38 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5c0bde6-ef59-4287-9ec2-c2ef392dc98f" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/cmd/mashcli/roles.go" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/cli/app/applicationpackagekeys/api.go" afterPath="$PROJECT_DIR$/cli/app/applicationpackagekeys/api.go" />
-      <change beforePath="$PROJECT_DIR$/cli/app/applicationpackagekeys/applicationpackagekeys.go" afterPath="$PROJECT_DIR$/cli/app/applicationpackagekeys/applicationpackagekeys.go" />
-      <change beforePath="$PROJECT_DIR$/cli/app/applications/api.go" afterPath="$PROJECT_DIR$/cli/app/applications/api.go" />
       <change beforePath="$PROJECT_DIR$/cli/app/applications/applications.go" afterPath="$PROJECT_DIR$/cli/app/applications/applications.go" />
-      <change beforePath="$PROJECT_DIR$/cli/app/endpoints/api.go" afterPath="$PROJECT_DIR$/cli/app/endpoints/api.go" />
-      <change beforePath="$PROJECT_DIR$/cli/app/endpoints/endpoints.go" afterPath="$PROJECT_DIR$/cli/app/endpoints/endpoints.go" />
-      <change beforePath="$PROJECT_DIR$/cli/app/memberapplications/api.go" afterPath="$PROJECT_DIR$/cli/app/memberapplications/api.go" />
-      <change beforePath="$PROJECT_DIR$/cli/app/memberapplications/memberapplications.go" afterPath="$PROJECT_DIR$/cli/app/memberapplications/memberapplications.go" />
-      <change beforePath="$PROJECT_DIR$/cli/app/members/api.go" afterPath="$PROJECT_DIR$/cli/app/members/api.go" />
+      <change beforePath="$PROJECT_DIR$/cli/app/areas/areas.go" afterPath="$PROJECT_DIR$/cli/app/areas/areas.go" />
       <change beforePath="$PROJECT_DIR$/cli/app/members/members.go" afterPath="$PROJECT_DIR$/cli/app/members/members.go" />
-      <change beforePath="$PROJECT_DIR$/cli/app/packagekeys/api.go" afterPath="$PROJECT_DIR$/cli/app/packagekeys/api.go" />
       <change beforePath="$PROJECT_DIR$/cli/app/packagekeys/packagekeys.go" afterPath="$PROJECT_DIR$/cli/app/packagekeys/packagekeys.go" />
-      <change beforePath="$PROJECT_DIR$/cli/app/packages/api.go" afterPath="$PROJECT_DIR$/cli/app/packages/api.go" />
       <change beforePath="$PROJECT_DIR$/cli/app/packages/packages.go" afterPath="$PROJECT_DIR$/cli/app/packages/packages.go" />
-      <change beforePath="$PROJECT_DIR$/cli/app/plandesigner/plandesigner.go" afterPath="$PROJECT_DIR$/cli/app/plandesigner/plandesigner.go" />
-      <change beforePath="$PROJECT_DIR$/cli/app/plans/api.go" afterPath="$PROJECT_DIR$/cli/app/plans/api.go" />
       <change beforePath="$PROJECT_DIR$/cli/app/plans/plans.go" afterPath="$PROJECT_DIR$/cli/app/plans/plans.go" />
-      <change beforePath="$PROJECT_DIR$/cli/app/planservices/api.go" afterPath="$PROJECT_DIR$/cli/app/planservices/api.go" />
-      <change beforePath="$PROJECT_DIR$/cli/app/planservices/planservices.go" afterPath="$PROJECT_DIR$/cli/app/planservices/planservices.go" />
-      <change beforePath="$PROJECT_DIR$/cli/app/services/api.go" afterPath="$PROJECT_DIR$/cli/app/services/api.go" />
+      <change beforePath="$PROJECT_DIR$/cli/app/roles/api.go" afterPath="$PROJECT_DIR$/cli/app/roles/api.go" />
+      <change beforePath="$PROJECT_DIR$/cli/app/roles/roles.go" afterPath="$PROJECT_DIR$/cli/app/roles/roles.go" />
       <change beforePath="$PROJECT_DIR$/cli/app/services/services.go" afterPath="$PROJECT_DIR$/cli/app/services/services.go" />
-      <change beforePath="$PROJECT_DIR$/cmd/mashcli/applicationpackagekeys.go" afterPath="$PROJECT_DIR$/cmd/mashcli/applicationpackagekeys.go" />
       <change beforePath="$PROJECT_DIR$/cmd/mashcli/applications.go" afterPath="$PROJECT_DIR$/cmd/mashcli/applications.go" />
-      <change beforePath="$PROJECT_DIR$/cmd/mashcli/endpoints.go" afterPath="$PROJECT_DIR$/cmd/mashcli/endpoints.go" />
+      <change beforePath="$PROJECT_DIR$/cmd/mashcli/area.go" afterPath="$PROJECT_DIR$/cmd/mashcli/area.go" />
       <change beforePath="$PROJECT_DIR$/cmd/mashcli/main.go" afterPath="$PROJECT_DIR$/cmd/mashcli/main.go" />
-      <change beforePath="$PROJECT_DIR$/cmd/mashcli/memberapplications.go" afterPath="$PROJECT_DIR$/cmd/mashcli/memberapplications.go" />
       <change beforePath="$PROJECT_DIR$/cmd/mashcli/members.go" afterPath="$PROJECT_DIR$/cmd/mashcli/members.go" />
       <change beforePath="$PROJECT_DIR$/cmd/mashcli/packagekeys.go" afterPath="$PROJECT_DIR$/cmd/mashcli/packagekeys.go" />
       <change beforePath="$PROJECT_DIR$/cmd/mashcli/packages.go" afterPath="$PROJECT_DIR$/cmd/mashcli/packages.go" />
       <change beforePath="$PROJECT_DIR$/cmd/mashcli/plans.go" afterPath="$PROJECT_DIR$/cmd/mashcli/plans.go" />
-      <change beforePath="$PROJECT_DIR$/cmd/mashcli/planservices.go" afterPath="$PROJECT_DIR$/cmd/mashcli/planservices.go" />
       <change beforePath="$PROJECT_DIR$/cmd/mashcli/services.go" afterPath="$PROJECT_DIR$/cmd/mashcli/services.go" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -58,43 +44,43 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="planservices.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cmd/mashcli/planservices.go">
+      <file leaf-file-name="members.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cli/app/members/members.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="778">
-              <caret line="91" column="87" lean-forward="false" selection-start-line="91" selection-start-column="87" selection-end-line="91" selection-end-column="87" />
+            <state relative-caret-position="396">
+              <caret line="33" column="29" lean-forward="false" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="api.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cli/app/planservices/api.go">
+      <file leaf-file-name="applications.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cli/app/applications/applications.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="34" column="32" lean-forward="true" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
+            <state relative-caret-position="378">
+              <caret line="32" column="27" lean-forward="false" selection-start-line="32" selection-start-column="27" selection-end-line="32" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="planservices.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cli/app/planservices/planservices.go">
+      <file leaf-file-name="roles.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cli/app/roles/roles.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1624">
-              <caret line="122" column="0" lean-forward="true" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+            <state relative-caret-position="179">
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding>
-                <element signature="e#22#210#0" expanded="true" />
+                <element signature="e#15#179#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="plandesigner.go" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/cli/app/plandesigner/plandesigner.go">
+      <file leaf-file-name="roles.go" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cmd/mashcli/roles.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="712">
-              <caret line="140" column="3" lean-forward="true" selection-start-line="140" selection-start-column="3" selection-end-line="140" selection-end-column="3" />
+            <state relative-caret-position="1656">
+              <caret line="101" column="0" lean-forward="true" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -112,9 +98,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>EmptyResponse</find>
-      <find>CreateMethodResponse</find>
-      <find>Delete</find>
       <find>DeleteMember</find>
       <find>PackageKeys</find>
       <find>EndpointCache</find>
@@ -134,7 +117,6 @@
       <find>roleId</find>
       <find>responseFilterId</find>
       <find>&quot;services</find>
-      <find>nuke</find>
       <find>Bool</find>
       <find>members</find>
       <find>packages</find>
@@ -142,6 +124,10 @@
       <find>&quot;endpoints</find>
       <find>memberapp</find>
       <find>packagekeys</find>
+      <find>&quot;packages&quot;</find>
+      <find>&quot;members&quot;</find>
+      <find>services</find>
+      <find>nuke</find>
     </findStrings>
     <replaceStrings>
       <replace>services.wideworldofacme.com</replace>
@@ -178,10 +164,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/cli/app/areas/types.go" />
-        <option value="$PROJECT_DIR$/cli/app/areas/areas.go" />
-        <option value="$PROJECT_DIR$/cmd/mashcli/transform.go" />
-        <option value="$PROJECT_DIR$/cli/app/transform/api.go" />
         <option value="$PROJECT_DIR$/cli/app/transform/types.go" />
         <option value="$PROJECT_DIR$/cli/app/transform/transform.go" />
         <option value="$PROJECT_DIR$/cli/app/mashcli/mashery.go" />
@@ -191,30 +173,19 @@
         <option value="$PROJECT_DIR$/cli/app/cors/cors.go" />
         <option value="$PROJECT_DIR$/cli/app/methods/methods.go" />
         <option value="$PROJECT_DIR$/cli/app/domains/domains.go" />
-        <option value="$PROJECT_DIR$/cmd/mashcli/area.go" />
         <option value="$PROJECT_DIR$/cmd/mashcli/plandesigner.go" />
         <option value="$PROJECT_DIR$/cmd/mashcli/config.go" />
         <option value="$PROJECT_DIR$/cmd/mashcli/api.go" />
         <option value="$PROJECT_DIR$/cli/app/mashcli/config.go" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/cli/app/members/api.go" />
-        <option value="$PROJECT_DIR$/cli/app/members/members.go" />
-        <option value="$PROJECT_DIR$/cmd/mashcli/members.go" />
         <option value="$PROJECT_DIR$/cli/app/services/api.go" />
-        <option value="$PROJECT_DIR$/cli/app/services/services.go" />
-        <option value="$PROJECT_DIR$/cmd/mashcli/services.go" />
-        <option value="$PROJECT_DIR$/cmd/mashcli/packages.go" />
         <option value="$PROJECT_DIR$/cli/app/packages/api.go" />
-        <option value="$PROJECT_DIR$/cli/app/packages/packages.go" />
         <option value="$PROJECT_DIR$/cli/app/plans/api.go" />
-        <option value="$PROJECT_DIR$/cli/app/plans/plans.go" />
-        <option value="$PROJECT_DIR$/cmd/mashcli/plans.go" />
         <option value="$PROJECT_DIR$/cli/app/endpoints/api.go" />
         <option value="$PROJECT_DIR$/cli/app/endpoints/endpoints.go" />
         <option value="$PROJECT_DIR$/cmd/mashcli/endpoints.go" />
         <option value="$PROJECT_DIR$/cli/app/applications/api.go" />
-        <option value="$PROJECT_DIR$/cli/app/applications/applications.go" />
-        <option value="$PROJECT_DIR$/cmd/mashcli/applications.go" />
         <option value="$PROJECT_DIR$/cli/app/applicationpackagekeys/api.go" />
         <option value="$PROJECT_DIR$/cli/app/applicationpackagekeys/applicationpackagekeys.go" />
         <option value="$PROJECT_DIR$/cmd/mashcli/applicationpackagekeys.go" />
@@ -222,13 +193,28 @@
         <option value="$PROJECT_DIR$/cli/app/memberapplications/memberapplications.go" />
         <option value="$PROJECT_DIR$/cmd/mashcli/memberapplications.go" />
         <option value="$PROJECT_DIR$/cli/app/packagekeys/api.go" />
-        <option value="$PROJECT_DIR$/cli/app/packagekeys/packagekeys.go" />
-        <option value="$PROJECT_DIR$/cmd/mashcli/packagekeys.go" />
-        <option value="$PROJECT_DIR$/cmd/mashcli/main.go" />
         <option value="$PROJECT_DIR$/cmd/mashcli/planservices.go" />
         <option value="$PROJECT_DIR$/cli/app/planservices/api.go" />
         <option value="$PROJECT_DIR$/cli/app/planservices/planservices.go" />
         <option value="$PROJECT_DIR$/cli/app/plandesigner/plandesigner.go" />
+        <option value="$PROJECT_DIR$/cli/app/roles/api.go" />
+        <option value="$PROJECT_DIR$/cmd/mashcli/main.go" />
+        <option value="$PROJECT_DIR$/cmd/mashcli/applications.go" />
+        <option value="$PROJECT_DIR$/cmd/mashcli/area.go" />
+        <option value="$PROJECT_DIR$/cmd/mashcli/members.go" />
+        <option value="$PROJECT_DIR$/cmd/mashcli/packagekeys.go" />
+        <option value="$PROJECT_DIR$/cmd/mashcli/packages.go" />
+        <option value="$PROJECT_DIR$/cmd/mashcli/plans.go" />
+        <option value="$PROJECT_DIR$/cmd/mashcli/services.go" />
+        <option value="$PROJECT_DIR$/cli/app/areas/areas.go" />
+        <option value="$PROJECT_DIR$/cli/app/services/services.go" />
+        <option value="$PROJECT_DIR$/cli/app/plans/plans.go" />
+        <option value="$PROJECT_DIR$/cli/app/packages/packages.go" />
+        <option value="$PROJECT_DIR$/cli/app/packagekeys/packagekeys.go" />
+        <option value="$PROJECT_DIR$/cli/app/members/members.go" />
+        <option value="$PROJECT_DIR$/cli/app/applications/applications.go" />
+        <option value="$PROJECT_DIR$/cli/app/roles/roles.go" />
+        <option value="$PROJECT_DIR$/cmd/mashcli/roles.go" />
       </list>
     </option>
   </component>
@@ -315,6 +301,13 @@
               <item name="mashcli" type="462c0819:PsiDirectoryNode" />
               <item name="cli" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="areas" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mashcli" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mashcli" type="462c0819:PsiDirectoryNode" />
+              <item name="cli" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="endpoints" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -378,6 +371,13 @@
               <item name="mashcli" type="462c0819:PsiDirectoryNode" />
               <item name="cli" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="roles" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mashcli" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mashcli" type="462c0819:PsiDirectoryNode" />
+              <item name="cli" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="services" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -413,19 +413,19 @@
     <property name="GO_FMT" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/cmd/mashcli" />
-      <recent name="$PROJECT_DIR$/cmd/services" />
-      <recent name="$PROJECT_DIR$/cli/app" />
-      <recent name="$PROJECT_DIR$/cli/test" />
-      <recent name="$PROJECT_DIR$/cli/app/services/old" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/cmd/mashcli" />
       <recent name="$PROJECT_DIR$/cli/app/transform" />
       <recent name="$PROJECT_DIR$/cli/app/areas" />
       <recent name="$PROJECT_DIR$/cli/app/iodocs" />
       <recent name="$PROJECT_DIR$/cli/app/iodocs/old" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/cmd/mashcli" />
+      <recent name="$PROJECT_DIR$/cmd/services" />
+      <recent name="$PROJECT_DIR$/cli/app" />
+      <recent name="$PROJECT_DIR$/cli/test" />
+      <recent name="$PROJECT_DIR$/cli/app/services/old" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -599,7 +599,8 @@
     <MESSAGE value="Return message if unable to local config" />
     <MESSAGE value="Bug fixed with showall" />
     <MESSAGE value="Added nuke command" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added nuke command" />
+    <MESSAGE value="Added -filter flag on showall sub-command" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added -filter flag on showall sub-command" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -611,7 +612,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/cli/app/services/services.go</url>
-          <line>165</line>
+          <line>176</line>
           <option name="timeStamp" value="64" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
@@ -666,12 +667,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/cli/app/areas/areas.go</url>
-          <line>59</line>
+          <line>98</line>
           <option name="timeStamp" value="152" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/cli/app/areas/areas.go</url>
-          <line>160</line>
+          <line>199</line>
           <option name="timeStamp" value="153" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
@@ -690,8 +691,14 @@
           <properties />
           <option name="timeStamp" value="157" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/cmd/mashcli/members.go</url>
+          <line>134</line>
+          <properties />
+          <option name="timeStamp" value="158" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="158" />
+      <option name="time" value="160" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -705,35 +712,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../../urfave/cli/funcs.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="24" lean-forward="false" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cli/app/endpointcache/endpointcache.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="39" column="8" lean-forward="true" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cli/app/cors/cors.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="39" column="8" lean-forward="true" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cli/app/areas/areas.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2511">
-          <caret line="169" column="0" lean-forward="false" selection-start-line="169" selection-start-column="0" selection-end-line="170" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cli/app/methods/methods.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -767,13 +745,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1170">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmd/mashcli/area.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-130">
-          <caret line="33" column="3" lean-forward="false" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -859,66 +830,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cli/app/services/services.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4120">
-          <caret line="279" column="127" lean-forward="false" selection-start-line="279" selection-start-column="127" selection-end-line="279" selection-end-column="127" />
-          <folding>
-            <element signature="e#18#168#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmd/mashcli/services.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="557">
-          <caret line="81" column="0" lean-forward="false" selection-start-line="81" selection-start-column="0" selection-end-line="84" selection-end-column="3" />
-          <folding>
-            <element signature="e#14#227#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cli/app/packages/api.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="594">
           <caret line="40" column="139" lean-forward="true" selection-start-line="40" selection-start-column="139" selection-end-line="40" selection-end-column="139" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cli/app/packages/packages.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="236" column="108" lean-forward="false" selection-start-line="236" selection-start-column="108" selection-end-line="236" selection-end-column="108" />
-          <folding>
-            <element signature="e#18#206#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmd/mashcli/packages.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="584">
-          <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmd/mashcli/plans.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="761">
-          <caret line="278" column="23" lean-forward="false" selection-start-line="278" selection-start-column="14" selection-end-line="278" selection-end-column="26" />
-          <folding>
-            <element signature="e#14#263#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cli/app/plans/plans.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="253" column="5" lean-forward="false" selection-start-line="253" selection-start-column="5" selection-end-line="253" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -949,39 +864,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cli/app/members/members.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="115" column="0" lean-forward="true" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
-          <folding>
-            <element signature="e#17#167#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cmd/mashcli/plandesigner.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1332">
           <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cli/app/applications/api.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cli/app/applications/applications.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="124" column="0" lean-forward="true" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
-          <folding>
-            <element signature="e#22#210#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -998,17 +885,7 @@
         <state relative-caret-position="-63">
           <caret line="101" column="127" lean-forward="false" selection-start-line="101" selection-start-column="127" selection-end-line="101" selection-end-column="127" />
           <folding>
-            <element signature="e#32#259#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmd/mashcli/applications.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="81" selection-end-column="3" />
-          <folding>
-            <element signature="e#14#211#0" expanded="false" />
+            <element signature="e#32#259#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1047,52 +924,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmd/mashcli/memberapplications.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="43" column="3" lean-forward="false" selection-start-line="43" selection-start-column="3" selection-end-line="43" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cli/app/packagekeys/api.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="576">
           <caret line="39" column="27" lean-forward="true" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cli/app/packagekeys/packagekeys.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="49">
-          <caret line="273" column="46" lean-forward="true" selection-start-line="273" selection-start-column="46" selection-end-line="273" selection-end-column="46" />
-          <folding>
-            <element signature="e#21#210#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmd/mashcli/members.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="129" column="0" lean-forward="false" selection-start-line="129" selection-start-column="0" selection-end-line="132" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmd/mashcli/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="533">
-          <caret line="1234" column="134" lean-forward="false" selection-start-line="1234" selection-start-column="134" selection-end-line="1234" selection-end-column="134" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmd/mashcli/packagekeys.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="607">
-          <caret line="263" column="0" lean-forward="false" selection-start-line="263" selection-start-column="0" selection-end-line="266" selection-end-column="3" />
           <folding />
         </state>
       </provider>
@@ -1108,7 +943,7 @@
     <entry file="file://$PROJECT_DIR$/cli/app/planservices/api.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="486">
-          <caret line="34" column="32" lean-forward="true" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
+          <caret line="34" column="32" lean-forward="false" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -1116,17 +951,185 @@
     <entry file="file://$PROJECT_DIR$/cli/app/planservices/planservices.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1624">
-          <caret line="122" column="0" lean-forward="true" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+          <caret line="122" column="0" lean-forward="false" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
           <folding>
-            <element signature="e#22#210#0" expanded="true" />
+            <element signature="e#22#210#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cli/app/plandesigner/plandesigner.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="712">
-          <caret line="140" column="3" lean-forward="true" selection-start-line="140" selection-start-column="3" selection-end-line="140" selection-end-column="3" />
+        <state relative-caret-position="748">
+          <caret line="142" column="0" lean-forward="false" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmd/mashcli/memberapplications.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="43" column="3" lean-forward="false" selection-start-line="43" selection-start-column="3" selection-end-line="43" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cli/app/roles/api.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="41" column="19" lean-forward="true" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmd/mashcli/area.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="768">
+          <caret line="130" column="41" lean-forward="false" selection-start-line="130" selection-start-column="41" selection-end-line="130" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmd/mashcli/members.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="352" column="41" lean-forward="false" selection-start-line="352" selection-start-column="41" selection-end-line="352" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmd/mashcli/packagekeys.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="397" column="38" lean-forward="false" selection-start-line="397" selection-start-column="38" selection-end-line="397" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmd/mashcli/packages.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="711">
+          <caret line="333" column="42" lean-forward="false" selection-start-line="333" selection-start-column="42" selection-end-line="333" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmd/mashcli/plans.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="711">
+          <caret line="535" column="49" lean-forward="false" selection-start-line="535" selection-start-column="49" selection-end-line="535" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmd/mashcli/services.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="711">
+          <caret line="349" column="42" lean-forward="false" selection-start-line="349" selection-start-column="42" selection-end-line="349" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cli/app/applications/api.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-243">
+          <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cli/app/areas/areas.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="46" column="3" lean-forward="true" selection-start-line="46" selection-start-column="3" selection-end-line="46" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmd/mashcli/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="216" column="26" lean-forward="false" selection-start-line="216" selection-start-column="22" selection-end-line="216" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmd/mashcli/applications.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="711">
+          <caret line="250" column="39" lean-forward="true" selection-start-line="250" selection-start-column="39" selection-end-line="250" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cli/app/services/services.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="33" column="27" lean-forward="false" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
+          <folding>
+            <element signature="e#18#194#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cli/app/plans/plans.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="33" column="27" lean-forward="false" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
+          <folding>
+            <element signature="e#15#215#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cli/app/packages/packages.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="33" column="27" lean-forward="false" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
+          <folding>
+            <element signature="e#18#232#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cli/app/packagekeys/packagekeys.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="32" column="29" lean-forward="false" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cli/app/members/members.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="33" column="29" lean-forward="false" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cli/app/applications/applications.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="32" column="27" lean-forward="false" selection-start-line="32" selection-start-column="27" selection-end-line="32" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cli/app/roles/roles.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="e#15#179#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmd/mashcli/roles.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1656">
+          <caret line="101" column="0" lean-forward="true" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
           <folding />
         </state>
       </provider>

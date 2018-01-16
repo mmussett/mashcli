@@ -376,6 +376,11 @@ func doBeforePackageKeysNuke(c *cli.Context) {
 
 func doActionPackageKeysNuke(c *cli.Context) {
 
+	var preview = false
+	if c.IsSet("preview") {
+		preview = c.Bool("preview")
+	}
+
 	m, err := mashcli.Load(c.String("area"))
 	if err != nil {
 		fmt.Printf("unable to load area config: %v", err)
@@ -390,7 +395,7 @@ func doActionPackageKeysNuke(c *cli.Context) {
 		return
 	}
 
-	err = packagekeys.Nuke(accessToken)
+	err = packagekeys.Nuke(accessToken, preview)
 	if err != nil {
 		fmt.Printf("can't nuke package keys: %v", err)
 		cli.OsExiter(-1)

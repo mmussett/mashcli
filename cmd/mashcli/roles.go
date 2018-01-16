@@ -2,17 +2,16 @@ package main
 
 import (
 	"fmt"
-
 	"github.com/Songmu/prompter"
-	// "fmt"
+	"github.com/mmussett/mashcli/cli/app/roles"
+
 	"github.com/mmussett/mashcli/cli/app/mashcli"
-	"github.com/mmussett/mashcli/cli/app/services"
 	"github.com/urfave/cli"
 	"github.com/fatih/color"
-	// "os"
+
 )
 
-func doBeforeServiceShow(c *cli.Context) {
+func doBeforeRolesShow(c *cli.Context) {
 	if len(c.Args()) == 0 {
 		fmt.Println("mashcli: argument mismatch")
 		fmt.Println("Run 'mashcli service show --help' for usage")
@@ -20,10 +19,10 @@ func doBeforeServiceShow(c *cli.Context) {
 	}
 }
 
-func doActionServiceShow(c *cli.Context) {
+func doActionRolesShow(c *cli.Context) {
 
-	// Arg0 = Service ID
-	var serviceId = c.Args().Get(0)
+	// Arg0 = Role ID
+	var roleId = c.Args().Get(0)
 
 	m, err := mashcli.Load(c.String("area"))
 	if err != nil {
@@ -44,9 +43,9 @@ func doActionServiceShow(c *cli.Context) {
 		format = c.String("output")
 	}
 
-	err = services.ShowService(accessToken, serviceId, format)
+	err = roles.ShowRole(accessToken, roleId, format)
 	if err != nil {
-		fmt.Printf("can't show service: %v", err)
+		fmt.Printf("can't show role: %v", err)
 		cli.OsExiter(-1)
 		return
 	}
@@ -55,10 +54,10 @@ func doActionServiceShow(c *cli.Context) {
 
 }
 
-func doBeforeServiceShowAll(c *cli.Context) {
+func doBeforeRolesShowAll(c *cli.Context) {
 }
 
-func doActionServiceShowAll(c *cli.Context) {
+func doActionRolesShowAll(c *cli.Context) {
 
 	m, err := mashcli.Load(c.String("area"))
 	if err != nil {
@@ -90,9 +89,9 @@ func doActionServiceShowAll(c *cli.Context) {
 	}
 
 
-	err = services.ShowAllServices(accessToken, format, filter, nameglob)
+	err = roles.ShowAllRoles(accessToken, format, filter, nameglob)
 	if err != nil {
-		fmt.Printf("can't show all services: %v", err)
+		fmt.Printf("can't show all roles: %v", err)
 		cli.OsExiter(-1)
 		return
 	}
@@ -101,7 +100,7 @@ func doActionServiceShowAll(c *cli.Context) {
 
 }
 
-func doBeforeServiceAdd(c *cli.Context) {
+func doBeforeRolesAdd(c *cli.Context) {
 
 	if len(c.Args()) == 0 {
 		fmt.Println("mashcli: argument mismatch")
@@ -111,24 +110,12 @@ func doBeforeServiceAdd(c *cli.Context) {
 
 }
 
-func doActionServiceAdd(c *cli.Context) {
+func doActionRolesAdd(c *cli.Context) {
 
-	var name, version, description = "", "", ""
-	var aggregateQps int64 = 0
+	var name =  ""
 
 	name = c.Args().Get(0)
 
-	if c.IsSet("version") {
-		version = c.String("version")
-	}
-
-	if c.IsSet("description") {
-		description = c.String("description")
-	}
-
-	if c.IsSet("qps") {
-		aggregateQps = c.Int64("qps")
-	}
 
 	m, err := mashcli.Load(c.String("area"))
 	if err != nil {
@@ -144,9 +131,9 @@ func doActionServiceAdd(c *cli.Context) {
 		return
 	}
 
-	err = services.AddService(accessToken, name, version, description, aggregateQps)
+	err = roles.AddRole(accessToken, name)
 	if err != nil {
-		fmt.Printf("can't add service: %v", err)
+		fmt.Printf("can't add role: %v", err)
 		cli.OsExiter(-1)
 		return
 	}
@@ -154,19 +141,19 @@ func doActionServiceAdd(c *cli.Context) {
 	return
 }
 
-func doBeforeServiceExport(c *cli.Context) {
+func doBeforeRolesExport(c *cli.Context) {
 
 	if len(c.Args()) == 0 {
 		fmt.Println("mashcli: argument mismatch")
-		fmt.Println("Run 'mashcli service export --help' for usage")
+		fmt.Println("Run 'mashcli roles export --help' for usage")
 		cli.OsExiter(-1)
 	}
 
 }
 
-func doActionServiceExport(c *cli.Context) {
+func doActionRolesExport(c *cli.Context) {
 
-	var serviceId = c.Args().Get(0)
+	var roleId = c.Args().Get(0)
 	var filename = ""
 
 	if c.IsSet("filename") {
@@ -187,19 +174,19 @@ func doActionServiceExport(c *cli.Context) {
 		return
 	}
 
-	err = services.Export(accessToken, serviceId, filename)
+	err = roles.Export(accessToken, roleId, filename)
 	if err != nil {
-		fmt.Printf("can't export service: %v", err)
+		fmt.Printf("can't export roles: %v", err)
 		cli.OsExiter(-1)
 		return
 	}
 
 }
 
-func doBeforeServiceImport(c *cli.Context) {
+func doBeforeRolesImport(c *cli.Context) {
 }
 
-func doActionServiceImport(c *cli.Context) {
+func doActionRolesImport(c *cli.Context) {
 
 	var filename = ""
 
@@ -221,27 +208,27 @@ func doActionServiceImport(c *cli.Context) {
 		return
 	}
 
-	_, err = services.Import(accessToken, filename)
+	_, err = roles.Import(accessToken, filename)
 	if err != nil {
-		fmt.Printf("can't import service: %v", err)
+		fmt.Printf("can't import role: %v", err)
 		cli.OsExiter(-1)
 		return
 	}
 }
 
-func doBeforeServiceDelete(c *cli.Context) {
+func doBeforeRolesDelete(c *cli.Context) {
 
 	if len(c.Args()) != 1 {
 		fmt.Println("mashcli: argument mismatch")
-		fmt.Println("Run 'mashcli service delete --help' for usage")
+		fmt.Println("Run 'mashcli roles delete --help' for usage")
 		cli.OsExiter(-1)
 	}
 
 }
 
-func doActionServiceDelete(c *cli.Context) {
+func doActionRolesDelete(c *cli.Context) {
 
-	var serviceId = c.Args().Get(0)
+	var roleId = c.Args().Get(0)
 
 	m, err := mashcli.Load(c.String("area"))
 	if err != nil {
@@ -257,68 +244,30 @@ func doActionServiceDelete(c *cli.Context) {
 		return
 	}
 
-	err = services.DeleteService(accessToken, serviceId)
+	err = roles.DeleteRole(accessToken, roleId)
 	if err != nil {
-		fmt.Printf("can't delete service: %v", err)
+		fmt.Printf("can't delete role: %v", err)
 		cli.OsExiter(-1)
 		return
 	}
 
 }
 
-func doBeforeServiceClone(c *cli.Context) {
 
-	if len(c.Args()) != 1 {
-		fmt.Println("mashcli: argument mismatch")
-		fmt.Println("Run 'mashcli service clone --help' for usage")
-		cli.OsExiter(-1)
-	}
-
-}
-
-func doActionServiceClone(c *cli.Context) {
-
-	var serviceId = c.Args().Get(0)
-
-	m, err := mashcli.Load(c.String("area"))
-	if err != nil {
-		fmt.Printf("unable to load area config: %v", err)
-		cli.OsExiter(-1)
-		return
-	}
-
-	accessToken, err := m.FetchOAuthToken()
-	if err != nil {
-		fmt.Printf("unable to fetch oauth token: %v", err)
-		cli.OsExiter(-1)
-		return
-	}
-
-	err = services.CloneService(accessToken, serviceId)
-	if err != nil {
-		fmt.Printf("can't clone service: %v", err)
-		cli.OsExiter(-1)
-		return
-	}
-
-	return
-
-}
-
-func doBeforeServiceNuke(c *cli.Context) {
+func doBeforeRolesNuke(c *cli.Context) {
 
 
 	if !c.BoolT("force") {
 		red := color.New(color.FgRed)
 		boldRed := red.Add(color.Bold)
 
-		confirm := prompter.YN(boldRed.Sprint("WARNING: Do you really want to nuke all services?"), false)
+		confirm := prompter.YN(boldRed.Sprint("WARNING: Do you really want to nuke all roles?"), false)
 		if !confirm {
 			cli.OsExiter(-1)
 			return
 		}
 
-		confirm = prompter.YN(boldRed.Sprint("WARNING: Terrible things will happen. Do you really-really want to nuke all services?"), false)
+		confirm = prompter.YN(boldRed.Sprint("WARNING: Terrible things will happen. Do you really-really want to nuke all roles?"), false)
 		if !confirm {
 			cli.OsExiter(-1)
 			return
@@ -326,7 +275,7 @@ func doBeforeServiceNuke(c *cli.Context) {
 	}
 
 }
-func doActionServiceNuke(c *cli.Context) {
+func doActionRolesNuke(c *cli.Context) {
 
 	var preview = false
 	if c.IsSet("preview") {
@@ -347,9 +296,9 @@ func doActionServiceNuke(c *cli.Context) {
 		return
 	}
 
-	err = services.Nuke(accessToken, preview)
+	err = roles.Nuke(accessToken, preview)
 	if err != nil {
-		fmt.Printf("can't nuke services: %v", err)
+		fmt.Printf("can't nuke roles: %v", err)
 		cli.OsExiter(-1)
 		return
 	}

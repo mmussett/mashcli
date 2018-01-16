@@ -81,7 +81,12 @@ func doActionPackagesShowAll(c *cli.Context) {
 		filter = c.String("filter")
 	}
 
-	err = packages.ShowAllPackages(accessToken,format,filter)
+	var nameglob = ""
+	if c.IsSet("name") {
+		nameglob = c.String("name")
+	}
+
+	err = packages.ShowAllPackages(accessToken,format,filter,nameglob)
 	if err != nil {
 		fmt.Printf("can't show all packages: %v", err)
 		cli.OsExiter(-1)
@@ -307,6 +312,11 @@ func doBeforePackageNuke(c *cli.Context) {
 }
 func doActionPackageNuke(c *cli.Context) {
 
+	var preview = false
+	if c.IsSet("preview") {
+		preview = c.Bool("preview")
+	}
+
 	m, err := mashcli.Load(c.String("area"))
 	if err != nil {
 		fmt.Printf("unable to load area config: %v", err)
@@ -321,7 +331,7 @@ func doActionPackageNuke(c *cli.Context) {
 		return
 	}
 
-	err = packages.Nuke(accessToken)
+	err = packages.Nuke(accessToken, preview)
 	if err != nil {
 		fmt.Printf("can't nuke packages: %v", err)
 		cli.OsExiter(-1)

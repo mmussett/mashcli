@@ -4,7 +4,12 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/dghubble/sling"
+	"github.com/mmussett/mashcli/cli/app/applications"
 	"github.com/mmussett/mashcli/cli/app/mashcli"
+	"github.com/mmussett/mashcli/cli/app/members"
+	"github.com/mmussett/mashcli/cli/app/packagekeys"
+	"github.com/mmussett/mashcli/cli/app/roles"
+	"github.com/mmussett/mashcli/cli/app/services"
 	"github.com/pkg/errors"
 	"io"
 	"io/ioutil"
@@ -18,6 +23,40 @@ const (
 	servicesResourceCollectionPath = "v3/rest/services"
 	iodocsResourcePath             = "v3/rest/iodocs/services/%s"
 )
+
+func Nuke(accessToken string, preview bool) error {
+
+	err := packagekeys.Nuke(accessToken, preview)
+	if err != nil {
+		return err
+	}
+
+	err = applications.Nuke(accessToken, preview)
+	if err != nil {
+		return err
+	}
+
+	err = members.Nuke(accessToken, preview)
+	if err != nil {
+		return err
+	}
+
+	err = services.Nuke(accessToken, preview)
+	if err != nil {
+		return err
+	}
+
+
+	err = roles.Nuke(accessToken, preview)
+	if err != nil {
+		return err
+	}
+
+	return nil
+
+
+}
+
 
 func deleteService(accessToken, serviceId string) error {
 

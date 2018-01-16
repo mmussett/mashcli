@@ -14,7 +14,7 @@ import (
 	"strconv"
 )
 
-func Nuke(accessToken, packageId string) error {
+func Nuke(accessToken, packageId string, preview bool) error {
 
 	pc := new([]Plan)
 
@@ -25,9 +25,13 @@ func Nuke(accessToken, packageId string) error {
 
 
 	for _, p := range *pc {
-		err := DeletePlan(accessToken, packageId, p.Id)
-		if err != nil {
-			return err
+		if !preview {
+			err := DeletePlan(accessToken, packageId, p.Id)
+			if err != nil {
+				return err
+			}
+		} else {
+			fmt.Println("Preview Deleting Plan "+p.Name)
 		}
 	}
 

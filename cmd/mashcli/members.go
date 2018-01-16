@@ -132,7 +132,18 @@ func doActionMembersShowAll(c *cli.Context) {
 		filter = c.String("filter")
 	}
 
-	err = members.ShowAllMembers(accessToken,format,filter)
+	var fieldToGlob, globString = "",""
+	if c.IsSet("username") {
+		fieldToGlob = "username"
+		globString = c.String("username")
+	}
+
+	if c.IsSet("email") {
+		fieldToGlob = "email"
+		globString = c.String("email")
+	}
+
+	err = members.ShowAllMembers(accessToken,format,filter,fieldToGlob, globString)
 	if err != nil {
 		fmt.Printf("can't show all members: %v", err)
 		cli.OsExiter(-1)
@@ -320,6 +331,11 @@ func doBeforeMembersNuke(c *cli.Context) {
 }
 func doActionMembersNuke(c *cli.Context) {
 
+	var preview = false
+	if c.IsSet("preview") {
+		preview = c.Bool("preview")
+	}
+
 	m, err := mashcli.Load(c.String("area"))
 	if err != nil {
 		fmt.Printf("unable to load area config: %v", err)
@@ -334,7 +350,7 @@ func doActionMembersNuke(c *cli.Context) {
 		return
 	}
 
-	err = members.Nuke(accessToken)
+	err = members.Nuke(accessToken, preview)
 	if err != nil {
 		fmt.Printf("can't nuke members: %v", err)
 		cli.OsExiter(-1)

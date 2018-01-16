@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"strings"
 
+	"github.com/gobwas/glob"
 	"github.com/mmussett/mashcli/cli/app/mashcli"
 	"github.com/olekukonko/tablewriter"
 
@@ -12,7 +13,7 @@ import (
 	"os"
 )
 
-func Nuke(accessToken string) error {
+func Nuke(accessToken string, preview bool) error {
 
 	mc := new([]Members)
 
@@ -24,10 +25,13 @@ func Nuke(accessToken string) error {
 
 	for _, m := range *mc {
 		if !(m.Username == "MasheryInternalOAuth2") && !(strings.Contains(strings.ToLower(m.LastName),"admin")) && !(strings.Contains(strings.ToLower(m.Email),"admin")){
-			fmt.Println(m.Username)
-			err := DeleteMember(accessToken, m.Id)
-			if err != nil {
-				return err
+			if !preview {
+				err := DeleteMember(accessToken, m.Id)
+				if err != nil {
+					return err
+				}
+			} else {
+				fmt.Println("Preview Deleting Member "+m.Username)
 			}
 		}
 	}
@@ -35,6 +39,7 @@ func Nuke(accessToken string) error {
 	return nil
 
 }
+
 func SetStatus(accessToken, memberId, status string ) error {
 
 	_, err := Get(accessToken, &MethodParams{MemberId:memberId},&mashcli.Params{Fields:MEMBERS_ALL_FIELDS})
@@ -107,20 +112,40 @@ func ShowMember(accessToken, memberId, format string) error {
 
 }
 
-func ShowAllMembers(accessToken, format, filter string) error {
+func ShowAllMembers(accessToken, format, filter, fieldToGlob, globString string) error {
 
 	ac, err := GetCollection(accessToken, &mashcli.Params{Fields: MEMBERS_ALL_FIELDS},&mashcli.Filter{Filter:filter})
 	if err != nil {
 		return err
 	}
 
+	var g glob.Glob
+	if globString=="" {
+		g = glob.MustCompile("*")
+	} else {
+		g = glob.MustCompile(globString)
+	}
+
 	if format=="table" {
 		table := tablewriter.NewWriter(os.Stdout)
 		table.SetHeader([]string{"Member ID", "Username", "Email", "Display Name", "Company", "First Name", "Last Name", "Status", "Created", "Updated"})
 
+		var globVal = ""
 		for _, m := range *ac {
-			data := []string{m.Id, m.Username, m.Email, m.DisplayName, m.Company, m.FirstName, m.LastName, m.AreaStatus, m.Created[:19], m.Updated[:19]}
-			table.Append(data)
+
+			switch fieldToGlob {
+			case "email":
+				globVal = m.Email
+			case "username":
+				globVal = m.Username
+			}
+
+			if g.Match(globVal) {
+					data := []string{m.Id, m.Username, m.Email, m.DisplayName, m.Company, m.FirstName, m.LastName, m.AreaStatus, m.Created[:19], m.Updated[:19]}
+					table.Append(data)
+					}
+
+
 		}
 		table.Render()
 	} else {
