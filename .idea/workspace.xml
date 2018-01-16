@@ -5,25 +5,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5c0bde6-ef59-4287-9ec2-c2ef392dc98f" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/cmd/mashcli/roles.go" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/cli/app/applications/applications.go" afterPath="$PROJECT_DIR$/cli/app/applications/applications.go" />
-      <change beforePath="$PROJECT_DIR$/cli/app/areas/areas.go" afterPath="$PROJECT_DIR$/cli/app/areas/areas.go" />
-      <change beforePath="$PROJECT_DIR$/cli/app/members/members.go" afterPath="$PROJECT_DIR$/cli/app/members/members.go" />
-      <change beforePath="$PROJECT_DIR$/cli/app/packagekeys/packagekeys.go" afterPath="$PROJECT_DIR$/cli/app/packagekeys/packagekeys.go" />
-      <change beforePath="$PROJECT_DIR$/cli/app/packages/packages.go" afterPath="$PROJECT_DIR$/cli/app/packages/packages.go" />
-      <change beforePath="$PROJECT_DIR$/cli/app/plans/plans.go" afterPath="$PROJECT_DIR$/cli/app/plans/plans.go" />
-      <change beforePath="$PROJECT_DIR$/cli/app/roles/api.go" afterPath="$PROJECT_DIR$/cli/app/roles/api.go" />
-      <change beforePath="$PROJECT_DIR$/cli/app/roles/roles.go" afterPath="$PROJECT_DIR$/cli/app/roles/roles.go" />
-      <change beforePath="$PROJECT_DIR$/cli/app/services/services.go" afterPath="$PROJECT_DIR$/cli/app/services/services.go" />
-      <change beforePath="$PROJECT_DIR$/cmd/mashcli/applications.go" afterPath="$PROJECT_DIR$/cmd/mashcli/applications.go" />
-      <change beforePath="$PROJECT_DIR$/cmd/mashcli/area.go" afterPath="$PROJECT_DIR$/cmd/mashcli/area.go" />
-      <change beforePath="$PROJECT_DIR$/cmd/mashcli/main.go" afterPath="$PROJECT_DIR$/cmd/mashcli/main.go" />
-      <change beforePath="$PROJECT_DIR$/cmd/mashcli/members.go" afterPath="$PROJECT_DIR$/cmd/mashcli/members.go" />
-      <change beforePath="$PROJECT_DIR$/cmd/mashcli/packagekeys.go" afterPath="$PROJECT_DIR$/cmd/mashcli/packagekeys.go" />
-      <change beforePath="$PROJECT_DIR$/cmd/mashcli/packages.go" afterPath="$PROJECT_DIR$/cmd/mashcli/packages.go" />
-      <change beforePath="$PROJECT_DIR$/cmd/mashcli/plans.go" afterPath="$PROJECT_DIR$/cmd/mashcli/plans.go" />
-      <change beforePath="$PROJECT_DIR$/cmd/mashcli/services.go" afterPath="$PROJECT_DIR$/cmd/mashcli/services.go" />
+      <change beforePath="$PROJECT_DIR$/cli/app/applicationpackagekeys/applicationpackagekeys_test.go" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/applications/applications_test.go" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/cors/cors_test.go" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/domains/domains_test.go" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/endpointcache/endpointcache_test.go" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/endpoints/endpoints_test.go" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/errormessages/errormessages_test.go" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/errorsets/errorsets_test.go" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/iodocs/iodocs_test.go" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/memberapplications/memberapplications_test.go" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/members/members.old" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/members/members_test.go" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/methods/methods_test.go" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/packagekeys/packagekeys_test.go" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/packages/packages_test.go" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/plandesigner/plandesigner_test.go" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/plans/plans_test.go" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/planservices/planservices_test.go" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/publicdomains/publicdomains_test.go" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/publichostnames/publichostnames_test.go" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/responsefilters/responsefilters_test.go" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/roles/roles_test.go" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/scheduledmaintenanceevent/scheduledmaintenanceevent_test.go" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/securityprofiles/securityprofiles_test.go" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/servicecache/servicecache_test.go" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/serviceroles/serviceroles_test.go" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/services/old/api.old" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/services/old/constants.old" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/services/old/services.old" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/services/old/types.old" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/services/services_test.go" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/systemdomainauthentication/systemdomainauthentication_test.go" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/systemdomains/systemdomains_test.go" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cli/app/systemhostnames/systemhostnames_test.go" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -44,16 +60,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="members.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cli/app/members/members.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="33" column="29" lean-forward="false" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="applications.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cli/app/applications/applications.go">
           <provider selected="true" editor-type-id="text-editor">
@@ -308,7 +314,49 @@
               <item name="mashcli" type="462c0819:PsiDirectoryNode" />
               <item name="cli" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="cors" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mashcli" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mashcli" type="462c0819:PsiDirectoryNode" />
+              <item name="cli" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="domains" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mashcli" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mashcli" type="462c0819:PsiDirectoryNode" />
+              <item name="cli" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="endpointcache" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mashcli" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mashcli" type="462c0819:PsiDirectoryNode" />
+              <item name="cli" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="endpoints" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mashcli" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mashcli" type="462c0819:PsiDirectoryNode" />
+              <item name="cli" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="errormessages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mashcli" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mashcli" type="462c0819:PsiDirectoryNode" />
+              <item name="cli" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="errorsets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mashcli" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mashcli" type="462c0819:PsiDirectoryNode" />
+              <item name="cli" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="iodocs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mashcli" type="b2602c69:ProjectViewProjectNode" />
@@ -330,6 +378,20 @@
               <item name="cli" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="members" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mashcli" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mashcli" type="462c0819:PsiDirectoryNode" />
+              <item name="cli" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="methods" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mashcli" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mashcli" type="462c0819:PsiDirectoryNode" />
+              <item name="cli" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="oauth" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mashcli" type="b2602c69:ProjectViewProjectNode" />
@@ -371,6 +433,27 @@
               <item name="mashcli" type="462c0819:PsiDirectoryNode" />
               <item name="cli" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="publicdomains" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mashcli" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mashcli" type="462c0819:PsiDirectoryNode" />
+              <item name="cli" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="publichostnames" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mashcli" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mashcli" type="462c0819:PsiDirectoryNode" />
+              <item name="cli" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="responsefilters" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mashcli" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mashcli" type="462c0819:PsiDirectoryNode" />
+              <item name="cli" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="roles" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -378,7 +461,63 @@
               <item name="mashcli" type="462c0819:PsiDirectoryNode" />
               <item name="cli" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="scheduledmaintenanceevent" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mashcli" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mashcli" type="462c0819:PsiDirectoryNode" />
+              <item name="cli" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="securityprofiles" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mashcli" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mashcli" type="462c0819:PsiDirectoryNode" />
+              <item name="cli" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="servicecache" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mashcli" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mashcli" type="462c0819:PsiDirectoryNode" />
+              <item name="cli" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="serviceroles" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mashcli" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mashcli" type="462c0819:PsiDirectoryNode" />
+              <item name="cli" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="services" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mashcli" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mashcli" type="462c0819:PsiDirectoryNode" />
+              <item name="cli" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="systemdomainauthentication" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mashcli" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mashcli" type="462c0819:PsiDirectoryNode" />
+              <item name="cli" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="systemdomains" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mashcli" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mashcli" type="462c0819:PsiDirectoryNode" />
+              <item name="cli" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="systemhostnames" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mashcli" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mashcli" type="462c0819:PsiDirectoryNode" />
+              <item name="cli" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="transform" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mashcli" type="b2602c69:ProjectViewProjectNode" />
@@ -600,7 +739,8 @@
     <MESSAGE value="Bug fixed with showall" />
     <MESSAGE value="Added nuke command" />
     <MESSAGE value="Added -filter flag on showall sub-command" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added -filter flag on showall sub-command" />
+    <MESSAGE value="Added -preview flag on nuke sub-command&#10;Added roles command" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added -preview flag on nuke sub-command&#10;Added roles command" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -614,31 +754,6 @@
           <url>file://$PROJECT_DIR$/cli/app/services/services.go</url>
           <line>176</line>
           <option name="timeStamp" value="64" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/cli/app/packages/packages_test.go</url>
-          <line>154</line>
-          <option name="timeStamp" value="95" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/cli/app/packages/packages_test.go</url>
-          <line>112</line>
-          <option name="timeStamp" value="96" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/cli/app/packages/packages_test.go</url>
-          <line>96</line>
-          <option name="timeStamp" value="97" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/cli/app/packagekeys/packagekeys_test.go</url>
-          <line>40</line>
-          <option name="timeStamp" value="115" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/cli/app/endpointcache/endpointcache_test.go</url>
-          <line>61</line>
-          <option name="timeStamp" value="129" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/cli/app/applicationpackagekeys/applicationpackagekeys.go</url>
@@ -712,13 +827,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/cli/app/methods/methods.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.config" />
     <entry file="file://$PROJECT_DIR$/cli/test/testutils.go">
       <provider selected="true" editor-type-id="text-editor">
@@ -767,6 +875,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
           <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1077,7 +1186,7 @@
         <state relative-caret-position="594">
           <caret line="33" column="27" lean-forward="false" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
           <folding>
-            <element signature="e#15#215#0" expanded="true" />
+            <element signature="e#15#215#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1130,6 +1239,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1656">
           <caret line="101" column="0" lean-forward="true" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cli/app/domains/domains_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
