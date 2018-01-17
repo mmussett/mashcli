@@ -138,7 +138,7 @@ Enter a value:
 
 * [api](#api)
 * [applications](#applications)
-* [applicationpackgekeys](#applicationpackgekeys)
+* [applicationpackagekeys](#applicationpackagekeys)
 * [area](#area)
 * [members](#members)
 * [memberapplications](#memberapplications)
@@ -166,7 +166,7 @@ mashcli api import [command options] filename PublicDomain
 
 Options:
 
-#### **applications**
+### **applications**
 
 * [delete](#applications-delete)
 * [export](#applications-export)
@@ -174,7 +174,7 @@ Options:
 * [show](#applications-show)
 * [showall](#applications-showall)
 
-##### <a id="applications-delete">*delete*</a>
+#### applications delete
 Delete an Application in Mashery.
 
 Usage:
@@ -187,7 +187,7 @@ Command Options:
 
 * --area value, -a value    Area Configuration Name. If not provided defaults to mashcli.config
 
-##### <a id="applications-export">*export*</a>
+#### applications export
 Export an Application specification from Mashery.
 
 Usage:
@@ -236,7 +236,7 @@ $ mashcli applications export d985067d-1568-4152-94f7-82acdbf4537d
 $ mashcli applications export -f out.json d985067d-1568-4152-94f7-82acdbf4537d
 ```
 
-##### <a id="applications-import">*import*</a>
+#### applications import
 Import an Application specification in to Mashery. Should be used to only update an existing Application.
 If you need to create a new Application from specification please use [memberapplications import] command.
 
@@ -252,7 +252,7 @@ Command Options:
 * --filename value, -f value  The import Filename for the Application Definition
 
 
-##### <a id="applications_show">*show*</a>
+#### applications show
 Show a specific Application in Mashery.
 
 Usage:
@@ -278,7 +278,7 @@ $ mashcli applications show bd096f15-dad4-4318-b2ba-09ba6b1cf831
 ```
 
 
-##### <a id="applications_showall">*showall*</a>
+#### applications showall
 Show a list of all known Applications in Mashery.
 
 Usage:
@@ -340,51 +340,79 @@ $ mashcli applications showall -filter 'username:mmussett'
 
 ### applicationpackagekeys
 
-* showall
+* [showall](#applicationpackagekeys-showall)
+
+#### applicationpackagekeys show
 
 ### area
 
-* backup
-* restore
+* [backup](#area-backup)
+* [restore](#area-restore)
 
+#### area backup
+#### area restore
 
 ### members
 
-* add
-* delete
-* export
-* import
-* setstatus
-* show
-* showall
+* [add](#members-add)
+* [delete](#members-delete)
+* [export](#members-export)
+* [import](#members-import)
+* [setstatus](#members-setstatus)
+* [show](#members-show)
+* [showall](#members-showall)
+
+#### members add
+#### members delete
+#### members export
+#### members import
+#### members setstatus
+#### members show
+#### members showall
 
 ### memberapplications
 
-* export
-* import
-* showall
+* [add](#memberapplications-add)
+* [export](#memberapplications-export)
+* [import](#memberapplications-import)
+* [showall](#memberapplications-showall)
 
-### *services*
+#### memberapplications add
+#### memberapplications export
+#### memberapplications import
 
-* add
-* clone
-* delete
-* export
-* import
-* show
-* show all
+### services
 
-##### _show all services_
-Show a list of all know services
+* [add](#services-add)
+* [clone](#services-clone)
+* [delete](#services-delete)
+* [export](#services-export)
+* [import](#services-import)
+* [show](#services-show)
+* [show all](#services-showall)
+
+#### services add
+#### services clone
+#### services delete
+#### services export
+#### services import
+#### services show
+#### services showall
+
+Show a list of all know Mashery Services.
+
 Usage:
 ```json
 mashcli services showall [command options] [arguments...]
 ```
 Options:
 * --area value, -a value    Area Configuration Name
-* --output value, -o value  Output format table or json
+* --filter value, -f value  Filter expression as colon-separated name/value pair i.e -filter version:1.0
+* --name value, -n value    Filter on name matching pattern i.e. -name *test*
+* --output value, -o value  Output format table or json)
 
-Example
+Examples:
+
 ```json
 $ mashcli services showall
 +--------------------------+--------------------------------------------------+--------------------------------+----------+------------------+---------------------+---------------------+
@@ -409,7 +437,38 @@ $ mashcli services showall -output json
     }
 ]
 ```
-##### _show service_
+
+```json
+$ mashcli services showall -name Order*
++--------------------------+---------------------+------------------------------+----------+------------------+---------------------+---------------------+
+|        SERVICE ID        |        NAME         |         DESCRIPTION          | AGG  QPS |     VERSION      |       CREATED       |       UPDATED       |
++--------------------------+---------------------+------------------------------+----------+------------------+---------------------+---------------------+
+| vvtxed3rkx86nda3k3tdhq5v | Order API           |                              |        0 |              1.0 | 2017-09-15T09:34:50 | 2017-09-15T09:37:57 |
+| q9eus5ub73xx5k8zqejrj9z5 | Order API           |                              |        0 |              1.0 | 2018-01-04T11:32:34 | 2018-01-04T11:32:34 |
++--------------------------+---------------------+------------------------------+----------+------------------+---------------------+---------------------+
+```
+
+```json
+$ mashcli services showall -name Order*
++--------------------------+---------------------+------------------------------+----------+------------------+---------------------+---------------------+
+|        SERVICE ID        |        NAME         |         DESCRIPTION          | AGG  QPS |     VERSION      |       CREATED       |       UPDATED       |
++--------------------------+---------------------+------------------------------+----------+------------------+---------------------+---------------------+
+| vvtxed3rkx86nda3k3tdhq5v | Order API           |                              |        0 |              1.0 | 2017-09-15T09:34:50 | 2017-09-15T09:37:57 |
+| q9eus5ub73xx5k8zqejrj9z5 | Order API           |                              |        0 |              1.0 | 2018-01-04T11:32:34 | 2018-01-04T11:32:34 |
++--------------------------+---------------------+------------------------------+----------+------------------+---------------------+---------------------+
+```
+
+```json
+$ mashcli services showall --filter "version:1.0" -name ACME*
++--------------------------+----------------------+----------------------------------+----------+------------------+---------------------+---------------------+
+|        SERVICE ID        |         NAME         |           DESCRIPTION            | AGG  QPS |     VERSION      |       CREATED       |       UPDATED       |
++--------------------------+----------------------+----------------------------------+----------+------------------+---------------------+---------------------+
+| vx6f3xyyr99sahfwkbvw82dm | ACME                 |                                  |        0 |              1.0 | 2017-05-16T19:15:21 | 2017-07-17T11:58:19 |
+| gykda32cdzsu257fyju9x52m | ACME OAuth           |                                  |       10 |              1.0 | 2017-08-04T08:42:50 | 2017-11-13T22:24:12 |
++--------------------------+----------------------+----------------------------------+----------+------------------+---------------------+---------------------+
+```
+
+#### show service
 Show service
 Usage:
 ```json
@@ -446,58 +505,75 @@ $ mashcli services show 9dyupurdkktfwstmrw3z45vg -output json
 
 ### endpoints
 
-* add
-* clone
-* delete
-* export
-* import
-* show
-* showall
+* [add](#endpoints-add)
+* [clone](#endpoints-clone)
+* [delete](#endpoints-delete)
+* [export](#endpoints-export)
+* [import](#endpoints-import)
+* [show](#endpoints-show)
+* [showall](#endpoints-showall)
+
+#### endpoints add
+#### endpoints clone
+#### endpoints delete
+#### endpoints export
+#### endpoints import
+#### endpoints show
+#### endpoints showall
 
 ### packages
 
-* add
-* clone
-* delete
-* export
-* import
-* show
-* showall
+* [add](#packages-add)
+* [clone](#packages-clone)
+* [delete](#packages-delete)
+* [export](#packages-export)
+* [import](#packages-import)
+* [show](#packages-show)
+* [showall](#packages-showall)
 
 ### packagekeys
 
-* delete
-* export
-* import
-* setrates
-* setstatus
-* show
-* showall
+* [delete](#packagekeys-delete)
+* [export](#packagekeys-export)
+* [import](#packagekeys-import)
+* [setrates](#packagekeys-setrates)
+* [setstatus](#packagekeys-setstatus)
+* [show](#packagekeys-show)
+* [showall](#packagekeys-showall)
 
 ### plans
 
-* add
-* clone
-* delete
-* export
-* import
-* setkeyprops
-* setratelimits
-* setstatus
-* show
-* showall
+* [add](#plans-add)
+* [clone](#plans-clone)
+* [delete](#plans-delete)
+* [export](#plans-export)
+* [import](#plans-import)
+* [setkeyprops](#plans-setkeyprops)
+* [setratelimits](#plans-setratelimits)
+* [setstatus](#plans-setstatus)
+* [show](#plans-show)
+* [showall](#plans-showall)
 
 ### planservices
 
-* show
-* showall
+* [show](#planservices-show)
+* [showall](#planservices-showall)
+
+#### planservices show
+#### planservices showall
 
 ### plandesigner
 
-* add
-* delete
+* [add](#plandesigner-add)
+* [delete](#plandesigner-delete)
+
+#### plandesigner add
+#### plandesigner delete
 
 ### config
 
-* show
-* add
+* [show](#config-show)
+* [add](#config-add)
+
+#### config show
+#### config add
