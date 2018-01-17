@@ -96,3 +96,38 @@ func doActionMemberApplicationsExport(c *cli.Context) {
 	}
 
 }
+
+
+func doBeforeMemberApplicationsImport(c *cli.Context) {
+}
+
+func doActionMemberApplicationsImport(c *cli.Context) {
+
+	var memberId = c.Args().Get(0)
+	var filename = ""
+
+	if c.IsSet("filename") {
+		filename = c.String("filename")
+	}
+
+	m, err := mashcli.Load(c.String("area"))
+	if err != nil {
+		fmt.Printf("unable to load area config: %v", err)
+		cli.OsExiter(-1)
+		return
+	}
+
+	accessToken, err := m.FetchOAuthToken()
+	if err != nil {
+		fmt.Printf("unable to fetch oauth token: %v", err)
+		cli.OsExiter(-1)
+		return
+	}
+
+	_, err = memberapplications.Import(accessToken, memberId, filename)
+	if err != nil {
+		fmt.Printf("can't import memberapplication: %v", err)
+		cli.OsExiter(-1)
+		return
+	}
+}

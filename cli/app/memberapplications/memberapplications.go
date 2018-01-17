@@ -91,6 +91,108 @@ func Export(accessToken, memberId, filename string) error {
 }
 
 
+func Import(accessToken, memberId, filename string)  (*MemberApplications, error) {
+
+	if len(filename) != 0 {
+		ma, err := ReadFile(filename)
+		if err != nil {
+			return nil, err
+		}
+
+		ma.Id = ""
+		ma.Created = ""
+		ma.Updated = ""
+
+		ma, err = ma.Create(accessToken,&MethodParams{MemberId:memberId})
+		if err != nil {
+			return nil, err
+		}
+
+		ma.WriteStdOut()
+		return ma, nil
+
+	} else {
+		ma, err := ReadStdIn()
+		if err != nil {
+			return nil, err
+		}
+
+		ma.Id = ""
+		ma.Created = ""
+		ma.Updated = ""
+
+		ma, err = ma.Create(accessToken,&MethodParams{MemberId:memberId})
+		if err != nil {
+			return nil, err
+		}
+
+		ma.WriteStdOut()
+		return ma, nil
+	}
+
+}
+
+func (ma *MemberApplications) WriteStdOut() error {
+
+	file := os.Stdout
+
+	b, err := json.MarshalIndent(ma, "", " ")
+	if err == nil {
+		s := string(b)
+		file.WriteString(s)
+		file.Sync()
+		return nil
+	} else {
+		return err
+	}
+}
+
+func (ma *MemberApplications) WriteFile(filename string) error {
+
+	data, err := json.MarshalIndent(ma, "", "  ")
+	if err != nil {
+		return err
+	}
+	err = ioutil.WriteFile(filename, data, 0644)
+	if err != nil {
+		return err
+	}
+	return nil
+
+}
+
+func ReadStdIn() (*MemberApplications, error) {
+
+	var data []byte
+
+	data, err := ioutil.ReadAll(os.Stdin)
+	if err != nil {
+		return nil, err
+	}
+	ma := new(MemberApplications)
+	json.Unmarshal(data, &ma)
+	return ma, nil
+
+}
+
+func ReadFile(filename string) (*MemberApplications, error) {
+
+	data, err := ioutil.ReadFile(filename)
+	if err != nil {
+		return nil, err
+	}
+
+	ma := new(MemberApplications)
+	err = json.Unmarshal(data, &ma)
+	if err != nil {
+		return nil, err
+	}
+
+	return ma, nil
+
+}
+
+
 func (a *MemberApplications) Marshall() (string, error) {
 
 	b, err := json.MarshalIndent(a, "", "    ")

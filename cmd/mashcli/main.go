@@ -424,6 +424,25 @@ func main() {
 					},
 				},
 				{
+					Name:      "import",
+					Aliases: []string{"i"},
+					Usage:     "import memberapplication",
+					ArgsUsage: "MemberID",
+					Flags: []cli.Flag{
+						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
+						cli.StringFlag{Name: "filename, f", Usage: "The import Filename for the Member Application Definition"},
+					},
+					Before: func(c *cli.Context) error {
+						doBeforeMemberApplicationsImport(c)
+						return nil
+					},
+					Action: func(c *cli.Context) error {
+						doActionMemberApplicationsImport(c)
+						return nil
+					},
+				},
+
+				{
 					Name:  "showall",
 					Aliases: []string{"sa"},
 					Usage: "Show member applications",
