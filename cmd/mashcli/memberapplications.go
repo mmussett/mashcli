@@ -7,6 +7,50 @@ import (
 	"github.com/urfave/cli"
 )
 
+func doBeforeMemberApplicationsAdd(c *cli.Context) {
+
+	if len(c.Args()) != 3 {
+		fmt.Println("mashcli: argument mismatch")
+		fmt.Println("Run 'mashcli memberapplications add --help' for usage")
+		cli.OsExiter(-1)
+	}
+
+}
+
+func doActionMemberApplicationsAdd(c *cli.Context) {
+
+	var  name, description, username  = "", "", ""
+
+	username = c.Args().Get(0)
+	name = c.Args().Get(1)
+	description = c.Args().Get(2)
+
+
+	m, err := mashcli.Load(c.String("area"))
+	if err != nil {
+		fmt.Printf("unable to load area config: %v", err)
+		cli.OsExiter(-1)
+		return
+	}
+
+	accessToken, err := m.FetchOAuthToken()
+	if err != nil {
+		fmt.Printf("unable to fetch oauth token: %v", err)
+		cli.OsExiter(-1)
+		return
+	}
+
+	err = memberapplications.AddMemberApplication(accessToken, username, name, description)
+	if err != nil {
+		fmt.Printf("can't add member application: %v", err)
+		cli.OsExiter(-1)
+		return
+	}
+
+	return
+}
+
+
 func doBeforeMemberApplicationsShow(c *cli.Context) {
 	if len(c.Args()) != 1 {
 		fmt.Println("mashcli: argument mismatch")

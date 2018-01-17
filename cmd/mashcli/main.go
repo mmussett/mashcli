@@ -406,6 +406,23 @@ func main() {
 			Usage: "Manage application-related operations for the current user. For additional help, use 'mashcli memberapplications --help'",
 			Subcommands: []cli.Command{
 				{
+					Name:      "add",
+					Aliases: []string{"a"},
+					Usage:     "Add a member application",
+					ArgsUsage: "MemberUsername ApplicationName ApplicationDescription",
+					Flags: []cli.Flag{
+						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
+					},
+					Before: func(c *cli.Context) error {
+						doBeforeMemberApplicationsAdd(c)
+						return nil
+					},
+					Action: func(c *cli.Context) error {
+						doActionMemberApplicationsAdd(c)
+						return nil
+					},
+				},
+				{
 					Name:  "export",
 					Aliases: []string{"e"},
 					Usage: "Export application",

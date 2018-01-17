@@ -2,6 +2,7 @@ package members
 
 import (
 	"encoding/json"
+	"errors"
 	"strings"
 
 	"github.com/gobwas/glob"
@@ -12,6 +13,23 @@ import (
 	"io/ioutil"
 	"os"
 )
+
+func GetMemberIdFromUsername(accessToken, username string) (string, error) {
+
+	mc := new([]Members)
+
+	mc, err := GetCollection(accessToken, &mashcli.Params{Fields: MEMBERS_ALL_FIELDS}, &mashcli.Filter{Filter:"username:"+username})
+	if err != nil {
+		return "",err
+	}
+
+	if len(*mc) == 1 {
+		m := (*mc)[0]
+		return m.Id, nil
+	} else {
+		return "", errors.New("member not found")
+	}
+}
 
 func Nuke(accessToken string, preview bool) error {
 

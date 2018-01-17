@@ -5,11 +5,43 @@ import (
 	"fmt"
 
 	"github.com/mmussett/mashcli/cli/app/mashcli"
+	"github.com/mmussett/mashcli/cli/app/members"
 	"github.com/olekukonko/tablewriter"
 
 	"io/ioutil"
 	"os"
 )
+
+func AddMemberApplication(accessToken, username, name, description string) error {
+
+	// Go and fetch member
+
+	memberId, err := members.GetMemberIdFromUsername(accessToken,username)
+	if err != nil {
+		return err
+	}
+
+	var ma = new(MemberApplications)
+
+	ma.Name = name
+	ma.Description = description
+	ma.Username = username
+
+
+	ma, err = ma.Create(accessToken,&MethodParams{MemberId:memberId})
+	if err != nil {
+		return err
+	}
+
+	memberApplicationAsString, err := ma.Marshall()
+	if err != nil {
+		return err
+	}
+
+	fmt.Println(memberApplicationAsString)
+
+	return nil
+}
 
 func ShowMemberApplications(accessToken, memberId, format, filter string) error {
 
