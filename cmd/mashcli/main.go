@@ -40,7 +40,7 @@ func main() {
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 					},
-					ArgsUsage: "filename PublicDomain",
+					ArgsUsage: "filename publicdomain",
 					Before: func(c *cli.Context) error {
 						doBeforeSwaggerImport(c)
 						return nil
@@ -80,7 +80,7 @@ func main() {
 					Usage: "Export application",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
-						cli.StringFlag{Name: "filename", Usage: "The export Filename for the Package Definition"},
+						cli.StringFlag{Name: "filename, f", Usage: "The export Filename for the Application Definition"},
 					},
 					ArgsUsage: "ApplicationID",
 					Before: func(c *cli.Context) error {
@@ -99,7 +99,7 @@ func main() {
 					ArgsUsage: "",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
-						cli.StringFlag{Name: "filename", Usage: "The import Filename for the Package Definition"},
+						cli.StringFlag{Name: "filename, f", Usage: "The import Filename for the Application Definition"},
 					},
 					Before: func(c *cli.Context) error {
 						doBeforeApplicationsImport(c)
@@ -296,7 +296,7 @@ func main() {
 					Usage: "Export specific member",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
-						cli.StringFlag{Name: "filename", Usage: "The export Filename for the Member Definition"},
+						cli.StringFlag{Name: "filename, f", Usage: "The export Filename for the Member Definition"},
 					},
 					ArgsUsage: "PackageID",
 					Before: func(c *cli.Context) error {
@@ -315,7 +315,7 @@ func main() {
 					ArgsUsage: "",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
-						cli.StringFlag{Name: "filename", Usage: "The import Filename for the Member Definition"},
+						cli.StringFlag{Name: "filename, f", Usage: "The import Filename for the Member Definition"},
 					},
 					Before: func(c *cli.Context) error {
 						doBeforeMembersImport(c)
@@ -411,7 +411,7 @@ func main() {
 					Usage: "Export application",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
-						cli.StringFlag{Name: "filename", Usage: "The export Filename for the Package Definition"},
+						cli.StringFlag{Name: "filename, f", Usage: "The export Filename for the Package Definition"},
 					},
 					ArgsUsage: "MemberID",
 					Before: func(c *cli.Context) error {
@@ -492,7 +492,7 @@ func main() {
 					Usage:     "Export a role",
 					ArgsUsage: "RoleID",
 					Flags: []cli.Flag{
-						cli.StringFlag{Name: "filename", Usage: "The export Filename for the Service Definition"},
+						cli.StringFlag{Name: "filename, f", Usage: "The export Filename for the Service Definition"},
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 					},
 					Before: func(c *cli.Context) error {
@@ -509,7 +509,7 @@ func main() {
 					Aliases: []string{"i"},
 					Usage: "Import a role",
 					Flags: []cli.Flag{
-						cli.StringFlag{Name: "filename", Usage: "The filename containing the Service Definition"},
+						cli.StringFlag{Name: "filename, f", Usage: "The filename containing the Service Definition"},
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 					},
 					Before: func(c *cli.Context) error {
@@ -642,7 +642,7 @@ func main() {
 					Usage:     "Export a service",
 					ArgsUsage: "ServiceID",
 					Flags: []cli.Flag{
-						cli.StringFlag{Name: "filename", Usage: "The export Filename for the Service Definition"},
+						cli.StringFlag{Name: "filename, f", Usage: "The export Filename for the Service Definition"},
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 					},
 					Before: func(c *cli.Context) error {
@@ -659,7 +659,7 @@ func main() {
 					Aliases: []string{"i"},
 					Usage: "Import a service",
 					Flags: []cli.Flag{
-						cli.StringFlag{Name: "filename", Usage: "The filename containing the Service Definition"},
+						cli.StringFlag{Name: "filename, f", Usage: "The filename containing the Service Definition"},
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 					},
 					Before: func(c *cli.Context) error {
@@ -790,7 +790,7 @@ func main() {
 					ArgsUsage: "ServiceID EndpointID",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
-						cli.StringFlag{Name: "filename", Usage: "The export Filename for the Endpoint Definition"},
+						cli.StringFlag{Name: "filename, f", Usage: "The export Filename for the Endpoint Definition"},
 					},
 					Before: func(c *cli.Context) error {
 						doBeforeEndpointsExport(c)
@@ -808,7 +808,7 @@ func main() {
 					ArgsUsage: "ServiceID",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
-						cli.StringFlag{Name: "filename", Usage: "The import Filename for the Endpoint Definition"},
+						cli.StringFlag{Name: "filename, f", Usage: "The import Filename for the Endpoint Definition"},
 					},
 					Before: func(c *cli.Context) error {
 						doBeforeEndpointsImport(c)
@@ -920,7 +920,7 @@ func main() {
 					Usage: "Export specific package",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
-						cli.StringFlag{Name: "filename", Usage: "The export Filename for the Package Definition"},
+						cli.StringFlag{Name: "filename, f", Usage: "The export Filename for the Package Definition"},
 					},
 					ArgsUsage: "PackageID",
 					Before: func(c *cli.Context) error {
@@ -1034,7 +1034,7 @@ func main() {
 					Usage: "Export specific package key",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
-						cli.StringFlag{Name: "filename", Usage: "The export Filename for the Package Key Definition"},
+						cli.StringFlag{Name: "filename, f", Usage: "The export Filename for the Package Key Definition"},
 					},
 					ArgsUsage: "PackageID",
 					Before: func(c *cli.Context) error {
@@ -1053,7 +1053,7 @@ func main() {
 					ArgsUsage: "",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
-						cli.StringFlag{Name: "filename", Usage: "The import Filename for the Package Key Definition"},
+						cli.StringFlag{Name: "filename, f", Usage: "The import Filename for the Package Key Definition"},
 					},
 					Before: func(c *cli.Context) error {
 						doBeforePackageKeysImport(c)
@@ -1217,7 +1217,7 @@ func main() {
 					Usage: "Export specific plan",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
-						cli.StringFlag{Name: "filename", Usage: "The export Filename for the Package Definition"},
+						cli.StringFlag{Name: "filename, f", Usage: "The export Filename for the Package Definition"},
 					},
 					ArgsUsage: "PackageID PlanID",
 					Before: func(c *cli.Context) error {
@@ -1236,7 +1236,7 @@ func main() {
 					ArgsUsage: "PackageID",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
-						cli.StringFlag{Name: "filename", Usage: "The import Filename for the Package Definition"},
+						cli.StringFlag{Name: "filename, f", Usage: "The import Filename for the Package Definition"},
 					},
 					Before: func(c *cli.Context) error {
 						doBeforePlanImport(c)
