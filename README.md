@@ -136,7 +136,27 @@ Enter a value:
 
 ### Commands
 
-#### api
+* [api](#api)
+* [applications](#applications)
+* [applicationpackgekeys](#applicationpackgekeys)
+* [area](#area)
+* [members](#members)
+* [memberapplications](#memberapplications)
+* [roles](#roles)
+* [services](#services)
+* [endpoints](#endpoints)
+* [packages](#packages)
+* [packagekeys](#packagekeys)
+* [plans](#plans)
+* [planservices](#planservices)
+* [plandesigner](#plandesigner)
+* [config](#config)
+* [help](#help)
+
+
+### api
+
+* [import](#api_import)
 
 Usage:
 
@@ -146,25 +166,189 @@ mashcli api import [command options] filename PublicDomain
 
 Options:
 
-#### applications
+#### **applications**
 
-* delete
-* export
-* import
-* show
+* [delete](#applications-delete)
+* [export](#applications-export)
+* [import](#applications-import)
+* [show](#applications-show)
+* [showall](#applications-showall)
+
+##### <a id="applications-delete">*delete*</a>
+Delete an Application in Mashery.
+
+Usage:
+
+```json
+mashcli applications delete [command options] ApplicationID
+```
+
+Command Options:
+
+* --area value, -a value    Area Configuration Name. If not provided defaults to mashcli.config
+
+##### <a id="applications-export">*export*</a>
+Export an Application specification from Mashery.
+
+Usage:
+
+```json
+mashcli applications export [command options] ApplicationID
+```
+
+Command Options:
+
+* --area value, -a value      Area Configuration Name. If not provided defaults to mashcli.config
+* --filename value, -f value  The export Filename for the Application Definition
+
+*Omission of the --filename option will output the definition to stdout.*
+
+Examples:
+
+```json
+$ mashcli applications export d985067d-1568-4152-94f7-82acdbf4537d
+{
+ "id": "d985067d-1568-4152-94f7-82acdbf4537d",
+ "created": "2017-12-12T14:06:45Z",
+ "updated": "2017-12-14T10:03:43Z",
+ "username": "mashclitest",
+ "name": "mashclitest_application",
+ "description": "mashcli test",
+ "type": "WEB_WIDGET",
+ "commercial": true,
+ "ads": true,
+ "adsSystem": "mashclitest",
+ "usageModel": "OPEN_VERY_WIDE",
+ "tags": "mashcli",
+ "notes": "mashcli",
+ "howDidYouHear": "mashcli",
+ "preferredProtocol": "REST",
+ "preferredOutput": "JSON",
+ "externalId": "mashcli",
+ "uri": "http://mashcli",
+ "status": "draft",
+ "isPackaged": true,
+ "oauthRedirectUri": "http://mashcli"
+}
+```
+
+```json
+$ mashcli applications export -f out.json d985067d-1568-4152-94f7-82acdbf4537d
+```
+
+##### <a id="applications-import">*import*</a>
+Import an Application specification in to Mashery. Should be used to only update an existing Application.
+If you need to create a new Application from specification please use [memberapplications import] command.
+
+Usage:
+
+```json
+mashcli applications import [command options]
+```
+
+Command Options:
+
+* --area value, -a value      Area Configuration Name. If not provided defaults to mashcli.config
+* --filename value, -f value  The import Filename for the Application Definition
+
+
+##### <a id="applications_show">*show*</a>
+Show a specific Application in Mashery.
+
+Usage:
+
+```json
+mashcli applications show [command options]
+```
+
+Options:
+
+* --area value, -a value    Area Configuration Name. If not provided defaults to mashcli.config
+* --output value, -o value  Output format value 'table' or 'json'. Default is 'table'
+
+Examples:
+
+```json
+$ mashcli applications show bd096f15-dad4-4318-b2ba-09ba6b1cf831
++--------------------------------------+-------------+---------------------------+--------------+-------------+--------+-------------+------------+--------------+----------------+----------+--------+---------------------+---------------------+
+|                  ID                  | EXTERNAL ID |           NAME            | DESCRIPTION  |  USERNAME   | STATUS |    TYPE     | COMMERCIAL | RUNS ADVERTS |     USAGE      | PROTOCOL | OUTPUT |       CREATED       |       UPDATED       |
++--------------------------------------+-------------+---------------------------+--------------+-------------+--------+-------------+------------+--------------+----------------+----------+--------+---------------------+---------------------+
+| bd096f15-dad4-4318-b2ba-09ba6b1cf831 |             | Weather Application       |              | mmussett    | draft  |             | OFF        | OFF          |                |          |        | 2017-09-15T08:44:01 | 2017-09-15T08:44:01 |
++--------------------------------------+-------------+---------------------------+--------------+-------------+--------+-------------+------------+--------------+----------------+----------+--------+---------------------+---------------------+
+```
+
+
+##### <a id="applications_showall">*showall*</a>
+Show a list of all known Applications in Mashery.
+
+Usage:
+
+```json
+mashcli applications showall [command options]
+```
+
+Options:
+
+* --area value, -a value    Area Configuration Name. If not provided defaults to mashcli.config
+* --filter value, -f value  Filter expression as colon-separated name/value pair i.e -filter 'name:Basic'
+* --output value, -o value  Output format value 'table' or 'json'. Default is 'table'
+
+Examples:
+
+```json
+$ mashcli applications showall
++--------------------------------------+-------------+---------------------------+--------------+-------------+--------+-------------+------------+--------------+----------------+----------+--------+---------------------+---------------------+
+|                  ID                  | EXTERNAL ID |           NAME            | DESCRIPTION  |  USERNAME   | STATUS |    TYPE     | COMMERCIAL | RUNS ADVERTS |     USAGE      | PROTOCOL | OUTPUT |       CREATED       |       UPDATED       |
++--------------------------------------+-------------+---------------------------+--------------+-------------+--------+-------------+------------+--------------+----------------+----------+--------+---------------------+---------------------+
+| bd096f15-dad4-4318-b2ba-09ba6b1cf831 |             | Weather Application       |              | mmussett    | draft  |             | OFF        | OFF          |                |          |        | 2017-09-15T08:44:01 | 2017-09-15T08:44:01 |
+| ff6e6a14-1e42-4b25-a474-b013704a86ca |             | ACME Application          |              | mmussett    | draft  |             | OFF        | OFF          |                |          |        | 2017-12-08T10:10:21 | 2017-12-08T10:10:21 |
++--------------------------------------+-------------+---------------------------+--------------+-------------+--------+-------------+------------+--------------+----------------+----------+--------+---------------------+---------------------+
+```
+
+```json
+$ mashcli applications showall -output json
+[
+    {
+        "id": "bd096f15-dad4-4318-b2ba-09ba6b1cf831",
+        "created": "2017-09-15T08:44:01Z",
+        "updated": "2017-09-15T08:44:01Z",
+        "username": "mmussett",
+        "name": "Weather Application",
+        "status": "draft",
+        "isPackaged": true
+    },
+    {
+        "id": "ff6e6a14-1e42-4b25-a474-b013704a86ca",
+        "created": "2017-12-08T10:10:21Z",
+        "updated": "2017-12-08T10:10:21Z",
+        "username": "mmussett",
+        "name": "ACME Application",
+        "status": "draft",
+        "isPackaged": true
+    }
+]
+```
+```json
+$ mashcli applications showall -filter 'username:mmussett'
++--------------------------------------+-------------+---------------------------+-------------+----------+--------+------+------------+--------------+-------+----------+--------+---------------------+---------------------+
+|                  ID                  | EXTERNAL ID |           NAME            | DESCRIPTION | USERNAME | STATUS | TYPE | COMMERCIAL | RUNS ADVERTS | USAGE | PROTOCOL | OUTPUT |       CREATED       |       UPDATED       |
++--------------------------------------+-------------+---------------------------+-------------+----------+--------+------+------------+--------------+-------+----------+--------+---------------------+---------------------+
+| bd096f15-dad4-4318-b2ba-09ba6b1cf831 |             | Weather Application       |             | mmussett | draft  |      | OFF        | OFF          |       |          |        | 2017-09-15T08:44:01 | 2017-09-15T08:44:01 |
+| ff6e6a14-1e42-4b25-a474-b013704a86ca |             | ACME Application          |             | mmussett | draft  |      | OFF        | OFF          |       |          |        | 2017-12-08T10:10:21 | 2017-12-08T10:10:21 |
++--------------------------------------+-------------+---------------------------+-------------+----------+--------+------+------------+--------------+-------+----------+--------+---------------------+---------------------+
+```
+
+### applicationpackagekeys
+
 * showall
 
-#### applicationpackagekeys
-
-* showall
-
-#### area
+### area
 
 * backup
 * restore
 
 
-#### members
+### members
 
 * add
 * delete
@@ -174,12 +358,13 @@ Options:
 * show
 * showall
 
-#### memberapplications
+### memberapplications
 
 * export
+* import
 * showall
 
-#### *services*
+### *services*
 
 * add
 * clone
@@ -259,7 +444,7 @@ $ mashcli services show 9dyupurdkktfwstmrw3z45vg -output json
 ```
 
 
-#### endpoints
+### endpoints
 
 * add
 * clone
@@ -269,7 +454,7 @@ $ mashcli services show 9dyupurdkktfwstmrw3z45vg -output json
 * show
 * showall
 
-#### packages
+### packages
 
 * add
 * clone
@@ -279,7 +464,7 @@ $ mashcli services show 9dyupurdkktfwstmrw3z45vg -output json
 * show
 * showall
 
-#### packagekeys
+### packagekeys
 
 * delete
 * export
@@ -289,7 +474,7 @@ $ mashcli services show 9dyupurdkktfwstmrw3z45vg -output json
 * show
 * showall
 
-#### plans
+### plans
 
 * add
 * clone
@@ -302,17 +487,17 @@ $ mashcli services show 9dyupurdkktfwstmrw3z45vg -output json
 * show
 * showall
 
-#### planservices
+### planservices
 
 * show
 * showall
 
-#### plandesigner
+### plandesigner
 
 * add
 * delete
 
-#### config
+### config
 
 * show
 * add
