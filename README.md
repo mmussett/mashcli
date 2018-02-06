@@ -5,24 +5,33 @@ This repository contains the source code for TIBCO Mashery CLI tool (mashcli).
 
 Written in golang v1.9
 
-## Installation and Build
+Compiling from source
+---------------------
 
-To download mashcli, simply run:
-```
-$go get github.com/mmussett/mashcli
+To download mashcli and dependencies, simply run:
+```bash
+$ go get github.com/urfave/cli
+$ go get github.com/dghubble/sling
+$ go get github.com/olekukonko/tablewriter
+$ go get github.com/tcnksm/go-input
+$ go get github.com/mmussett/mashcli
+$ cd $GOPATH/github.com/mmussett/mashcli
+$ go install
 ```
 
 To build and install mashcli, simply run:
-```
+```bash
 go install ./...
 ```
 
-### Supported platforms
-mashcli was built and tested on Go v1.9 on  OS X.
+Supported platforms
+-------------------
+mashcli was built and tested on Go v1.9 on OS X.
 
 
-### Getting Started
-```
+Getting Started
+---------------
+```bash
 $ mashcli
 NAME:
    mashcli - TIBCO Mashery - Command Line Interface
@@ -103,8 +112,8 @@ Example:
 #### Adding your Mashery Area configuration
 
 To create your area configuration, simply run:
-```
-$mashcli config add
+```bash
+$ mashcli config add
 ```
 Follow on-screen prompts and provide the following following:
 ```
