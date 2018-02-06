@@ -16,7 +16,7 @@ $ go get github.com/olekukonko/tablewriter
 $ go get github.com/tcnksm/go-input
 $ go get github.com/mmussett/mashcli
 $ cd $GOPATH/github.com/mmussett/mashcli
-$ go install
+$ go install ./...
 ```
 
 To build and install mashcli, simply run:
@@ -70,7 +70,8 @@ COPYRIGHT:
    2017 Mark Mussett.
 ```
 
-### Setup
+Setup
+-----
 
 mashcli must be provided with your Mashery Area configuration before being able to work. 
 Once provide mashcli will be able to authenticate and use the Mashery platform APIs.
@@ -90,8 +91,7 @@ Each configuration file contains a json object that follows the following format
   "apikeysecret": "",
   "name": "",
   "area": "",
-  "tm": "",
-  "ccurl": ""
+  "tm": ""
 }
 ```
 
@@ -104,8 +104,7 @@ Example:
   "apikeysecret": "8pYXg7HQXa",
   "name": "demo",
   "area": "c7e8e2d5-ff91-42eb-9885-10f2aa2cc3f5",
-  "tm": "demo.api.mashery.com",
-  "ccurl": "https://demo.admin.mashery.com/control-center"
+  "tm": "demo.api.mashery.com"
 }
 ```
 
@@ -125,9 +124,6 @@ Enter a value:
 
 Traffic Manager?
 Enter a value:
-
-Control Centre URL?
-Enter a value (Default is https://<<area>>.admin.mashery.com/control-center): 
 
 API Key?
 Enter a value: 

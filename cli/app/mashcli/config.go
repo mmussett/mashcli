@@ -2,9 +2,9 @@ package mashcli
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/olekukonko/tablewriter"
 	"github.com/tcnksm/go-input"
-	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -22,7 +22,7 @@ func UserHomeDir() string {
 	return os.Getenv("HOME")
 }
 
-func New(userid string, password string, apikey string, apikeysecret string, name string, area string, tm string, ccurl string) *Config {
+func New(userid, password, apikey, apikeysecret, name, area, tm string) *Config {
 	return &Config{
 		UserId:       userid,
 		Password:     password,
@@ -31,7 +31,6 @@ func New(userid string, password string, apikey string, apikeysecret string, nam
 		Name:         name,
 		Area:         area,
 		Tm:           tm,
-		CcUrl:        ccurl,
 	}
 }
 
@@ -45,16 +44,16 @@ func (c *Config) Save() error {
 
 	configPath := filepath.Join(UserHomeDir(), "/.mashcli")
 	if _, err := os.Stat(configPath); os.IsNotExist(err) {
-		os.MkdirAll(configPath,os.ModePerm)
+		os.MkdirAll(configPath, os.ModePerm)
 	}
 
-	filePathname := filepath.Join(configPath,filename)
+	filePathname := filepath.Join(configPath, filename)
 	return ioutil.WriteFile(filePathname, bytes, 0644)
 }
 
 func Load(name string) (*Config, error) {
 
-	var filename, filePathname="",""
+	var filename, filePathname = "", ""
 
 	configPath := filepath.Join(UserHomeDir(), "/.mashcli")
 	if _, err := os.Stat(configPath); os.IsNotExist(err) {
@@ -69,7 +68,7 @@ func Load(name string) (*Config, error) {
 		filename = "mashcli.config"
 	}
 
-	filePathname = filepath.Join(configPath,filename)
+	filePathname = filepath.Join(configPath, filename)
 
 	bytes, err := ioutil.ReadFile(filePathname)
 	c := new(Config)
@@ -83,22 +82,21 @@ func Load(name string) (*Config, error) {
 		return nil, fmt.Errorf("config: unable to load configuration :  %s ", filePathname)
 	}
 
-	return c,nil
+	return c, nil
 }
 
 func (c *Config) PrettyPrint() {
 
-	data := []string{c.Name,c.Area,c.Tm,c.CcUrl,c.ApiKey,c.ApiKeySecret,c.UserId,c.Password}
+	data := []string{c.Name, c.Area, c.Tm, c.ApiKey, c.ApiKeySecret, c.UserId, c.Password}
 	table := tablewriter.NewWriter(os.Stdout)
 
-	table.SetHeader([]string{"Name", "Area", "Traffic Manager", "CC URL", "API Key", "API Secret", "User ID", "User Password"})
+	table.SetHeader([]string{"Name", "Area", "Traffic Manager", "API Key", "API Secret", "User ID", "User Password"})
 	table.Append(data)
 	table.Render()
 
 	return
 
 }
-
 
 func Add() *Config {
 
@@ -122,14 +120,6 @@ func Add() *Config {
 
 	tm, err := ui.Ask("Traffic Manager?", &input.Options{
 		Default:  "",
-		Required: true,
-	})
-	if err != nil {
-		return nil
-	}
-
-	ccurl, err := ui.Ask("Control Centre URL?", &input.Options{
-		Default:  "https://<<area>>.admin.mashery.com/control-center",
 		Required: true,
 	})
 	if err != nil {
@@ -168,7 +158,7 @@ func Add() *Config {
 		return nil
 	}
 
-	c := New(userid, password, apikey, apikeysecret, name, area, tm, ccurl)
+	c := New(userid, password, apikey, apikeysecret, name, area, tm)
 	c.Save()
 
 	return c
