@@ -392,20 +392,74 @@ $ mashcli applications showall -filter 'username:mmussett'
 * [show all](#services-showall)
 
 #### services add
+
+Add a Service to Mashery.
+
+Usage:
+```json
+mashcli services add [command options] Name
+```
+
+Command Options:
+* --description value, -d value  Describe your service
+* --version value, -v value      Version identifier
+* --area value, -a value         Area Configuration Name
+* --qps value, -q value          Aggregate QPS (default: 0)
+
+Examples:
+
+```json
+$ mashcli services add "Weather Service"
+{
+    "id": "e2f7jf556pa3pdjj6fevjkv8",
+    "created": "2018-01-17T20:43:59.000+0000",
+    "name": "Weather Service",
+    "updated": "2018-01-17T20:43:59.350+0000"
+}
+```
+
 #### services clone
+
+Clone an existing Service in Mashery.
+
+Usage:
+```json
+mashcli services clone [command options]
+```
+
+Command Options:
+* --area value, -a value         Area Configuration Name
+
+Examples:
+
+```json
+$ mashcli services clone e2f7jf556pa3pdjj6fevjkv8
+{
+    "id": "rygcyvq3sk2uxgg3pk42kx85",
+    "created": "2018-01-17T20:45:42.000+0000",
+    "crossdomainPolicy": "\u003c?xml version=\"1.0\"?\u003e\n\u003c!DOCTYPE cross-domain-policy SYSTEM \"http://www.macromedia.com/xml/dtds/cross-domain-policy.dtd\"\u003e\n\u003ccross-domain-policy\u003e\n   \u003callow-access-from domain=\"*\"/\u003e\n\u003c/cross-domain-policy\u003e",
+    "editorHandle": "mmussett",
+    "name": "Weather Service",
+    "revisionNumber": 2,
+    "updated": "2018-01-17T20:45:42.494+0000",
+    "version": "1.0"
+}
+```
+
 #### services delete
 #### services export
 #### services import
 #### services show
 #### services showall
 
-Show a list of all know Mashery Services.
+Show a list of all known Mashery Services.
 
 Usage:
 ```json
 mashcli services showall [command options] [arguments...]
 ```
-Options:
+
+Command Options:
 * --area value, -a value    Area Configuration Name
 * --filter value, -f value  Filter expression as colon-separated name/value pair i.e -filter version:1.0
 * --name value, -n value    Filter on name matching pattern i.e. -name *test*
@@ -531,6 +585,14 @@ $ mashcli services show 9dyupurdkktfwstmrw3z45vg -output json
 * [show](#packages-show)
 * [showall](#packages-showall)
 
+#### packages add
+#### packages clone
+#### packages delete
+#### packages export
+#### packages import
+#### packages show
+#### packages showall
+
 ### packagekeys
 
 * [delete](#packagekeys-delete)
@@ -540,6 +602,14 @@ $ mashcli services show 9dyupurdkktfwstmrw3z45vg -output json
 * [setstatus](#packagekeys-setstatus)
 * [show](#packagekeys-show)
 * [showall](#packagekeys-showall)
+
+#### packagekeys delete
+#### packagekeys export
+#### packagekeys import
+#### packagekeys setrates
+#### packagekeys setstatus
+#### packagekeys show
+#### packagekeys showall
 
 ### plans
 
@@ -553,6 +623,17 @@ $ mashcli services show 9dyupurdkktfwstmrw3z45vg -output json
 * [setstatus](#plans-setstatus)
 * [show](#plans-show)
 * [showall](#plans-showall)
+
+#### plans add
+#### plans clone
+#### plans delete
+#### plans export
+#### plans import
+#### plans setkeyprops
+#### plans setratelimits
+#### plans setstatus
+#### plans show
+#### plans showall
 
 ### planservices
 
@@ -577,3 +658,37 @@ $ mashcli services show 9dyupurdkktfwstmrw3z45vg -output json
 
 #### config show
 #### config add
+
+
+Library and Framework Credits
+-----------------------------
+This application uses a lot of great open source libraries.
+
+* [cli](https://github.com/urfave/cli)
+* [sling](https://github.com/dghubble/sling)
+* [tablewriter](https://github.com/olekukonko/tablewriter)
+* [go-input](https://github.com/tcnksm/go-input)
+
+License
+-------
+The MIT License (MIT)
+
+Copyright (c) 2018 Mark Mussett
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
