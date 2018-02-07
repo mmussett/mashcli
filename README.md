@@ -14,7 +14,8 @@ $ go get github.com/urfave/cli
 $ go get github.com/dghubble/sling
 $ go get github.com/olekukonko/tablewriter
 $ go get github.com/tcnksm/go-input
-$ go get github.com/mmussett/mashcli
+$ go get github.com/op/go-logging
+$ go get github.com/mmussett/mashcli/...
 $ cd $GOPATH/github.com/mmussett/mashcli
 $ go install ./...
 ```
@@ -673,12 +674,13 @@ This application uses a lot of great open source libraries.
 * [sling](https://github.com/dghubble/sling)
 * [tablewriter](https://github.com/olekukonko/tablewriter)
 * [go-input](https://github.com/tcnksm/go-input)
+* [go-logging](github.com/op/go-logging)
 
 License
 -------
 The MIT License (MIT)
 
-Copyright (c) 2018 Mark Mussett
+Copyright (c) 2017-2018 Mark Mussett
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
