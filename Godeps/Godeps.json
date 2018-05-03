@@ -1,0 +1,123 @@
+{
+	"ImportPath": "github.com/mmussett/mashcli",
+	"GoVersion": "go1.10",
+	"GodepVersion": "v80",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/Songmu/prompter",
+			"Comment": "0.1.0-4-gf49666b",
+			"Rev": "f49666b0047d12850875d771340e1d862d9e7a0c"
+		},
+		{
+			"ImportPath": "github.com/dghubble/sling",
+			"Comment": "v1.1.0-1-g91b015f",
+			"Rev": "91b015f8c5e231605ed75a74130ca0fa48b28cb1"
+		},
+		{
+			"ImportPath": "github.com/fatih/color",
+			"Comment": "v1.4.1",
+			"Rev": "9131ab34cf20d2f6d83fdc67168a5430d1c7dc23"
+		},
+		{
+			"ImportPath": "github.com/franela/goreq",
+			"Rev": "b5b0f5eb2d16f20345cce0a544a75163579c0b00"
+		},
+		{
+			"ImportPath": "github.com/gobwas/glob",
+			"Comment": "v0.2.2-2-g51eb1ee",
+			"Rev": "51eb1ee00b6d931c66d229ceeb7c31b985563420"
+		},
+		{
+			"ImportPath": "github.com/gobwas/glob/compiler",
+			"Comment": "v0.2.2-2-g51eb1ee",
+			"Rev": "51eb1ee00b6d931c66d229ceeb7c31b985563420"
+		},
+		{
+			"ImportPath": "github.com/gobwas/glob/match",
+			"Comment": "v0.2.2-2-g51eb1ee",
+			"Rev": "51eb1ee00b6d931c66d229ceeb7c31b985563420"
+		},
+		{
+			"ImportPath": "github.com/gobwas/glob/syntax",
+			"Comment": "v0.2.2-2-g51eb1ee",
+			"Rev": "51eb1ee00b6d931c66d229ceeb7c31b985563420"
+		},
+		{
+			"ImportPath": "github.com/gobwas/glob/syntax/ast",
+			"Comment": "v0.2.2-2-g51eb1ee",
+			"Rev": "51eb1ee00b6d931c66d229ceeb7c31b985563420"
+		},
+		{
+			"ImportPath": "github.com/gobwas/glob/syntax/lexer",
+			"Comment": "v0.2.2-2-g51eb1ee",
+			"Rev": "51eb1ee00b6d931c66d229ceeb7c31b985563420"
+		},
+		{
+			"ImportPath": "github.com/gobwas/glob/util/runes",
+			"Comment": "v0.2.2-2-g51eb1ee",
+			"Rev": "51eb1ee00b6d931c66d229ceeb7c31b985563420"
+		},
+		{
+			"ImportPath": "github.com/gobwas/glob/util/strings",
+			"Comment": "v0.2.2-2-g51eb1ee",
+			"Rev": "51eb1ee00b6d931c66d229ceeb7c31b985563420"
+		},
+		{
+			"ImportPath": "github.com/google/go-querystring/query",
+			"Rev": "53e6ce116135b80d037921a7fdd5138cf32d7a8a"
+		},
+		{
+			"ImportPath": "github.com/mattn/go-colorable",
+			"Comment": "v0.0.9-14-gefa5899",
+			"Rev": "efa589957cd060542a26d2dd7832fd6a6c6c3ade"
+		},
+		{
+			"ImportPath": "github.com/mattn/go-isatty",
+			"Comment": "v0.0.3-7-g6ca4dbf",
+			"Rev": "6ca4dbf54d38eea1a992b3c722a76a5d1c4cb25c"
+		},
+		{
+			"ImportPath": "github.com/mattn/go-runewidth",
+			"Comment": "v0.0.2-3-g97311d9",
+			"Rev": "97311d9f7767e3d6f422ea06661bc2c7a19e8a5d"
+		},
+		{
+			"ImportPath": "github.com/olekukonko/tablewriter",
+			"Rev": "a7a4c189eb47ed33ce7b35f2880070a0c82a67d4"
+		},
+		{
+			"ImportPath": "github.com/op/go-logging",
+			"Comment": "v1-7-g970db52",
+			"Rev": "970db520ece77730c7e4724c61121037378659d9"
+		},
+		{
+			"ImportPath": "github.com/pkg/errors",
+			"Comment": "v0.8.0-12-g816c908",
+			"Rev": "816c9085562cd7ee03e7f8188a1cfd942858cded"
+		},
+		{
+			"ImportPath": "github.com/tcnksm/go-input",
+			"Rev": "bbe13e92fa7dda71a4e012e3f427df11866c7651"
+		},
+		{
+			"ImportPath": "github.com/urfave/cli",
+			"Comment": "v1.19.1-24-g9e5b048",
+			"Rev": "9e5b04886c4bfee2ceba1465b8121057355c4e53"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/ssh/terminal",
+			"Rev": "ae8bce0030810cf999bb2b9868ae5c7c58e6343b"
+		},
+		{
+			"ImportPath": "golang.org/x/sys/unix",
+			"Rev": "4adea008a5e5f820b6028611ae0b6b3fbcec534b"
+		},
+		{
+			"ImportPath": "golang.org/x/sys/windows",
+			"Rev": "4adea008a5e5f820b6028611ae0b6b3fbcec534b"
+		}
+	]
+}
