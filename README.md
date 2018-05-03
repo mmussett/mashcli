@@ -8,18 +8,6 @@ Written in golang v1.9
 Compiling from source
 ---------------------
 
-To download mashcli and dependencies, simply run:
-```bash
-$ go get github.com/urfave/cli
-$ go get github.com/dghubble/sling
-$ go get github.com/olekukonko/tablewriter
-$ go get github.com/tcnksm/go-input
-$ go get github.com/op/go-logging
-$ go get github.com/mmussett/mashcli/...
-$ cd $GOPATH/github.com/mmussett/mashcli
-$ go install ./...
-```
-
 To build and install mashcli, simply run:
 ```bash
 go install ./...
