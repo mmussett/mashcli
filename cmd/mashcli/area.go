@@ -11,7 +11,7 @@ import (
 )
 
 func doBeforeAreaBackup(c *cli.Context) {
-	if len(c.Args()) != 1 {
+	if len(c.Args()) != 4 {
 		fmt.Println("mashcli: argument mismatch")
 		fmt.Println("Run 'mashcli area backup --help' for usage")
 		cli.OsExiter(-1)
@@ -45,7 +45,7 @@ func doActionAreaBackup(c *cli.Context) {
 }
 
 func doBeforeAreaRestore(c *cli.Context) {
-	if len(c.Args()) != 1 {
+	if len(c.Args()) != 4 {
 		fmt.Println("mashcli: argument mismatch")
 		fmt.Println("Run 'mashcli area restore --help' for usage")
 		cli.OsExiter(-1)
