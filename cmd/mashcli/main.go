@@ -1,9 +1,10 @@
 package main
 
 import (
+	"os"
+
 	"github.com/op/go-logging"
 	"github.com/urfave/cli"
-	"os"
 )
 
 const (
@@ -25,7 +26,6 @@ func main() {
 	a.Copyright = copyright
 	a.Author = author
 
-
 	//appConfig := mashcli.Load("")
 
 	a.Commands = []cli.Command{
@@ -34,9 +34,9 @@ func main() {
 			Usage: "Manage application package keys-related operations. For additional help, use 'mashcli applicationpackagekeys --help'",
 			Subcommands: []cli.Command{
 				{
-					Name:  "import",
+					Name:    "import",
 					Aliases: []string{"i"},
-					Usage: "Import Open-API / Swagger definition",
+					Usage:   "Import Open-API / Swagger definition",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 					},
@@ -53,13 +53,13 @@ func main() {
 			},
 		},
 		{
-			Name:  "applications",
+			Name:    "applications",
 			Aliases: []string{"ap"},
-			Usage: "Manage application-related operations for the current user. For additional help, use 'mashcli applications --help'",
+			Usage:   "Manage application-related operations for the current user. For additional help, use 'mashcli applications --help'",
 			Subcommands: []cli.Command{
 				{
 					Name:      "delete",
-					Aliases: []string{"d"},
+					Aliases:   []string{"d"},
 					Usage:     "delete application",
 					ArgsUsage: "ApplicationID",
 					Flags: []cli.Flag{
@@ -75,9 +75,9 @@ func main() {
 					},
 				},
 				{
-					Name:  "export",
+					Name:    "export",
 					Aliases: []string{"e"},
-					Usage: "Export application",
+					Usage:   "Export application",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.StringFlag{Name: "filename, f", Usage: "The export Filename for the Application Definition"},
@@ -94,7 +94,7 @@ func main() {
 				},
 				{
 					Name:      "import",
-					Aliases: []string{"i"},
+					Aliases:   []string{"i"},
 					Usage:     "import application",
 					ArgsUsage: "",
 					Flags: []cli.Flag{
@@ -111,8 +111,8 @@ func main() {
 					},
 				},
 				{
-					Name:      "nuke",
-					Usage:     "nuke all applications",
+					Name:  "nuke",
+					Usage: "nuke all applications",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.BoolFlag{Name: "force, f", Usage: "Ignore warnings and prompts"},
@@ -128,9 +128,9 @@ func main() {
 					},
 				},
 				{
-					Name:  "show",
+					Name:    "show",
 					Aliases: []string{"s"},
-					Usage: "Show application",
+					Usage:   "Show application",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.StringFlag{Name: "output, o", Usage: "Output format table or json)"},
@@ -146,9 +146,9 @@ func main() {
 					},
 				},
 				{
-					Name:  "showall",
+					Name:    "showall",
 					Aliases: []string{"sa"},
-					Usage: "Show all applications",
+					Usage:   "Show all applications",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.StringFlag{Name: "filter, f", Usage: "Filter expression as colon-separated name/value pair i.e -filter 'name:Basic'"},
@@ -166,14 +166,14 @@ func main() {
 			},
 		},
 		{
-			Name:  "applicationpackagekeys",
+			Name:    "applicationpackagekeys",
 			Aliases: []string{"ak"},
-			Usage: "Manage application package keys-related operations. For additional help, use 'mashcli applicationpackagekeys --help'",
+			Usage:   "Manage application package keys-related operations. For additional help, use 'mashcli applicationpackagekeys --help'",
 			Subcommands: []cli.Command{
 				{
-					Name:  "showall",
+					Name:    "showall",
 					Aliases: []string{"sa"},
-					Usage: "Show all package keys for an application",
+					Usage:   "Show all package keys for an application",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.StringFlag{Name: "filter, f", Usage: "Filter expression as colon-separated name/value pair i.e -filter 'name:Basic'"},
@@ -192,14 +192,14 @@ func main() {
 			},
 		},
 		{
-			Name:  "area",
+			Name:    "area",
 			Aliases: []string{"ar"},
-			Usage: "Manage application package keys-related operations. For additional help, use 'mashcli area --help'",
+			Usage:   "Manage area-related operations. For additional help, use 'mashcli area --help'",
 			Subcommands: []cli.Command{
 				{
-					Name:  "backup",
-					Aliases: []string{"b"},
-					Usage: "Backup area configuration",
+					Name:      "backup",
+					Aliases:   []string{"b"},
+					Usage:     "Backup area configuration",
 					ArgsUsage: "Name",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
@@ -214,8 +214,8 @@ func main() {
 					},
 				},
 				{
-					Name:      "nuke",
-					Usage:     "nuke area",
+					Name:  "nuke",
+					Usage: "nuke area",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.BoolFlag{Name: "force, f", Usage: "Ignore warnings and prompts"},
@@ -231,9 +231,9 @@ func main() {
 					},
 				},
 				{
-					Name:  "restore",
-					Aliases: []string{"r"},
-					Usage: "Restore area configuration",
+					Name:      "restore",
+					Aliases:   []string{"r"},
+					Usage:     "Restore area configuration",
 					ArgsUsage: "Name",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
@@ -251,13 +251,13 @@ func main() {
 		},
 
 		{
-			Name:  "members",
+			Name:    "members",
 			Aliases: []string{"m"},
-			Usage: "Manage member-related operations. For additional help, use 'mashcli members --help'",
+			Usage:   "Manage member-related operations. For additional help, use 'mashcli members --help'",
 			Subcommands: []cli.Command{
 				{
 					Name:      "add",
-					Aliases: []string{"a"},
+					Aliases:   []string{"a"},
 					Usage:     "add member",
 					ArgsUsage: "Email Username DisplayName",
 					Flags: []cli.Flag{
@@ -274,7 +274,7 @@ func main() {
 				},
 				{
 					Name:      "delete",
-					Aliases: []string{"d"},
+					Aliases:   []string{"d"},
 					Usage:     "delete member",
 					ArgsUsage: "MemberID",
 					Flags: []cli.Flag{
@@ -291,9 +291,9 @@ func main() {
 					},
 				},
 				{
-					Name:  "export",
+					Name:    "export",
 					Aliases: []string{"e"},
-					Usage: "Export specific member",
+					Usage:   "Export specific member",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.StringFlag{Name: "filename, f", Usage: "The export Filename for the Member Definition"},
@@ -310,7 +310,7 @@ func main() {
 				},
 				{
 					Name:      "import",
-					Aliases: []string{"i"},
+					Aliases:   []string{"i"},
 					Usage:     "import package",
 					ArgsUsage: "",
 					Flags: []cli.Flag{
@@ -327,8 +327,8 @@ func main() {
 					},
 				},
 				{
-					Name:      "nuke",
-					Usage:     "nuke all members",
+					Name:  "nuke",
+					Usage: "nuke all members",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.BoolFlag{Name: "force, f", Usage: "Ignore warnings and prompts"},
@@ -344,9 +344,9 @@ func main() {
 					},
 				},
 				{
-					Name:  "setstatus",
+					Name:    "setstatus",
 					Aliases: []string{"ss"},
-					Usage: "Set member status",
+					Usage:   "Set member status",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 					},
@@ -361,9 +361,9 @@ func main() {
 					},
 				},
 				{
-					Name:  "show",
+					Name:    "show",
 					Aliases: []string{"s"},
-					Usage: "Show specific member",
+					Usage:   "Show specific member",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.StringFlag{Name: "output, o", Usage: "Output format table or json)"},
@@ -379,9 +379,9 @@ func main() {
 					},
 				},
 				{
-					Name:  "showall",
+					Name:    "showall",
 					Aliases: []string{"sa"},
-					Usage: "Show all members",
+					Usage:   "Show all members",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.StringFlag{Name: "filter, f", Usage: "Filter expression as colon-separated name/value pair i.e -filter username:mmussett"},
@@ -401,13 +401,13 @@ func main() {
 			},
 		},
 		{
-			Name:  "memberapplications",
+			Name:    "memberapplications",
 			Aliases: []string{"ma"},
-			Usage: "Manage application-related operations for the current user. For additional help, use 'mashcli memberapplications --help'",
+			Usage:   "Manage application-related operations for the current user. For additional help, use 'mashcli memberapplications --help'",
 			Subcommands: []cli.Command{
 				{
 					Name:      "add",
-					Aliases: []string{"a"},
+					Aliases:   []string{"a"},
 					Usage:     "Add a member application",
 					ArgsUsage: "MemberUsername ApplicationName ApplicationDescription",
 					Flags: []cli.Flag{
@@ -423,9 +423,9 @@ func main() {
 					},
 				},
 				{
-					Name:  "export",
+					Name:    "export",
 					Aliases: []string{"e"},
-					Usage: "Export application",
+					Usage:   "Export application",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.StringFlag{Name: "filename, f", Usage: "The export Filename for the Package Definition"},
@@ -442,7 +442,7 @@ func main() {
 				},
 				{
 					Name:      "import",
-					Aliases: []string{"i"},
+					Aliases:   []string{"i"},
 					Usage:     "import memberapplication",
 					ArgsUsage: "MemberID",
 					Flags: []cli.Flag{
@@ -460,9 +460,9 @@ func main() {
 				},
 
 				{
-					Name:  "showall",
+					Name:    "showall",
 					Aliases: []string{"sa"},
-					Usage: "Show member applications",
+					Usage:   "Show member applications",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.StringFlag{Name: "filter, f", Usage: "Filter expression as colon-separated name/value pair i.e -filter 'name:Basic'"},
@@ -481,13 +481,13 @@ func main() {
 			},
 		},
 		{
-			Name:  "roles",
+			Name:    "roles",
 			Aliases: []string{"s"},
-			Usage: "Manage roles-related operations for the current user. For additional help, use 'mashcli roles --help'",
+			Usage:   "Manage roles-related operations for the current user. For additional help, use 'mashcli roles --help'",
 			Subcommands: []cli.Command{
 				{
 					Name:      "add",
-					Aliases: []string{"a"},
+					Aliases:   []string{"a"},
 					Usage:     "Add a role",
 					ArgsUsage: "Name",
 					Flags: []cli.Flag{
@@ -507,7 +507,7 @@ func main() {
 				},
 				{
 					Name:      "delete",
-					Aliases: []string{"d"},
+					Aliases:   []string{"d"},
 					Usage:     "Delete a role",
 					ArgsUsage: "RoleID",
 					Flags: []cli.Flag{
@@ -524,7 +524,7 @@ func main() {
 				},
 				{
 					Name:      "export",
-					Aliases: []string{"e"},
+					Aliases:   []string{"e"},
 					Usage:     "Export a role",
 					ArgsUsage: "RoleID",
 					Flags: []cli.Flag{
@@ -541,9 +541,9 @@ func main() {
 					},
 				},
 				{
-					Name:  "import",
+					Name:    "import",
 					Aliases: []string{"i"},
-					Usage: "Import a role",
+					Usage:   "Import a role",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "filename, f", Usage: "The filename containing the Service Definition"},
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
@@ -558,8 +558,8 @@ func main() {
 					},
 				},
 				{
-					Name:      "nuke",
-					Usage:     "nuke all roles ",
+					Name:  "nuke",
+					Usage: "nuke all roles ",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.BoolFlag{Name: "force, f", Usage: "Ignore warnings and prompts"},
@@ -576,7 +576,7 @@ func main() {
 				},
 				{
 					Name:      "show",
-					Aliases: []string{"s"},
+					Aliases:   []string{"s"},
 					Usage:     "Show specific role",
 					ArgsUsage: "RoleID",
 					Flags: []cli.Flag{
@@ -593,9 +593,9 @@ func main() {
 					},
 				},
 				{
-					Name:  "showall",
+					Name:    "showall",
 					Aliases: []string{"sa"},
-					Usage: "Show all roles",
+					Usage:   "Show all roles",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.StringFlag{Name: "filter, f", Usage: "Filter expression as colon-separated name/value pair i.e -filter version:1.0"},
@@ -614,13 +614,13 @@ func main() {
 			},
 		},
 		{
-			Name:  "services",
+			Name:    "services",
 			Aliases: []string{"s"},
-			Usage: "Manage service-related operations for the current user. For additional help, use 'mashcli services --help'",
+			Usage:   "Manage service-related operations for the current user. For additional help, use 'mashcli services --help'",
 			Subcommands: []cli.Command{
 				{
 					Name:      "add",
-					Aliases: []string{"a"},
+					Aliases:   []string{"a"},
 					Usage:     "Add a service",
 					ArgsUsage: "Name",
 					Flags: []cli.Flag{
@@ -640,7 +640,7 @@ func main() {
 				},
 				{
 					Name:      "clone",
-					Aliases: []string{"c"},
+					Aliases:   []string{"c"},
 					Usage:     "Clone a service",
 					ArgsUsage: "ServiceID",
 					Flags: []cli.Flag{
@@ -657,7 +657,7 @@ func main() {
 				},
 				{
 					Name:      "delete",
-					Aliases: []string{"d"},
+					Aliases:   []string{"d"},
 					Usage:     "Delete a service",
 					ArgsUsage: "ServiceID",
 					Flags: []cli.Flag{
@@ -674,7 +674,7 @@ func main() {
 				},
 				{
 					Name:      "export",
-					Aliases: []string{"e"},
+					Aliases:   []string{"e"},
 					Usage:     "Export a service",
 					ArgsUsage: "ServiceID",
 					Flags: []cli.Flag{
@@ -691,9 +691,9 @@ func main() {
 					},
 				},
 				{
-					Name:  "import",
+					Name:    "import",
 					Aliases: []string{"i"},
-					Usage: "Import a service",
+					Usage:   "Import a service",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "filename, f", Usage: "The filename containing the Service Definition"},
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
@@ -708,8 +708,8 @@ func main() {
 					},
 				},
 				{
-					Name:      "nuke",
-					Usage:     "nuke all services ",
+					Name:  "nuke",
+					Usage: "nuke all services ",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.BoolFlag{Name: "force, f", Usage: "Ignore warnings and prompts"},
@@ -726,7 +726,7 @@ func main() {
 				},
 				{
 					Name:      "show",
-					Aliases: []string{"s"},
+					Aliases:   []string{"s"},
 					Usage:     "Show specific service",
 					ArgsUsage: "ID",
 					Flags: []cli.Flag{
@@ -743,9 +743,9 @@ func main() {
 					},
 				},
 				{
-					Name:  "showall",
+					Name:    "showall",
 					Aliases: []string{"sa"},
-					Usage: "Show all services",
+					Usage:   "Show all services",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.StringFlag{Name: "filter, f", Usage: "Filter expression as colon-separated name/value pair i.e -filter version:1.0"},
@@ -764,13 +764,13 @@ func main() {
 			},
 		},
 		{
-			Name:  "endpoints",
+			Name:    "endpoints",
 			Aliases: []string{"e"},
-			Usage: "Manage endpoint-related operations for the current user. For additional help, use 'mashcli endpoints --help'",
+			Usage:   "Manage endpoint-related operations for the current user. For additional help, use 'mashcli endpoints --help'",
 			Subcommands: []cli.Command{
 				{
 					Name:      "add",
-					Aliases: []string{"a"},
+					Aliases:   []string{"a"},
 					Usage:     "add endpoint to a service",
 					ArgsUsage: "ServiceID Name PublicEndpointAddress SystemEndpointAddress",
 					Flags: []cli.Flag{
@@ -787,7 +787,7 @@ func main() {
 				},
 				{
 					Name:      "clone",
-					Aliases: []string{"c"},
+					Aliases:   []string{"c"},
 					Usage:     "clone endpoint on a service",
 					ArgsUsage: "ServiceID EndpointID Name PublicEndpointAddress SystemEndpointAddress",
 					Flags: []cli.Flag{
@@ -804,7 +804,7 @@ func main() {
 				},
 				{
 					Name:      "delete",
-					Aliases: []string{"d"},
+					Aliases:   []string{"d"},
 					Usage:     "delete endpoint for a service",
 					ArgsUsage: "ServiceID EndpointID",
 					Flags: []cli.Flag{
@@ -821,7 +821,7 @@ func main() {
 				},
 				{
 					Name:      "export",
-					Aliases: []string{"e"},
+					Aliases:   []string{"e"},
 					Usage:     "export endpoint from a service",
 					ArgsUsage: "ServiceID EndpointID",
 					Flags: []cli.Flag{
@@ -839,7 +839,7 @@ func main() {
 				},
 				{
 					Name:      "import",
-					Aliases: []string{"i"},
+					Aliases:   []string{"i"},
 					Usage:     "import endpoint to a service",
 					ArgsUsage: "ServiceID",
 					Flags: []cli.Flag{
@@ -857,7 +857,7 @@ func main() {
 				},
 				{
 					Name:      "show",
-					Aliases: []string{"s"},
+					Aliases:   []string{"s"},
 					Usage:     "Show endpoint for a service",
 					ArgsUsage: "ServiceID EndpointID",
 					Flags: []cli.Flag{
@@ -875,7 +875,7 @@ func main() {
 				},
 				{
 					Name:      "showall",
-					Aliases: []string{"sa"},
+					Aliases:   []string{"sa"},
 					Usage:     "Show all endpoints for a service",
 					ArgsUsage: "ServiceID",
 					Flags: []cli.Flag{
@@ -895,13 +895,13 @@ func main() {
 			},
 		},
 		{
-			Name:  "packages",
+			Name:    "packages",
 			Aliases: []string{"pa"},
-			Usage: "Manage package-related operations for the current user. For additional help, use 'mashcli packages --help'",
+			Usage:   "Manage package-related operations for the current user. For additional help, use 'mashcli packages --help'",
 			Subcommands: []cli.Command{
 				{
 					Name:      "add",
-					Aliases: []string{"a"},
+					Aliases:   []string{"a"},
 					Usage:     "add package",
 					ArgsUsage: "PackageName PackageDescription",
 					Flags: []cli.Flag{
@@ -918,7 +918,7 @@ func main() {
 				},
 				{
 					Name:      "clone",
-					Aliases: []string{"c"},
+					Aliases:   []string{"c"},
 					Usage:     "clone package",
 					ArgsUsage: "PackageID Name Description",
 					Flags: []cli.Flag{
@@ -935,7 +935,7 @@ func main() {
 				},
 				{
 					Name:      "delete",
-					Aliases: []string{"d"},
+					Aliases:   []string{"d"},
 					Usage:     "delete package",
 					ArgsUsage: "PackageID",
 					Flags: []cli.Flag{
@@ -951,9 +951,9 @@ func main() {
 					},
 				},
 				{
-					Name:  "export",
+					Name:    "export",
 					Aliases: []string{"e"},
-					Usage: "Export specific package",
+					Usage:   "Export specific package",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.StringFlag{Name: "filename, f", Usage: "The export Filename for the Package Definition"},
@@ -970,7 +970,7 @@ func main() {
 				},
 				{
 					Name:      "import",
-					Aliases: []string{"i"},
+					Aliases:   []string{"i"},
 					Usage:     "import package",
 					ArgsUsage: "",
 					Flags: []cli.Flag{
@@ -987,8 +987,8 @@ func main() {
 					},
 				},
 				{
-					Name:      "nuke",
-					Usage:     "nuke all packages",
+					Name:  "nuke",
+					Usage: "nuke all packages",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.BoolFlag{Name: "force, f", Usage: "Ignore warnings and prompts"},
@@ -1004,9 +1004,9 @@ func main() {
 					},
 				},
 				{
-					Name:  "show",
+					Name:    "show",
 					Aliases: []string{"s"},
-					Usage: "Show specific package",
+					Usage:   "Show specific package",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.StringFlag{Name: "output, o", Usage: "Output format table or json)"},
@@ -1022,9 +1022,9 @@ func main() {
 					},
 				},
 				{
-					Name:  "showall",
+					Name:    "showall",
 					Aliases: []string{"sa"},
-					Usage: "Show all packages",
+					Usage:   "Show all packages",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.StringFlag{Name: "filter, f", Usage: "Filter expression as colon-separated name/value pair i.e -filter 'name:My Package'"},
@@ -1043,13 +1043,13 @@ func main() {
 			},
 		},
 		{
-			Name:  "packagekeys",
+			Name:    "packagekeys",
 			Aliases: []string{"k"},
-			Usage: "Manage package key-related operations. For additional help, use 'mashcli packagekeys --help'",
+			Usage:   "Manage package key-related operations. For additional help, use 'mashcli packagekeys --help'",
 			Subcommands: []cli.Command{
 				{
 					Name:      "delete",
-					Aliases: []string{"d"},
+					Aliases:   []string{"d"},
 					Usage:     "delete package key",
 					ArgsUsage: "PackageKeyID",
 					Flags: []cli.Flag{
@@ -1065,9 +1065,9 @@ func main() {
 					},
 				},
 				{
-					Name:  "export",
+					Name:    "export",
 					Aliases: []string{"e"},
-					Usage: "Export specific package key",
+					Usage:   "Export specific package key",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.StringFlag{Name: "filename, f", Usage: "The export Filename for the Package Key Definition"},
@@ -1084,7 +1084,7 @@ func main() {
 				},
 				{
 					Name:      "import",
-					Aliases: []string{"i"},
+					Aliases:   []string{"i"},
 					Usage:     "import package key",
 					ArgsUsage: "",
 					Flags: []cli.Flag{
@@ -1101,8 +1101,8 @@ func main() {
 					},
 				},
 				{
-					Name:      "nuke",
-					Usage:     "nuke all package key",
+					Name:  "nuke",
+					Usage: "nuke all package key",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.BoolFlag{Name: "force, f", Usage: "Ignore warnings and prompts"},
@@ -1118,9 +1118,9 @@ func main() {
 					},
 				},
 				{
-					Name:  "setrates",
+					Name:    "setrates",
 					Aliases: []string{"sr"},
-					Usage: "Set package key rates",
+					Usage:   "Set package key rates",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.StringFlag{Name: "throttle, t", Usage: "Throttle for this key"},
@@ -1137,9 +1137,9 @@ func main() {
 					},
 				},
 				{
-					Name:  "setstatus",
+					Name:    "setstatus",
 					Aliases: []string{"ss"},
-					Usage: "Set package key status",
+					Usage:   "Set package key status",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 					},
@@ -1154,9 +1154,9 @@ func main() {
 					},
 				},
 				{
-					Name:  "show",
+					Name:    "show",
 					Aliases: []string{"s"},
-					Usage: "Show specific package key",
+					Usage:   "Show specific package key",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.StringFlag{Name: "output, o", Usage: "Output format table or json)"},
@@ -1172,9 +1172,9 @@ func main() {
 					},
 				},
 				{
-					Name:  "showall",
+					Name:    "showall",
 					Aliases: []string{"sa"},
-					Usage: "Show all packages keys",
+					Usage:   "Show all packages keys",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.StringFlag{Name: "filter, f", Usage: "Filter expression as colon-separated name/value pair i.e -filter 'name:Basic'"},
@@ -1192,13 +1192,13 @@ func main() {
 			},
 		},
 		{
-			Name:  "plans",
+			Name:    "plans",
 			Aliases: []string{"pl"},
-			Usage: "Manage plan-related operations for the current user. For additional help, use 'mashcli plans --help'",
+			Usage:   "Manage plan-related operations for the current user. For additional help, use 'mashcli plans --help'",
 			Subcommands: []cli.Command{
 				{
 					Name:      "add",
-					Aliases: []string{"a"},
+					Aliases:   []string{"a"},
 					Usage:     "add plan",
 					ArgsUsage: "PackageID PlanName PlanDescription",
 					Flags: []cli.Flag{
@@ -1215,7 +1215,7 @@ func main() {
 				},
 				{
 					Name:      "clone",
-					Aliases: []string{"c"},
+					Aliases:   []string{"c"},
 					Usage:     "clone plan",
 					ArgsUsage: "PackageID PlanID Name Description",
 					Flags: []cli.Flag{
@@ -1232,7 +1232,7 @@ func main() {
 				},
 				{
 					Name:      "delete",
-					Aliases: []string{"d"},
+					Aliases:   []string{"d"},
 					Usage:     "delete plan",
 					ArgsUsage: "PackageID PlanID",
 					Flags: []cli.Flag{
@@ -1248,9 +1248,9 @@ func main() {
 					},
 				},
 				{
-					Name:  "export",
+					Name:    "export",
 					Aliases: []string{"e"},
-					Usage: "Export specific plan",
+					Usage:   "Export specific plan",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.StringFlag{Name: "filename, f", Usage: "The export Filename for the Package Definition"},
@@ -1267,7 +1267,7 @@ func main() {
 				},
 				{
 					Name:      "import",
-					Aliases: []string{"i"},
+					Aliases:   []string{"i"},
 					Usage:     "import plan",
 					ArgsUsage: "PackageID",
 					Flags: []cli.Flag{
@@ -1302,9 +1302,9 @@ func main() {
 					},
 				},
 				{
-					Name:  "setkeyprops",
+					Name:    "setkeyprops",
 					Aliases: []string{"sk"},
-					Usage: "Set plan key properties",
+					Usage:   "Set plan key properties",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.IntFlag{Name: "maxkeys, mk", Usage: "Maximum allowable Keys"},
@@ -1323,9 +1323,9 @@ func main() {
 					},
 				},
 				{
-					Name:  "setratelimits",
+					Name:    "setratelimits",
 					Aliases: []string{"sr"},
-					Usage: "Set plan rate limits",
+					Usage:   "Set plan rate limits",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.IntFlag{Name: "throttle, t", Usage: "Throttle limit"},
@@ -1345,9 +1345,9 @@ func main() {
 					},
 				},
 				{
-					Name:  "setstatus",
+					Name:    "setstatus",
 					Aliases: []string{"ss"},
-					Usage: "Set plan status",
+					Usage:   "Set plan status",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 					},
@@ -1362,9 +1362,9 @@ func main() {
 					},
 				},
 				{
-					Name:  "show",
+					Name:    "show",
 					Aliases: []string{"s"},
-					Usage: "Show plan",
+					Usage:   "Show plan",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.StringFlag{Name: "output, o", Usage: "Output format table or json)"},
@@ -1380,9 +1380,9 @@ func main() {
 					},
 				},
 				{
-					Name:  "showall",
+					Name:    "showall",
 					Aliases: []string{"sa"},
-					Usage: "Show all package plans",
+					Usage:   "Show all package plans",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.StringFlag{Name: "filter, f", Usage: "Filter expression as colon-separated name/value pair i.e -filter 'name:Basic'"},
@@ -1401,14 +1401,14 @@ func main() {
 			},
 		},
 		{
-			Name:  "planservices",
+			Name:    "planservices",
 			Aliases: []string{"ps"},
-			Usage: "Manage planservice-related operations for the current user. For additional help, use 'mashcli planservices --help'",
+			Usage:   "Manage planservice-related operations for the current user. For additional help, use 'mashcli planservices --help'",
 			Subcommands: []cli.Command{
 				{
-					Name:  "show",
+					Name:    "show",
 					Aliases: []string{"s"},
-					Usage: "Show service on plan",
+					Usage:   "Show service on plan",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.StringFlag{Name: "output, o", Usage: "Output format table or json)"},
@@ -1424,9 +1424,9 @@ func main() {
 					},
 				},
 				{
-					Name:  "showall",
+					Name:    "showall",
 					Aliases: []string{"sa"},
-					Usage: "Show all services on plan",
+					Usage:   "Show all services on plan",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.StringFlag{Name: "filter, f", Usage: "Filter expression as colon-separated name/value pair i.e -filter 'name:Basic'"},
@@ -1445,13 +1445,13 @@ func main() {
 			},
 		},
 		{
-			Name:  "plandesigner",
+			Name:    "plandesigner",
 			Aliases: []string{"pd"},
-			Usage: "Manage plan designer operations for the current user. For additional help, use 'mashcli plandesigner --help'",
+			Usage:   "Manage plan designer operations for the current user. For additional help, use 'mashcli plandesigner --help'",
 			Subcommands: []cli.Command{
 				{
 					Name:      "add",
-					Aliases: []string{"a"},
+					Aliases:   []string{"a"},
 					Usage:     "add service to plan",
 					ArgsUsage: "PackageID PlanID ServiceID",
 					Flags: []cli.Flag{
@@ -1468,7 +1468,7 @@ func main() {
 				},
 				{
 					Name:      "delete",
-					Aliases: []string{"d"},
+					Aliases:   []string{"d"},
 					Usage:     "delete service from plan",
 					ArgsUsage: "PackageID PlanID ServiceID",
 					Flags: []cli.Flag{
@@ -1486,14 +1486,14 @@ func main() {
 			},
 		},
 		{
-			Name:  "config",
+			Name:    "config",
 			Aliases: []string{"c"},
-			Usage: "Configuration for the current user. For additional help, use 'mashcli config --help'",
+			Usage:   "Configuration for the current user. For additional help, use 'mashcli config --help'",
 			Subcommands: []cli.Command{
 				{
-					Name:  "show",
+					Name:    "show",
 					Aliases: []string{"s"},
-					Usage: "Show config",
+					Usage:   "Show config",
 					Flags: []cli.Flag{
 						cli.StringFlag{Name: "area, a", Usage: "Area Configuration Name"},
 						cli.StringFlag{Name: "output, o", Usage: "Output format table or json)"},
@@ -1508,9 +1508,9 @@ func main() {
 					},
 				},
 				{
-					Name:  "add",
+					Name:    "add",
 					Aliases: []string{"a"},
-					Usage: "Add a new configuration",
+					Usage:   "Add a new configuration",
 					Before: func(c *cli.Context) error {
 						doBeforeConfigAdd(c)
 						return nil
